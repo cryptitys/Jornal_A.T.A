@@ -3,84 +3,258 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jornal A.T.A</title>
+    <title>Jornal A.T.A | Edição Junho/2025
+           [Ainda em desenvolvimento] </title>
     <style>
-        :root {
-            --neon-blue: #0ff0fc;
-            --neon-pink: #ff2a6d;
-            --dark-bg: #0d0221;
-        }
-        
         body {
-            background: var(--dark-bg);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
         }
-        
-        .header-container {
+        header {
             text-align: center;
-            padding: 2rem;
-            border-radius: 15px;
-            background: rgba(13, 2, 33, 0.8);
-            box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #2c3e50;
         }
-        
-        .neon-title {
-            font-size: 4rem;
-            font-weight: 700;
-            color: transparent;
-            text-shadow: 0 0 10px var(--neon-blue),
-                         0 0 20px var(--neon-blue),
-                         0 0 30px var(--neon-blue);
-            animation: neon-flicker 1.5s infinite alternate;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin: 0;
-            position: relative;
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 5px;
         }
-        
-        .neon-title::before {
-            content: attr(data-text);
-            position: absolute;
-            color: var(--neon-blue);
-            filter: blur(15px);
-            z-index: -1;
+        h2 {
+            color: #3498db;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+            margin-top: 30px;
         }
-        
-        .neon-subtitle {
-            color: var(--neon-pink);
-            text-shadow: 0 0 5px var(--neon-pink);
-            font-size: 1.2rem;
-            margin-top: 1rem;
+        h3 {
+            color: #2980b9;
         }
-        
-        @keyframes neon-flicker {
-            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-                text-shadow: 
-                    0 0 10px var(--neon-blue),
-                    0 0 20px var(--neon-blue),
-                    0 0 30px var(--neon-blue),
-                    0 0 40px var(--neon-pink),
-                    0 0 70px var(--neon-pink),
-                    0 0 80px var(--neon-pink),
-                    0 0 100px var(--neon-pink),
-                    0 0 150px var(--neon-pink);
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .highlight {
+            background-color: #e6f7ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .event-card {
+            background: white;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #7f8c8d;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .badge {
+            display: inline-block;
+            padding: 3px 7px;
+            background: #e74c3c;
+            color: white;
+            border-radius: 3px;
+            font-size: 0.8em;
+            margin-left: 5px;
+        }
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
             }
-            20%, 24%, 55% {
-                text-shadow: none;
+            table {
+                font-size: 0.9em;
             }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="header-container">
-        <h1 class="neon-title" data-text="JORNAL A.T.A">JORNAL A.T.A</h1>
-        <p class="neon-subtitle">Notícias que iluminam o futuro da educação</p>
+    <header>
+        <h1>JORNAL A.T.A</h1>
+        <p>Informações Oficiais da Escola | <strong>Edição: Junho/2025</strong></p>
+    </header>
+
+    <section>
+        <h2>DESTAQUE DO MÊS</h2>
+        <h3>🏆 Prova Paulista 2025 - 2° Bimestre</h3>
+        
+        <div class="highlight">
+            <p><strong>📅 Calendário:</strong></p>
+            <ul>
+                <li><strong>Inscrições:</strong> 10/06 a 20/06</li>
+                <li><strong>Prova:</strong> 05/07 (Salas 1 a 10)</li>
+                <li><strong>Resultados:</strong> 25/07 no mural da escola</li>
+            </ul>
+        </div>
+
+        <h4>📚 Plantões de Dúvida:</h4>
+        <table>
+            <tr>
+                <th>Matéria</th>
+                <th>Dia/Horário</th>
+                <th>Local</th>
+            </tr>
+            <tr>
+                <td>Matemática</td>
+                <td>Terças, 14h</td>
+                <td>Sala 7</td>
+            </tr>
+            <tr>
+                <td>Português</td>
+                <td>Quintas, 15h</td>
+                <td>Biblioteca</td>
+            </tr>
+        </table>
+
+        <p>
+            <a href="regulamento.html">📋 Regulamento Completo</a> | 
+<a href="simulado.html">✏️ Simulado Online</a>
+        </p>
+    </section>
+
+    <section>
+        <h2>RANKING TOP 4 - 1° BIMESTRE</h2>
+        <p><em>(Baseado em notas e participação)</em></p>
+        
+        <table>
+            <tr>
+                <th>Posição</th>
+                <th>Nome do Aluno</th>
+                <th>Turma</th>
+                <th>Pontuação</th>
+            </tr>
+            <tr>
+                <td>1°</td>
+                <td>Ana Silva</td>
+                <td>9°A</td>
+                <td>98,5</td>
+            </tr>
+            <tr>
+                <td>2°</td>
+                <td>Pedro Santos</td>
+                <td>9°B</td>
+                <td>96,0</td>
+            </tr>
+            <tr>
+                <td>3°</td>
+                <td>Maria Oliveira</td>
+                <td>8°A</td>
+                <td>95,5</td>
+            </tr>
+            <tr>
+                <td>4°</td>
+                <td>Lucas Pereira</td>
+                <td>9°A</td>
+                <td>94,0</td>
+            </tr>
+        </table>
+
+        <p><strong>Parabéns!</strong> Os premiados receberão medalhas na <strong>Assembleia do Dia 18/06</strong>.</p>
+    </section>
+
+    <section>
+        <h2>QUADRO DE AVISOS</h2>
+        
+        <div class="event-card">
+            <h3>✉ Comunicado da Diretoria:</h3>
+            <ul>
+                <li>Uniforme obrigatório para a Prova Paulista.</li>
+                <li>Entrega de boletins: 05/06 (responsáveis devem comparecer).</li>
+            </ul>
+        </div>
+
+        <div class="event-card">
+            <h3>📢 Vagas Abertas:</h3>
+            <p>Grêmio Estudantil (inscrições até 15/06).</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>GALERIA DE TRABALHOS</h2>
+        <h3>🥽Melhores Projetos de Ciências:</h3>
+        <ol>
+            <li><strong>Robótica Sustentável</strong> (Turma 9°B)</li>
+            <li><strong>Energia Solar Caseira</strong> (Turma 8°A)</li>
+            <li><strong>Plantio Hidropônico</strong> (Turma 7°C)</li>
+        </ol>
+
+        <a href="galeria.html">📸 Ver Galeria Completa</a>
+
+    <section>
+        <h2>SEÇÃO DE DÚVIDAS</h2>
+        <h3>❓ Perguntas Frequentes sobre a Prova Paulista:</h3>
+
+        <p><strong>Q:</strong> Posso usar calculadora?<br>
+        <strong>R:</strong> Somente modelos simples (sem função gráfica).</p>
+
+        <p><strong>Q:</strong> Haverá segunda chamada?<br>
+        <strong>R:</strong> Sim, com atestado médico.</p>
+
+        <p>✍️ <strong>Envie sua dúvida:</strong> <a href="mailto:jornalata@escola.com">dúvidas@ataescola.edu.br</a></p>
+    </section>
+
+    <section>
+        <h2>PRÓXIMOS EVENTOS</h2>
+        
+        <div class="event-card">
+            <h3>📌 Junho:</h3>
+            <ul>
+                <li><strong>15/06:</strong> Reunião de Pais (18h, Auditório)</li>
+                <li><strong>20/06:</strong> Festa Junina (Quadra)</li>
+            </ul>
+        </div>
+
+        <div class="event-card">
+            <h3>📌 Julho:</h3>
+            <ul>
+                <li><strong>01/07:</strong> Feira de Ciências</li>
+                <li><strong>20/07:</strong> Jogos Escolares</li>
+            </ul>
+        </div>
+    </section>
+
+     <footer>
+            <div class="social-links">
+                <a href="https://www.instagram.com/vitorrodrigues._s?igsh=amM4NmJhc213b2Nk" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://facebook.com/jornalata" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="mailto:jornalata@escola.com"><i class="fas fa-envelope"></i></a>
+            </div>
+             [O site ainda está em desenvolvimento" Sujeito a alterações]
+            <p>© 2025 Jornal A.T.A | Desenvolvido por vitor Rodrigues 
+        </footer>
     </div>
 </body>
-</html>
+                        </html>
+
+
+

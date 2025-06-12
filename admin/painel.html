@@ -1,10 +1,165 @@
-<!DOCTYPE html>
-<html>
+a<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-    <title>Painel Administrativo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Admin - Jornal A.T.A</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Estilos profissionais (mantenha os anteriores e adicione:) */
+        .editor-tabela {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        .controles-tabela {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .tabela-editavel td {
+            position: relative;
+        }
+        .tabela-editavel td:focus-within {
+            background: #f0f7ff;
+        }
+        .btn-excluir {
+            color: #e74c3c;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <h1>Bem-vindo ao Painel!</h1>
-    <p>Aqui você pode editar o conteúdo do site.</p>
+    <div class="container">
+        <h1><i class="fas fa-table"></i> Editor de Tabelas</h1>
+        
+        <!-- Editor do Plantão de Dúvidas -->
+        <div class="editor-tabela">
+            <h2><i class="fas fa-question-circle"></i> Plantão de Dúvidas</h2>
+            <table class="tabela-editavel" id="tabela-duvidas">
+                <thead>
+                    <tr>
+                        <th>Matéria</th>
+                        <th>Dia/Horário</th>
+                        <th>Local</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Linhas serão adicionadas via JavaScript -->
+                </tbody>
+            </table>
+            <div class="controles-tabela">
+                <button onclick="adicionarLinha('tabela-duvidas')">
+                    <i class="fas fa-plus"></i> Nova Linha
+                </button>
+                <button onclick="salvarTabela('duvidas')" style="background: #2ecc71;">
+                    <i class="fas fa-save"></i> Salvar
+                </button>
+            </div>
+        </div>
+
+        <!-- Adicione outros editores aqui (Ranking, Eventos) -->
+    </div>
+
+    <script>
+        // Dados iniciais
+        let tabelas = {
+            duvidas: [
+                { materia: "Matemática", dia: "Terças, 14h", local: "Sala 7" },
+                { materia: "Português", dia: "Quintas, 15h", local: "Biblioteca" }
+            ]
+        };
+
+        // Carrega tabelas ao abrir o painel
+        document.addEventListener('DOMContentLoaded', () => {
+            carregarTabela('duvidas');
+        });
+
+        // Funções principais
+        function adicionarLinha(idTabela) {
+            const tbody = document.querySelector(`#${idTabela} tbody`);
+            const novaLinha = document.createElement('tr');
+            
+            novaLinha.innerHTML = `
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+                <td><i class="fas fa-trash btn-excluir" onclick="removerLinha(this)"></i></td>
+            `;
+            
+            tbody.appendChild(novaLinha);
+        }
+
+        function salvarTabela(tipo) {
+            const linhas = document.querySelectorAll(`#tabela-${tipo} tbody tr`);
+            tabelas[tipo] = [];
+            
+            linhas.forEach(linha => {
+                const celulas = linha.querySelectorAll('td');
+                if (celulas[0].textContent.trim() !== '') {
+                    tabelas[tipo].push({
+                        materia: celulas[0].textContent,
+                        dia: celulas[1].textContent,
+                        local: celulas[2].textContent
+                    });
+                }
+            });
+            
+            localStorage.setItem(`jornalATA_${tipo}`, JSON.stringify(tabelas[tipo]));
+            alert('Dados salvos com sucesso!');
+        }
+
+        function carregarTabela(tipo) {
+            const dadosSalvos = localStorage.getItem(`jornalATA_${tipo}`);
+            if (dadosSalvos) tabelas[tipo] = JSON.parse(dadosSalvos);
+            
+            const tbody = document.querySelector(`#tabela-${tipo} tbody`);
+            tbody.innerHTML = '';
+            
+            tabelas[tipo].forEach(item => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td contenteditable="true">${item.materia}</td>
+                        <td contenteditable="true">${item.dia}</td>
+                        <td contenteditable="true">${item.local}</td>
+                        <td><i class="fas fa-trash btn-excluir" onclick="removerLinha(this)"></i></td>
+                    </tr>
+                `;
+            });
+        }
+
+        function removerLinha(botao) {
+            if (confirm('Excluir esta linha?')) {
+                botao.closest('tr').remove();
+            }
+        }
+    </script>
+    <script>
+    // Carrega dados do Plantão de Dúvidas
+    document.addEventListener('DOMContentLoaded', () => {
+        const dados = JSON.parse(localStorage.getItem('jornalATA_duvidas')) || [];
+        const tabela = document.querySelector('section table');
+        
+        if (dados.length > 0) {
+            tabela.innerHTML = `
+                <tr>
+                    <th>Matéria</th>
+                    <th>Dia/Horário</th>
+                    <th>Local</th>
+                </tr>
+                ${dados.map(item => `
+                    <tr>
+                        <td>${item.materia}</td>
+                        <td>${item.dia}</td>
+                        <td>${item.local}</td>
+                    </tr>
+                `).join('')}
+            `;
+        }
+    });
+    </script>
 </body>
-</html>
+        </html>

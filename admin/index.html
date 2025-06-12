@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Admin - Jornal A.T.A</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="login-container" id="loginForm">
+        <h1><i class="fas fa-lock"></i> Acesso Restrito</h1>
+        <input type="password" id="senha" placeholder="Digite a senha">
+        <button onclick="verificarSenha()">Acessar</button>
+    </div>
+
+    <div class="dashboard" id="dashboard" style="display:none;">
+        <header>
+            <h1><i class="fas fa-cog"></i> Painel Administrativo</h1>
+            <button onclick="sair()"><i class="fas fa-sign-out-alt"></i> Sair</button>
+        </header>
+
+        <div class="secoes">
+            <!-- Destaque do Mês -->
+            <div class="card">
+                <h2><i class="fas fa-star"></i> Destaque do Mês</h2>
+                <input type="text" id="destaque-titulo" placeholder="Título">
+                <textarea id="destaque-texto" placeholder="Conteúdo"></textarea>
+                <div class="botoes">
+                    <button onclick="salvarDestaque()"><i class="fas fa-save"></i> Salvar</button>
+                    <button onclick="carregarDestaque()"><i class="fas fa-sync"></i> Carregar</button>
+                </div>
+            </div>
+
+            <!-- Plantão de Dúvidas -->
+            <div class="card">
+                <h2><i class="fas fa-question-circle"></i> Plantão de Dúvidas</h2>
+                <table id="tabela-duvidas">
+                    <thead>
+                        <tr>
+                            <th>Matéria</th>
+                            <th>Dia/Horário</th>
+                            <th>Local</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <button onclick="addLinhaDuvidas()"><i class="fas fa-plus"></i> Adicionar</button>
+            </div>
+
+            <!-- Outras seções editáveis... -->
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+                      </html>

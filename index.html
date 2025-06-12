@@ -416,5 +416,36 @@
         <p>[O site ainda está em desenvolvimento" Sujeito a alterações]</p>
         <p>© 2025 Jornal A.T.A | Desenvolvido por Vitor Rodrigues</p>
     </footer>
+        <script>
+    // Carrega dados do admin automaticamente
+    document.addEventListener('DOMContentLoaded', function() {
+        const dados = JSON.parse(localStorage.getItem("jornalATA_data"));
+        
+        // Atualiza Destaque
+        if (dados?.destaque) {
+            document.querySelector("section h3").innerText = dados.destaque.titulo;
+            document.querySelector(".highlight").innerHTML = dados.destaque.texto;
+        }
+        
+        // Atualiza Plantão
+        if (dados?.plantaoDuvidas) {
+            const tabela = document.querySelector("table");
+            tabela.innerHTML = `
+                <tr>
+                    <th>Matéria</th>
+                    <th>Dia/Horário</th>
+                    <th>Local</th>
+                </tr>
+                ${dados.plantaoDuvidas.map(item => `
+                    <tr>
+                        <td>${item.materia}</td>
+                        <td>${item.dia}</td>
+                        <td>${item.local}</td>
+                    </tr>
+                `).join("")}
+            `;
+        }
+    });
+        </script>
 </body>
     </html>

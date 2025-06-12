@@ -94,18 +94,26 @@ a<!DOCTYPE html>
         }
 
         function salvarTabela(tipo) {
-            const linhas = document.querySelectorAll(`#tabela-${tipo} tbody tr`);
-            tabelas[tipo] = [];
-            
-            linhas.forEach(linha => {
-                const celulas = linha.querySelectorAll('td');
-                if (celulas[0].textContent.trim() !== '') {
-                    tabelas[tipo].push({
-                        materia: celulas[0].textContent,
-                        dia: celulas[1].textContent,
-                        local: celulas[2].textContent
-                    });
-                }
+    const linhas = document.querySelectorAll(`#tabela-${tipo} tbody tr`);
+    const dados = [];
+    
+    linhas.forEach(linha => {
+        const celulas = linha.querySelectorAll('td');
+        dados.push({
+            materia: celulas[0].textContent,
+            dia: celulas[1].textContent,
+            local: celulas[2].textContent
+        });
+    });
+
+    // Envia para a API (simulada)
+    fetch('https://api.mockytonk.com/proxy/ab2198a3-cafd-49d5-8ace-baac64e72222', {
+        method: 'POST',
+        body: JSON.stringify(dados)
+    }).then(() => {
+        alert('Dados salvos na nuvem! Atualize seu site.');
+    });
+        }
             });
             
             localStorage.setItem(`jornalATA_${tipo}`, JSON.stringify(tabelas[tipo]));

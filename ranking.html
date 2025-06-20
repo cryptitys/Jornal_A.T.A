@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ranking de Alunos - Jornal A.T.A</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background-color: #f4f6f8;
+      color: #333;
+      padding: 20px;
+    }
+
+    .topo {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .topo h1 {
+      font-size: 2rem;
+      color: #2c3e50;
+    }
+
+    .btn-voltar {
+      display: inline-block;
+      background-color: #3498db;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 8px;
+      margin-top: 10px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .btn-voltar:hover {
+      background-color: #2c80b4;
+    }
+
+    .ranking {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      max-width: 800px;
+      margin: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th {
+      background-color: #2ecc71;
+      color: white;
+      padding: 12px;
+    }
+
+    td {
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid #eee;
+    }
+
+    tr:nth-child(odd) {
+      background-color: #f9f9f9;
+    }
+
+    .medalha {
+      font-size: 1.2rem;
+    }
+
+    .ouro { color: #f1c40f; }
+    .prata { color: #bdc3c7; }
+    .bronze { color: #cd7f32; }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 0.9em;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <div class="topo">
+    <h1>🏆 Ranking de Alunos - 1º Bimestre</h1>
+    <a href="index.html" class="btn-voltar">⬅ Voltar para a Página Inicial</a>
+  </div>
+
+  <div class="ranking">
+    <table>
+      <tr>
+        <th>Posição</th>
+        <th>Nome</th>
+        <th>Turma</th>
+        <th>Pontuação</th>
+      </tr>
+      <tr>
+        <td class="medalha ouro">🥇</td>
+        <td>VITOR.R</td>
+        <td>9°A</td>
+        <td>98,5</td>
+      </tr>
+      <tr>
+        <td class="medalha prata">🥈</td>
+        <td>CARLOS.A</td>
+        <td>9°B</td>
+        <td>96,0</td>
+      </tr>
+      <tr>
+        <td class="medalha bronze">🥉</td>
+        <td>Maria Oliveira</td>
+        <td>8°A</td>
+        <td>95,5</td>
+      </tr>
+      <tr>
+        <td>4º</td>
+        <td>Lucas Pereira</td>
+        <td>9°A</td>
+        <td>94,0</td>
+      </tr>
+    </table>
+
+    <p style="text-align: center; font-weight: bold; margin-top: 20px;">
+      🎉 Os premiados receberão medalhas na <strong>Assembleia do Dia 18/06</strong>.
+    </p>
+  </div>
+
+  <footer>
+    © 2025 Jornal A.T.A — Todos os direitos reservados
+  </footer>
+</body>
+</html>

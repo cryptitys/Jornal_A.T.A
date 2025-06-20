@@ -1,87 +1,151 @@
-<!DOCTYPE html><html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Horários e Aulas</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Horários de Aula</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Inter', sans-serif;
+      background-color: #eef2f7;
+      margin: 0;
       padding: 20px;
-      background-color: #f9f9f9;
       color: #333;
     }
+
+    .topo-voltar {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .topo-voltar a {
+      display: inline-block;
+      background-color: #3498db;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      transition: background-color 0.3s;
+    }
+
+    .topo-voltar a:hover {
+      background-color: #2c80b4;
+    }
+
     h1 {
       text-align: center;
-      color: #1e3a8a;
+      color: #2c3e50;
+      margin-bottom: 30px;
+    }
+
+    .tabela-container {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      padding: 20px;
       margin-bottom: 40px;
     }
-    .serie {
-      font-size: 20px;
-      font-weight: bold;
-      background-color: #f59e0b;
-      color: white;
-      padding: 8px 12px;
-      border-radius: 8px;
-      display: inline-block;
-      margin: 30px 0 10px;
+
+    h2 {
+      border-left: 5px solid #3498db;
+      padding-left: 10px;
+      color: #3498db;
     }
+
     table {
-      border-collapse: collapse;
       width: 100%;
-      margin-bottom: 40px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      border-collapse: collapse;
+      margin-top: 15px;
     }
+
     th, td {
       border: 1px solid #ccc;
-      padding: 10px;
       text-align: center;
+      padding: 10px;
+      font-size: 14px;
     }
+
     th {
-      background-color: #e2e8f0;
-      color: #111827;
-    }
-    td[data-disciplina] {
-      font-weight: bold;
+      background-color: #3498db;
       color: white;
     }
-    td[data-disciplina="MAT"] { background-color: #22c55e; }
-    td[data-disciplina="FILOSOFIA"] { background-color: #f59e0b; }
-    td[data-disciplina="HISTÓRIA"] { background-color: #ef4444; }
-    td[data-disciplina="PORTUGUÊS"] { background-color: #3b82f6; }
-    td[data-disciplina="FÍS."] { background-color: #ec4899; }
-    td[data-disciplina="BIO"] { background-color: #8b5cf6; }
-    td[data-disciplina="RED.E LEIT."] { background-color: #0ea5e9; }
-    td[data-disciplina="ED. FINANC."] { background-color: #14b8a6; }
-    td[data-disciplina="GEOGRAFIA"] { background-color: #eab308; }
-    td[data-disciplina="ARTE"] { background-color: #10b981; }
-    td[data-disciplina="QUÍM."] { background-color: #f43f5e; }
-    td[data-disciplina="ED. FÍS."] { background-color: #6366f1; }
-    td[data-disciplina="INGLÊS"] { background-color: #0f766e; }
-    td[data-disciplina="PROGRAM."] { background-color: #6d28d9; }
-    td[data-disciplina="EMPREENDED."] { background-color: #be123c; }
-    td[data-disciplina="Q. APLIC."] { background-color: #4b5563; }
-    td[data-disciplina="PROJ VIDA"] { background-color: #7c3aed; }
-    td[data-disciplina="SOCIOLOGIA"] { background-color: #f97316; }
-    td[data-disciplina="OE - PORT"] { background-color: #db2777; }
-    td[data-disciplina="OE - MAT"] { background-color: #22d3ee; }
-    td[data-disciplina="BIOTEC"] { background-color: #059669; }
+
+    .bio { background-color: #af7ac5; color: white; }
+    .port { background-color: #5dade2; color: white; }
+    .mat { background-color: #48c9b0; color: white; }
+    .hist { background-color: #e74c3c; color: white; }
+    .fis { background-color: #f1948a; color: white; }
+    .quim { background-color: #bb8fce; color: white; }
+    .edfis { background-color: #52be80; color: white; }
+    .empreend { background-color: #f7dc6f; color: black; }
+    .soc { background-color: #f0b27a; color: white; }
+    .prog { background-color: #f39c12; color: white; }
+    .qap { background-color: #7fb3d5; color: white; }
+    .pv { background-color: #7dcea0; color: black; }
+
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #888;
+      margin-top: 50px;
+    }
   </style>
 </head>
 <body>
-  <h1>Horários e Aulas</h1>  <!-- Séries 1ºA e 1ºB já adicionadas -->  <div class="serie">2ºA</div>
-  <table>
-    <tr><th>Dia</th><th>1ª</th><th>2ª</th><th>3ª</th><th>4ª</th><th>5ª</th><th>6ª</th></tr>
-    <tr><td>Segunda</td><td data-disciplina="PROGRAM.">PROGRAM.</td><td data-disciplina="EMPREENDED.">EMPREENDED.</td><td data-disciplina="SOCIOLOGIA">SOCIOLOGIA</td><td data-disciplina="SOCIOLOGIA">SOCIOLOGIA</td><td data-disciplina="BIO">BIO</td><td data-disciplina="BIO">BIO</td></tr>
-    <tr><td>Terça</td><td data-disciplina="QUÍM.">QUÍM.</td><td data-disciplina="QUÍM.">QUÍM.</td><td data-disciplina="FÍS.">FÍS.</td><td data-disciplina="FÍS.">FÍS.</td><td data-disciplina="ED. FINANC.">ED. FINANC.</td><td data-disciplina="ED. FINANC.">ED. FINANC.</td></tr>
-    <tr><td>Quarta</td><td data-disciplina="MAT">MAT</td><td data-disciplina="MAT">MAT</td><td data-disciplina="MAT">MAT</td><td data-disciplina="MAT">MAT</td><td data-disciplina="GEOGRAFIA">GEOGRAFIA</td><td data-disciplina="GEOGRAFIA">GEOGRAFIA</td></tr>
-    <tr><td>Quinta</td><td data-disciplina="PROGRAM.">PROGRAM.</td><td data-disciplina="PROGRAM.">PROGRAM.</td><td data-disciplina="MAT">MAT</td><td data-disciplina="MAT">MAT</td><td data-disciplina="RED.E LEIT.">RED.E LEIT.</td><td data-disciplina="RED.E LEIT.">RED.E LEIT.</td></tr>
-    <tr><td>Sexta</td><td data-disciplina="INGLÊS">INGLÊS</td><td data-disciplina="INGLÊS">INGLÊS</td><td data-disciplina="ED. FÍS.">ED. FÍS.</td><td data-disciplina="ED. FÍS.">ED. FÍS.</td><td data-disciplina="PORTUGUÊS">PORTUGUÊS</td><td data-disciplina="HISTÓRIA">HISTÓRIA</td></tr>
-  </table>  <div class="serie">3ºA</div>
-  <table>
-    <tr><th>Dia</th><th>1ª</th><th>2ª</th><th>3ª</th><th>4ª</th><th>5ª</th><th>6ª</th></tr>
-    <tr><td>Segunda</td><td data-disciplina="FÍS.">FÍS.</td><td data-disciplina="PROJ VIDA">PROJ VIDA</td><td data-disciplina="Q. APLIC.">Q. APLIC.</td><td data-disciplina="Q. APLIC.">Q. APLIC.</td><td data-disciplina="HISTÓRIA">HISTÓRIA</td><td data-disciplina="HISTÓRIA">HISTÓRIA</td></tr>
-    <tr><td>Terça</td><td data-disciplina="OE - PORT">OE - PORT</td><td data-disciplina="OE - PORT">OE - PORT</td><td data-disciplina="MAT">MAT</td><td data-disciplina="MAT">MAT</td><td data-disciplina="OE - MAT">OE - MAT</td><td data-disciplina="OE - MAT">OE - MAT</td></tr>
-    <tr><td>Quarta</td><td data-disciplina="PORTUGUÊS">PORTUGUÊS</td><td data-disciplina="PORTUGUÊS">PORTUGUÊS</td><td data-disciplina="PORTUGUÊS">PORTUGUÊS</td><td data-disciplina="PORTUGUÊS">PORTUGUÊS</td><td data-disciplina="BIOTEC">BIOTEC</td><td data-disciplina="BIOTEC">BIOTEC</td></tr>
-    <tr><td>Quinta</td><td data-disciplina="PORTUGUÊS">PORTUGUÊS</td><td data-disciplina="PORTUGUÊS">PORTUGUÊS</td><td data-disciplina="EMPREENDED.">EMPREENDED.</td><td data-disciplina="Q. APLIC.">Q. APLIC.</td><td data-disciplina="EMPREENDED.">EMPREENDED.</td><td data-disciplina="Q. APLIC.">Q. APLIC.</td></tr>
-    <tr><td>Sexta</td><td data-disciplina="PROGRAM.">PROGRAM.</td><td data-disciplina="RED.E LEIT.">RED.E LEIT.</td><td data-disciplina="RED.E LEIT.">RED.E LEIT.</td><td data-disciplina="ED. FÍS.">ED. FÍS.</td><td data-disciplina="INGLÊS">INGLÊS</td><td data-disciplina="INGLÊS">INGLÊS</td></tr>
-  </table></body>
-              </html>
+
+  <div class="topo-voltar">
+    <a href="index.html">⬅ Voltar ao Início</a>
+  </div>
+
+  <h1>Horários de Aula</h1>
+
+  <!-- TURMAS ABAIXO -->
+
+  <div class="tabela-container">
+    <h2>Turma: 1°A</h2>
+    <table>
+      <tr><th>Horário</th><th>Segunda</th><th>Terça</th><th>Quarta</th><th>Quinta</th><th>Sexta</th></tr>
+      <tr><td>12:10 - 13:00</td><td class="port">Português</td><td class="mat">Matemática</td><td class="bio">Biologia</td><td class="fis">Física</td><td class="quim">Química</td></tr>
+      <tr><td>13:00 - 13:50</td><td class="hist">História</td><td class="edfis">Ed. Física</td><td class="prog">Programação</td><td class="mat">Matemática</td><td class="port">Português</td></tr>
+      <tr><td>13:50 - 14:40</td><td class="quim">Química</td><td class="prog">Programação</td><td class="port">Português</td><td class="bio">Biologia</td><td class="empreend">Empreendedorismo</td></tr>
+    </table>
+  </div>
+
+  <div class="tabela-container">
+    <h2>Turma: 1°B</h2>
+    <table>
+      <tr><th>Horário</th><th>Segunda</th><th>Terça</th><th>Quarta</th><th>Quinta</th><th>Sexta</th></tr>
+      <tr><td>12:10 - 13:00</td><td class="fis">Física</td><td class="port">Português</td><td class="quim">Química</td><td class="mat">Matemática</td><td class="prog">Programação</td></tr>
+      <tr><td>13:00 - 13:50</td><td class="mat">Matemática</td><td class="hist">História</td><td class="bio">Biologia</td><td class="port">Português</td><td class="empreend">Empreendedorismo</td></tr>
+      <tr><td>13:50 - 14:40</td><td class="prog">Programação</td><td class="edfis">Ed. Física</td><td class="port">Português</td><td class="soc">Sociologia</td><td class="quim">Química</td></tr>
+    </table>
+  </div>
+
+  <div class="tabela-container">
+    <h2>Turma: 2°A</h2>
+    <table>
+      <tr><th>Horário</th><th>Segunda</th><th>Terça</th><th>Quarta</th><th>Quinta</th><th>Sexta</th></tr>
+      <tr><td>12:10 - 13:00</td><td class="fis">Física</td><td class="quim">Química</td><td class="mat">Matemática</td><td class="bio">Biologia</td><td class="port">Português</td></tr>
+      <tr><td>13:00 - 13:50</td><td class="hist">História</td><td class="port">Português</td><td class="edfis">Ed. Física</td><td class="empreend">Empreendedorismo</td><td class="prog">Programação</td></tr>
+      <tr><td>13:50 - 14:40</td><td class="prog">Programação</td><td class="pv">Projeto de Vida</td><td class="quim">Química</td><td class="port">Português</td><td class="soc">Sociologia</td></tr>
+    </table>
+  </div>
+
+  <div class="tabela-container">
+    <h2>Turma: 3°A</h2>
+    <table>
+      <tr><th>Horário</th><th>Segunda</th><th>Terça</th><th>Quarta</th><th>Quinta</th><th>Sexta</th></tr>
+      <tr><td>12:10 - 13:00</td><td class="mat">Matemática</td><td class="port">Português</td><td class="qap">Q.A.P</td><td class="fis">Física</td><td class="bio">Biologia</td></tr>
+      <tr><td>13:00 - 13:50</td><td class="soc">Sociologia</td><td class="prog">Programação</td><td class="hist">História</td><td class="edfis">Ed. Física</td><td class="empreend">Empreendedorismo</td></tr>
+      <tr><td>13:50 - 14:40</td><td class="quim">Química</td><td class="pv">Projeto de Vida</td><td class="port">Português</td><td class="prog">Programação</td><td class="mat">Matemática</td></tr>
+    </table>
+  </div>
+
+  <footer>
+    © 2025 | Escola Estadual - Todos os direitos reservados
+  </footer>
+</body>
+                                                                                                                                                                                          </html>

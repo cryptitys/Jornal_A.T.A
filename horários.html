@@ -1,0 +1,87 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Horários e Aulas</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      padding: 20px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      color: #1e3a8a;
+      margin-bottom: 40px;
+    }
+    .serie {
+      font-size: 20px;
+      font-weight: bold;
+      background-color: #f59e0b;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 8px;
+      display: inline-block;
+      margin: 30px 0 10px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 40px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background-color: #e2e8f0;
+      color: #111827;
+    }
+    td[data-disciplina] {
+      font-weight: bold;
+      color: white;
+    }
+    td[data-disciplina="MAT"] { background-color: #22c55e; }
+    td[data-disciplina="FILOSOFIA"] { background-color: #f59e0b; }
+    td[data-disciplina="HISTÓRIA"] { background-color: #ef4444; }
+    td[data-disciplina="PORTUGUÊS"] { background-color: #3b82f6; }
+    td[data-disciplina="FÍS."] { background-color: #ec4899; }
+    td[data-disciplina="BIO"] { background-color: #8b5cf6; }
+    td[data-disciplina="RED.E LEIT."] { background-color: #0ea5e9; }
+    td[data-disciplina="ED. FINANC."] { background-color: #14b8a6; }
+    td[data-disciplina="GEOGRAFIA"] { background-color: #eab308; }
+    td[data-disciplina="ARTE"] { background-color: #10b981; }
+    td[data-disciplina="QUÍM."] { background-color: #f43f5e; }
+    td[data-disciplina="ED. FÍS."] { background-color: #6366f1; }
+    td[data-disciplina="INGLÊS"] { background-color: #0f766e; }
+    td[data-disciplina="PROGRAM."] { background-color: #6d28d9; }
+    td[data-disciplina="EMPREENDED."] { background-color: #be123c; }
+    td[data-disciplina="Q. APLIC."] { background-color: #4b5563; }
+    td[data-disciplina="PROJ VIDA"] { background-color: #7c3aed; }
+    td[data-disciplina="SOCIOLOGIA"] { background-color: #f97316; }
+    td[data-disciplina="OE - PORT"] { background-color: #db2777; }
+    td[data-disciplina="OE - MAT"] { background-color: #22d3ee; }
+    td[data-disciplina="BIOTEC"] { background-color: #059669; }
+  </style>
+</head>
+<body>
+  <h1>Horários e Aulas</h1>  <!-- Séries 1ºA e 1ºB já adicionadas -->  <div class="serie">2ºA</div>
+  <table>
+    <tr><th>Dia</th><th>1ª</th><th>2ª</th><th>3ª</th><th>4ª</th><th>5ª</th><th>6ª</th></tr>
+    <tr><td>Segunda</td><td data-disciplina="PROGRAM.">PROGRAM.</td><td data-disciplina="EMPREENDED.">EMPREENDED.</td><td data-disciplina="SOCIOLOGIA">SOCIOLOGIA</td><td data-disciplina="SOCIOLOGIA">SOCIOLOGIA</td><td data-disciplina="BIO">BIO</td><td data-disciplina="BIO">BIO</td></tr>
+    <tr><td>Terça</td><td data-disciplina="QUÍM.">QUÍM.</td><td data-disciplina="QUÍM.">QUÍM.</td><td data-disciplina="FÍS.">FÍS.</td><td data-disciplina="FÍS.">FÍS.</td><td data-disciplina="ED. FINANC.">ED. FINANC.</td><td data-disciplina="ED. FINANC.">ED. FINANC.</td></tr>
+    <tr><td>Quarta</td><td data-disciplina="MAT">MAT</td><td data-disciplina="MAT">MAT</td><td data-disciplina="MAT">MAT</td><td data-disciplina="MAT">MAT</td><td data-disciplina="GEOGRAFIA">GEOGRAFIA</td><td data-disciplina="GEOGRAFIA">GEOGRAFIA</td></tr>
+    <tr><td>Quinta</td><td data-disciplina="PROGRAM.">PROGRAM.</td><td data-disciplina="PROGRAM.">PROGRAM.</td><td data-disciplina="MAT">MAT</td><td data-disciplina="MAT">MAT</td><td data-disciplina="RED.E LEIT.">RED.E LEIT.</td><td data-disciplina="RED.E LEIT.">RED.E LEIT.</td></tr>
+    <tr><td>Sexta</td><td data-disciplina="INGLÊS">INGLÊS</td><td data-disciplina="INGLÊS">INGLÊS</td><td data-disciplina="ED. FÍS.">ED. FÍS.</td><td data-disciplina="ED. FÍS.">ED. FÍS.</td><td data-disciplina="PORTUGUÊS">PORTUGUÊS</td><td data-disciplina="HISTÓRIA">HISTÓRIA</td></tr>
+  </table>  <div class="serie">3ºA</div>
+  <table>
+    <tr><th>Dia</th><th>1ª</th><th>2ª</th><th>3ª</th><th>4ª</th><th>5ª</th><th>6ª</th></tr>
+    <tr><td>Segunda</td><td data-disciplina="FÍS.">FÍS.</td><td data-disciplina="PROJ VIDA">PROJ VIDA</td><td data-disciplina="Q. APLIC.">Q. APLIC.</td><td data-disciplina="Q. APLIC.">Q. APLIC.</td><td data-disciplina="HISTÓRIA">HISTÓRIA</td><td data-disciplina="HISTÓRIA">HISTÓRIA</td></tr>
+    <tr><td>Terça</td><td data-disciplina="OE - PORT">OE - PORT</td><td data-disciplina="OE - PORT">OE - PORT</td><td data-disciplina="MAT">MAT</td><td data-disciplina="MAT">MAT</td><td data-disciplina="OE - MAT">OE - MAT</td><td data-disciplina="OE - MAT">OE - MAT</td></tr>
+    <tr><td>Quarta</td><td data-disciplina="PORTUGUÊS">PORTUGUÊS</td><td data-disciplina="PORTUGUÊS">PORTUGUÊS</td><td data-disciplina="PORTUGUÊS">PORTUGUÊS</td><td data-disciplina="PORTUGUÊS">PORTUGUÊS</td><td data-disciplina="BIOTEC">BIOTEC</td><td data-disciplina="BIOTEC">BIOTEC</td></tr>
+    <tr><td>Quinta</td><td data-disciplina="PORTUGUÊS">PORTUGUÊS</td><td data-disciplina="PORTUGUÊS">PORTUGUÊS</td><td data-disciplina="EMPREENDED.">EMPREENDED.</td><td data-disciplina="Q. APLIC.">Q. APLIC.</td><td data-disciplina="EMPREENDED.">EMPREENDED.</td><td data-disciplina="Q. APLIC.">Q. APLIC.</td></tr>
+    <tr><td>Sexta</td><td data-disciplina="PROGRAM.">PROGRAM.</td><td data-disciplina="RED.E LEIT.">RED.E LEIT.</td><td data-disciplina="RED.E LEIT.">RED.E LEIT.</td><td data-disciplina="ED. FÍS.">ED. FÍS.</td><td data-disciplina="INGLÊS">INGLÊS</td><td data-disciplina="INGLÊS">INGLÊS</td></tr>
+  </table></body>
+              </html>

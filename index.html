@@ -1,321 +1,176 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jornal A.T.A</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <style>
-        /* CABEÇALHO (MANTIDO IGUAL) */
-        .header-jornal {
-            background: linear-gradient(135deg, #2c3e50, #3498db);
-            color: white;
-            padding: 20px;
-            text-align: center;
-            border-radius: 0 0 15px 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jornal A.T.A</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    .header-jornal {
+      background: linear-gradient(135deg, #2c3e50, #3498db);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      border-radius: 0 0 15px 15px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }
 
-        .header-jornal h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-        }
+    .header-jornal h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
 
-        .header-jornal p {
-            margin: 5px 0 0;
-            font-style: italic;
-        }
+    .header-jornal p {
+      margin: 5px 0 0;
+      font-style: italic;
+    }
 
-        /* NOVO ESTILO PARA O RESTO DO SITE */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
-            background-color: #f9f9f9;
-        }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+      background-color: #f9f9f9;
+    }
 
-        header:not(.header-jornal) {
-            text-align: center;
-            margin: 20px 0;
-            padding: 10px;
-            background-color: #f0f0f0;
-            border-radius: 8px;
-            font-size: 0.9em;
-        }
+    header:not(.header-jornal) {
+      text-align: center;
+      margin: 20px 0;
+      padding: 10px;
+      background-color: #f0f0f0;
+      border-radius: 8px;
+      font-size: 0.9em;
+    }
 
-        section {
-            background: white;
-            padding: 20px;
-            margin-bottom: 25px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
+    section {
+      background: white;
+      padding: 20px;
+      margin-bottom: 25px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
 
-        h2 {
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 8px;
-            margin-top: 0;
-        }
+    h2 {
+      color: #2c3e50;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 8px;
+      margin-top: 0;
+    }
 
-        h3 {
-            color: #2980b9;
-            margin-top: 20px;
-        }
+    h3 {
+      color: #2980b9;
+      margin-top: 20px;
+    }
 
-        h4 {
-            color: #34495e;
-        }
+    h4 {
+      color: #34495e;
+    }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
 
-        th {
-            background-color: #3498db;
-            color: white;
-            text-align: left;
-        }
+    th {
+      background-color: #3498db;
+      color: white;
+      text-align: left;
+    }
 
-        th, td {
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-        }
+    th, td {
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+    }
 
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
 
-        tr:hover {
-            background-color: #e6f7ff;
-        }
+    tr:hover {
+      background-color: #e6f7ff;
+    }
 
-        .event-card {
-            background: #f8f9fa;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-left: 4px solid #3498db;
-            border-radius: 4px;
-        }
+    .highlight {
+      background: #e6f7ff;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
 
-        .highlight {
-            background: #e6f7ff;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 20px 0;
-        }
+    .botoes-simulados {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 25px;
+    }
 
-        a {
-            color: #2980b9;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
+    .botao-azul,
+    .botao-verde {
+      padding: 12px 20px;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
+      display: inline-block;
+    }
 
-        a:hover {
-            color: #2c3e50;
-            text-decoration: underline;
-        }
+    .botao-azul {
+      background-color: #3498db;
+    }
 
-        .social-links {
-            text-align: center;
-            margin: 20px 0;
-        }
+    .botao-verde {
+      background-color: #2ecc71;
+    }
 
-        .social-links a {
-            display: inline-block;
-            margin: 0 10px;
-            font-size: 1.5rem;
-            color: #2c3e50;
-            transition: transform 0.3s;
-        }
-
-        .social-links a:hover {
-            transform: translateY(-3px);
-            color: #3498db;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-            color: #7f8c8d;
-            font-size: 0.9em;
-            border-top: 1px solid #eee;
-        }
-
-        ul, ol {
-            padding-left: 20px;
-        }
-
-        li {
-            margin-bottom: 8px;
-        }
-
-        .fa-medal {
-            color: #ffd700;
-            margin-right: 5px;
-        }
-
-        .fa-trophy {
-            color: #e67e22;
-        }
-
-        /* Estilo para o botão do ranking */
-        .btn-ranking {
-            display: inline-block;
-            background-color: #27ae60;
-            color: white;
-            padding: 12px 25px;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 16px;
-            text-decoration: none;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-            margin: 40px auto;
-            text-align: center;
-            display: block;
-            width: fit-content;
-        }
-
-        .btn-ranking:hover {
-            background-color: #219150;
-        }
-    </style>
+    .botao-azul:hover,
+    .botao-verde:hover {
+      transform: scale(1.05);
+    }
+  </style>
 </head>
 <body>
-    <header class="header-jornal">
-        <h1>Bem-vindo ao Jornal A.T.A</h1>
-        <p>Notícias e atualizações sobre nossa escola - DISPONÍVEL EM BREVE</p>
-    </header>
+  <header class="header-jornal">
+    <h1>Bem-vindo ao Jornal A.T.A</h1>
+    <p>Notícias e atualizações sobre nossa escola - DISPONÍVEL EM BREVE</p>
+  </header>
 
-    <header>
-        <p>Informações Oficiais da Escola | <strong>Edição: AGOSTO/2025</strong></p>
-    </header>
+  <header>
+    <p>Informações Oficiais da Escola | <strong>Edição: AGOSTO/2025</strong></p>
+  </header>
 
-    <section>
-        <h2>DESTAQUE DO MÊS</h2>
-        <h3><i class="fas fa-trophy"></i> Prova Paulista 2025 - 2° Bimestre</h3>
-        <div class="highlight">
-            <p><strong><i class="far fa-calendar-alt"></i> Calendário:</strong></p>
-            <ul>
-                <li><strong>Inscrições:</strong> 10/06 a 20/06</li>
-                <li><strong>Prova:</strong> 05/07 (Salas 1 a 10)</li>
-                <li><strong>Resultados:</strong> 25/07 no mural da escola</li>
-            </ul>
-        </div>
-        <h4><i class="fas fa-book-open"></i> Plantões de Dúvida:</h4>
-        <table>
-            <tr><th>Matéria</th><th>Dia/Horário</th><th>Local</th></tr>
-            <tr><td>Matemática</td><td>Terças, 14h</td><td>Sala 7</td></tr>
-            <tr><td>Português</td><td>Quintas, 15h</td><td>Biblioteca</td></tr>
-        </table>
-        <p style="text-align: center; margin-top: 25px;">
-            <a href="regulamento.html" style="padding: 10px 15px; background: #3498db; color: white; border-radius: 5px; margin: 0 10px;"><i class="far fa-file-alt"></i> Regulamento Completo</a>
-            <a href="simulado.html" style="padding: 10px 15px; background: #2ecc71; color: white; border-radius: 5px; margin: 0 10px;"><i class="fas fa-pencil-alt"></i> Simulado Online</a>
-        </p>
-    </section>
+  <section>
+    <h2>DESTAQUE DO MÊS</h2>
+    <h3><i class="fas fa-trophy"></i> Prova Paulista 2025 - 2° Bimestre</h3>
+    <div class="highlight">
+      <p><strong><i class="far fa-calendar-alt"></i> Calendário:</strong></p>
+      <ul>
+        <li><strong>Inscrições:</strong> 10/06 a 20/06</li>
+        <li><strong>Prova:</strong> 05/07 (Salas 1 a 10)</li>
+        <li><strong>Resultados:</strong> 25/07 no mural da escola</li>
+      </ul>
+    </div>
 
-    <!-- Botão para Ranking -->
-    <a href="ranking.html" class="btn-ranking">📊 Ver Ranking de Alunos</a>
+    <h4><i class="fas fa-book-open"></i> Plantões de Dúvida:</h4>
+    <table>
+      <tr><th>Matéria</th><th>Dia/Horário</th><th>Local</th></tr>
+      <tr><td>Matemática</td><td>Terças, 14h</td><td>Sala 7</td></tr>
+      <tr><td>Português</td><td>Quintas, 15h</td><td>Biblioteca</td></tr>
+    </table>
 
-    <section>
-        <h2>QUADRO DE AVISOS</h2>
-        <div class="event-card">
-            <h3><i class="fas fa-bullhorn"></i> Vagas Abertas:</h3>
-            <h4>Vestibular UNESP 2026</h4>
-            <p>Inscrições abertas até 30/08...</p>
-            <a href="vestibular-unesp.html">Leia mais</a>
-            <h4 style="margin-top: 15px;">Processo Seletivo ETEC 2026</h4>
-            <p>Inscrições a partir de 15/07...</p>
-            <a href="vestibulinho-etec.html">Leia mais</a>
-        </div>
-    </section>
-
-    <section>
-        <h2>DESAFIO DO MÊS</h2>
-        <div class="event-card" style="text-align: center;">
-            <h3><i class="fas fa-brain"></i> Simulado da Prova Paulista</h3>
-            <a href="quiz-prova-paulista.html" style="padding: 12px 25px; background: #3498db; color: white; border-radius: 5px; font-weight: bold;"><i class="fas fa-play-circle"></i> RESPONDER SIMULADO</a>
-        </div>
-        <h2>GALERIA DE TRABALHOS</h2>
-        <h3><i class="fas fa-microscope"></i> Projetos de Ciências:</h3>
-        <ol>
-            <li>Robótica Sustentável</li>
-            <li>Energia Solar Caseira</li>
-            <li>Plantio Hidropônico</li>
-        </ol>
-        <div style="text-align: center;">
-            <a href="galeria.html" style="padding: 10px 20px; background: #9b59b6; color: white; border-radius: 5px;"><i class="fas fa-camera"></i> Ver Galeria</a>
-        </div>
-    </section>
-
-    <section>
-        <h2>SEÇÃO DE DÚVIDAS</h2>
-        <div class="event-card"><p><strong>Q:</strong> Posso usar calculadora?<br><strong>R:</strong> Simples apenas.</p></div>
-        <div class="event-card"><p><strong>Q:</strong> Haverá segunda chamada?<br><strong>R:</strong> Sim, com atestado.</p></div>
-        <p style="text-align: center;">
-            <a href="mailto:jornalata@escola.com" style="padding: 10px 20px; background: #e74c3c; color: white; border-radius: 5px;"><i class="far fa-paper-plane"></i> Envie sua dúvida</a>
-        </p>
-    </section>
-
-    <section>
-        <h2>PRÓXIMOS EVENTOS</h2>
-        <div class="event-card">
-            <h3><i class="far fa-calendar-alt"></i> Calendário Junho 2025</h3>
-            <!-- Tabela de calendário (mantida) -->
-            <!-- ... -->
-            <p><strong>Legenda:</strong> DIA T = Dia de Regularizar a Tarefa SP</p>
-        </div>
-        <div class="event-card">
-            <h3><i class="far fa-calendar-check"></i> Eventos em Destaque:</h3>
-            <ul>
-                <li><strong>20/06:</strong> Festa Junina</li>
-                <li><strong>27/06:</strong> Feira de Profissões</li>
-            </ul>
-        </div>
-    </section>
-
-    <footer>
-        <div class="social-links">
-            <a href="https://www.instagram.com/vitorrodrigues._s" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://facebook.com/jornalata" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="mailto:jornalata@escola.com"><i class="fas fa-envelope"></i></a>
-        </div>
-        <p>[O site ainda está em desenvolvimento, sujeito a alterações]</p>
-        <p>© 2025 Jornal A.T.A | Desenvolvido por Vitor Rodrigues</p>
-    </footer>
-
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const dados = JSON.parse(localStorage.getItem('jornalATA_dados')) || {};
-
-        if (dados.destaque) {
-            document.querySelector('section h3').innerText = dados.destaque.titulo;
-            document.querySelector('.highlight').innerHTML = dados.destaque.conteudo;
-        }
-
-        if (dados.duvidas?.length > 0) {
-            const tabela = document.querySelector('section table');
-            tabela.innerHTML = `
-                <tr><th>Matéria</th><th>Dia/Horário</th><th>Local</th></tr>
-                ${dados.duvidas.map(item => `
-                    <tr>
-                        <td>${item.materia}</td>
-                        <td>${item.dia}</td>
-                        <td>${item.local}</td>
-                    </tr>
-                `).join('')}
-            `;
-        }
-    });
-    </script>
+    <!-- ✅ Botões corrigidos -->
+    <div class="botoes-simulados">
+      <a href="regulamento.html" class="botao-azul"><i class="far fa-file-alt"></i> Regulamento Completo</a>
+      <a href="simulado.html" class="botao-verde"><i class="fas fa-pencil-alt"></i> Simulado Online</a>
+    </div>
+  </section>
 </body>
-                                                </html>
+    </html>

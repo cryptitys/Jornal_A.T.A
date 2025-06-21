@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!DOCTYPE html><html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,184 +13,177 @@
       border-radius: 0 0 15px 15px;
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
       margin-bottom: 30px;
-    }
+    }.header-jornal h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
 
-    .header-jornal h1 {
-      margin: 0;
-      font-size: 2.5rem;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-    }
+.header-jornal p {
+  margin: 5px 0 0;
+  font-style: italic;
+}
 
-    .header-jornal p {
-      margin: 5px 0 0;
-      font-style: italic;
-    }
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+  background-color: #f9f9f9;
+}
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 0 20px;
-      background-color: #f9f9f9;
-    }
+header:not(.header-jornal) {
+  text-align: center;
+  margin: 20px 0;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  font-size: 0.9em;
+}
 
-    header:not(.header-jornal) {
-      text-align: center;
-      margin: 20px 0;
-      padding: 10px;
-      background-color: #f0f0f0;
-      border-radius: 8px;
-      font-size: 0.9em;
-    }
+section {
+  background: white;
+  padding: 20px;
+  margin-bottom: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
 
-    section {
-      background: white;
-      padding: 20px;
-      margin-bottom: 25px;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    }
+h2 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 8px;
+  margin-top: 0;
+}
 
-    h2 {
-      color: #2c3e50;
-      border-bottom: 2px solid #3498db;
-      padding-bottom: 8px;
-      margin-top: 0;
-    }
+h3 {
+  color: #2980b9;
+  margin-top: 20px;
+}
 
-    h3 {
-      color: #2980b9;
-      margin-top: 20px;
-    }
+h4 {
+  color: #34495e;
+}
 
-    h4 {
-      color: #34495e;
-    }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 20px 0;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    }
+th {
+  background-color: #3498db;
+  color: white;
+  text-align: left;
+}
 
-    th {
-      background-color: #3498db;
-      color: white;
-      text-align: left;
-    }
+th, td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+}
 
-    th, td {
-      padding: 12px 15px;
-      border: 1px solid #ddd;
-    }
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
 
-    tr:nth-child(even) {
-      background-color: #f2f2f2;
-    }
+tr:hover {
+  background-color: #e6f7ff;
+}
 
-    tr:hover {
-      background-color: #e6f7ff;
-    }
+.highlight {
+  background: #e6f7ff;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 20px 0;
+}
 
-    .highlight {
-      background: #e6f7ff;
-      padding: 15px;
-      border-radius: 8px;
-      margin: 20px 0;
-    }
+.botoes-simulados {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 25px;
+}
 
-    .botoes-simulados {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-      margin-top: 25px;
-    }
+.botao-azul,
+.botao-verde {
+  padding: 12px 20px;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
 
-    .botao-azul,
-    .botao-verde {
-      padding: 12px 20px;
-      color: white;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      transition: transform 0.2s ease;
-      display: inline-block;
-    }
+.botao-azul {
+  background-color: #3498db;
+}
 
-    .botao-azul {
-      background-color: #3498db;
-    }
+.botao-verde {
+  background-color: #2ecc71;
+}
 
-    .botao-verde {
-      background-color: #2ecc71;
-    }
+.botao-azul:hover,
+.botao-verde:hover {
+  transform: scale(1.05);
+}
 
-    .botao-azul:hover,
-    .botao-verde:hover {
-      transform: scale(1.05);
-    }
+section h2 + h3 {
+  margin-top: 35px;
+}
 
-    /* Ajuste específico para a galeria de trabalhos */
-    section h2 + h3 {
-      margin-top: 35px; /* aumenta o espaçamento antes do título da galeria */
-    }
+section ol {
+  margin-top: 15px;
+  margin-bottom: 25px;
+  padding-left: 20px;
+}
 
-    section ol {
-      margin-top: 15px;
-      margin-bottom: 25px;
-      padding-left: 20px;
-    }
+section ol li {
+  margin-bottom: 10px;
+}
 
-    section ol li {
-      margin-bottom: 10px;
-    }
+footer {
+  text-align: center;
+  padding: 30px 20px;
+  margin-top: 50px;
+  color: #7f8c8d;
+  font-size: 0.9em;
+  border-top: 1px solid #eee;
+  background-color: #fafafa;
+  border-radius: 8px;
+}
 
-    /* Rodapé estilizado e separado */
-    footer {
-      text-align: center;
-      padding: 30px 20px;
-      margin-top: 50px;
-      color: #7f8c8d;
-      font-size: 0.9em;
-      border-top: 1px solid #eee;
-      background-color: #fafafa;
-      border-radius: 8px;
-    }
+.social-links {
+  margin-bottom: 15px;
+}
 
-    .social-links {
-      margin-bottom: 15px;
-    }
+.social-links a {
+  display: inline-block;
+  margin: 0 12px;
+  font-size: 1.7rem;
+  color: #2c3e50;
+  transition: color 0.3s, transform 0.3s;
+}
 
-    .social-links a {
-      display: inline-block;
-      margin: 0 12px;
-      font-size: 1.7rem;
-      color: #2c3e50;
-      transition: color 0.3s, transform 0.3s;
-    }
+.social-links a:hover {
+  color: #3498db;
+  transform: translateY(-4px);
+}
 
-    .social-links a:hover {
-      color: #3498db;
-      transform: translateY(-4px);
-    }
   </style>
 </head>
 <body>
   <header class="header-jornal">
     <h1>Bem-vindo ao Jornal A.T.A</h1>
     <p>Notícias e atualizações sobre nossa escola - LANÇAMENTO OFICIAL</p>
-  </header>
-
-  <header>
+  </header>  <header>
     <p>Informações Oficiais da Escola | <strong>Edição: AGOSTO/2025</strong></p>
-  </header>
-
-  <section>
+  </header>  <section>
     <h2>DESTAQUE DO MÊS</h2>
     <h3><i class="fas fa-trophy"></i> Prova Paulista 2025 - 2° Bimestre</h3>
     <div class="highlight">
@@ -201,58 +193,50 @@
         <li><strong>Prova:</strong> 05/07 (Salas 1 a 10)</li>
         <li><strong>Resultados:</strong> 25/07 no mural da escola</li>
       </ul>
-    </div>
+    </div><h4><i class="fas fa-book-open"></i> Plantões de Dúvida:</h4>
+<table>
+  <tr><th>Matéria</th><th>Dia/Horário</th><th>Local</th></tr>
+  <tr><td>Matemática</td><td>Terças, 14h</td><td>Sala 7</td></tr>
+  <tr><td>Português</td><td>Quintas, 15h</td><td>Biblioteca</td></tr>
+</table>
 
-    <h4><i class="fas fa-book-open"></i> Plantões de Dúvida:</h4>
-    <table>
-      <tr><th>Matéria</th><th>Dia/Horário</th><th>Local</th></tr>
-      <tr><td>Matemática</td><td>Terças, 14h</td><td>Sala 7</td></tr>
-      <tr><td>Português</td><td>Quintas, 15h</td><td>Biblioteca</td></tr>
-    </table>
+<div class="botoes-simulados">
+  <a href="regulamento.html" class="botao-azul"><i class="far fa-file-alt"></i> Regulamento Completo</a>
+  <a href="https://forms.gle/aXTgrb6aNFUcu2u88" class="botao-verde" target="_blank"><i class="fas fa-pencil-alt"></i> Formulário Online</a>
+</div>
 
-    <div class="botoes-simulados">
-      <a href="regulamento.html" class="botao-azul"><i class="far fa-file-alt"></i> Regulamento Completo</a>
-      <a href="formulário.html" class="botao-verde"><i class="fas fa-pencil-alt"></i> Formulário Online</a>
-    </div>
-  </section>
-
-  <section>
+  </section>  <section>
     <h2>QUADRO DE AVISOS</h2>
     <div class="event-card">
       <h3><i class="fas fa-bullhorn"></i> Vagas Abertas:</h3>
       <h4>Vestibular UNESP 2026</h4>
       <p>Inscrições abertas até 30/08...</p>
-      <a href="vestibular-unesp.html">Leia mais</a>
+      <a href="https://forms.gle/aXTgrb6aNFUcu2u88" target="_blank">Leia mais</a>
       <h4 style="margin-top: 15px;">Processo Seletivo ETEC 2026</h4>
       <p>Inscrições a partir de 15/07...</p>
-      <a href="vestibulinho-etec.html">Leia mais</a>
+      <a href="https://forms.gle/aXTgrb6aNFUcu2u88" target="_blank">Leia mais</a>
     </div>
-  </section>
-
-  <section>
+  </section>  <section>
     <h2>DESAFIO DO MÊS</h2>
-    <div class="event-card" style="text-align: center;">
+    <div class="event-card" style="text-align: center; margin-bottom: 30px;">
       <h3><i class="fas fa-brain"></i> Simulado da Prova Paulista</h3>
-      <a href="quiz-prova-paulista.html" style="padding: 12px 25px; background: #3498db; color: white; border-radius: 5px; font-weight: bold;">
+      <a href="https://forms.gle/aXTgrb6aNFUcu2u88" target="_blank" style="padding: 12px 25px; background: #3498db; color: white; border-radius: 5px; font-weight: bold;">
         <i class="fas fa-play-circle"></i> RESPONDER SIMULADO
       </a>
-    </div>
+    </div><h2>GALERIA DE TRABALHOS</h2>
+<h3><i class="fas fa-microscope"></i> Projetos de Ciências:</h3>
+<ol>
+  <li>Robótica Sustentável</li>
+  <li>Energia Solar Caseira</li>
+  <li>Plantio Hidropônico</li>
+</ol>
+<div style="text-align: center;">
+  <a href="galeria.html" style="padding: 10px 20px; background: #9b59b6; color: white; border-radius: 5px;">
+    <i class="fas fa-camera"></i> Ver Galeria
+  </a>
+</div>
 
-    <h2>GALERIA DE TRABALHOS</h2>
-    <h3><i class="fas fa-microscope"></i> Projetos de Ciências:</h3>
-    <ol>
-      <li>Robótica Sustentável</li>
-      <li>Energia Solar Caseira</li>
-      <li>Plantio Hidropônico</li>
-    </ol>
-    <div style="text-align: center;">
-      <a href="galeria.html" style="padding: 10px 20px; background: #9b59b6; color: white; border-radius: 5px;">
-        <i class="fas fa-camera"></i> Ver Galeria
-      </a>
-    </div>
-  </section>
-
-  <section>
+  </section>  <section>
     <h2>SEÇÃO DE DÚVIDAS</h2>
     <div class="event-card"><p><strong>Q:</strong> Posso usar calculadora?<br><strong>R:</strong> Simples apenas.</p></div>
     <div class="event-card"><p><strong>Q:</strong> Haverá segunda chamada?<br><strong>R:</strong> Sim, com atestado.</p></div>
@@ -261,14 +245,10 @@
         <i class="far fa-paper-plane"></i> Envie sua dúvida
       </a>
     </p>
-  </section>
-
-  <section>
+  </section>  <section>
     <h2>PRÓXIMOS EVENTOS</h2>
     <div class="event-card">
       <h3><i class="far fa-calendar-alt"></i> Calendário Junho 2025</h3>
-      <!-- Tabela de calendário (mantida) -->
-      <!-- ... -->
       <p><strong>Legenda:</strong> DIA T = Dia de Regularizar a Tarefa SP</p>
     </div>
     <div class="event-card">
@@ -278,24 +258,18 @@
         <li><strong>27/06:</strong> Feira de Profissões</li>
       </ul>
     </div>
-  </section>
-
-  <div style="text-align: center; margin: 40px 0;">
+  </section>  <div style="text-align: center; margin: 40px 0;">
     <a href="horarios.html" style="display: inline-block; padding: 12px 25px; background-color: #2a9df4; color: white; text-decoration: none; border-radius: 8px; font-size: 16px; font-weight: bold; box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);">
       📅 Horários e Aulas
     </a>
-  </div>
-
-  <footer>
+  </div>  <footer>
     <div class="social-links">
       <a href="https://www.instagram.com/vitorrodrigues._s" target="_blank"><i class="fab fa-instagram"></i></a>
       <a href="https://facebook.com/jornalata" target="_blank"><i class="fab fa-facebook"></i></a>
       <a href="mailto:jornalata@escola.com"><i class="fas fa-envelope"></i></a>
     </div>
     <p>© 2025 Jornal A.T.A | Desenvolvido por Vitor Rodrigues</p>
-  </footer>
-
-  <script>
+  </footer>  <script>
     document.addEventListener('DOMContentLoaded', function() {
       const dados = JSON.parse(localStorage.getItem('jornalATA_dados')) || {};
 
@@ -318,6 +292,5 @@
         `;
       }
     });
-  </script>
-</body>
-  </html>
+  </script></body>
+    </html>

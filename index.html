@@ -307,6 +307,32 @@ footer {
     }, 3000);
   }
 </script>
+<audio id="typewriter-sound" src="typewriter.mp3" preload="auto"></audio>
 
+<script>
+  const estilo = document.getElementById('vintageStyles');
+  const botao = document.getElementById('vintageToggle');
+  const som = document.getElementById('typewriter-sound');
+
+  function aplicarEstadoInicial() {
+    const estado = localStorage.getItem("modoVintage");
+    const ativo = estado === "true";
+    estilo.disabled = !ativo;
+    botao.innerText = ativo ? "🔙 Voltar ao Moderno" : "📰 Modo Vintage";
+  }
+
+  function toggleVintage() {
+    const ativado = !estilo.disabled;
+    estilo.disabled = ativado;
+    localStorage.setItem("modoVintage", ativado);
+    botao.innerText = ativado ? "🔙 Voltar ao Moderno" : "📰 Modo Vintage";
+
+    som.pause();
+    som.currentTime = 0;
+    som.play();
+  }
+
+  aplicarEstadoInicial();
+</script>
 </body>
 </html>

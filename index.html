@@ -262,35 +262,51 @@ footer {
     <a href="horários.html" style="display: inline-block; padding: 12px 25px; background-color: #2a9df4; color: white; text-decoration: none; border-radius: 8px; font-size: 16px; font-weight: bold; box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);">
       📅 Horários e Aulas kk
     </a>
-  </div>  <footer>
-    <div class="social-links">
-      <a href="https://www.instagram.com/vitorrodrigues._s" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://facebook.com/jornalata" target="_blank"><i class="fab fa-facebook"></i></a>
-      <a href="mailto:jornalata@escola.com"><i class="fas fa-envelope"></i></a>
-    </div>
-    <p>© 2025 Jornal A.T.A | Desenvolvido por Vitor Rodrigues</p>
-  </footer>  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const dados = JSON.parse(localStorage.getItem('jornalATA_dados')) || {};
+  </div>  <!-- ... Todo o código acima permanece igual ... -->
 
-      if (dados.destaque) {
-        document.querySelector('section h3').innerText = dados.destaque.titulo;
-        document.querySelector('.highlight').innerHTML = dados.destaque.conteudo;
-      }
+<footer>
+  <div class="social-links">
+    <a href="https://www.instagram.com/vitorrodrigues._s" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://facebook.com/jornalata" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="mailto:jornalata@escola.com"><i class="fas fa-envelope"></i></a>
+  </div>
+  <p>© 2025 Jornal A.T.A | Desenvolvido por Vitor Rodrigues</p>
+  <p><a href="#" onclick="document.getElementById('pix-modal').style.display='flex'" style="color: #66ccff;">Doar 😙</a></p>
+</footer>
 
-      if (dados.duvidas?.length > 0) {
-        const tabela = document.querySelector('section table');
-        tabela.innerHTML = `
-          <tr><th>Matéria</th><th>Dia/Horário</th><th>Local</th></tr>
-          ${dados.duvidas.map(item => `
-            <tr>
-              <td>${item.materia}</td>
-              <td>${item.dia}</td>
-              <td>${item.local}</td>
-            </tr>
-          `).join('')}
-        `;
-      }
+<!-- Modal Pix -->
+<div id="pix-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.8); justify-content: center; align-items: center; z-index: 9999;">
+  <div style="background: #222; padding: 20px 30px; border-radius: 10px; color: white; max-width: 400px; text-align: center; position: relative;">
+    <button onclick="document.getElementById('pix-modal').style.display='none'" style="position: absolute; top: 10px; right: 10px; background: none; border: none; color: white; font-size: 18px; cursor: pointer;">✖</button>
+    <h3>💸 Apoie o Jornal</h3>
+    <p>Envie qualquer valor via Pix usando essa chave:</p>
+    <input type="text" value="00020101021126510014br.gov.bcb.pix0129vrodriguespereira38@gmail.com5204000053039865802BR5917VITOR H R PEREIRA6006MOTUCA62070503***6304DC56" id="pix-chave" readonly style="width: 100%; padding: 8px; margin: 10px 0; border-radius: 5px; border: none; background: #333; color: white;">
+    <button onclick="copiarChavePix()" style="background-color: #ff6600; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer;">Copiar chave Pix</button>
+    <p style="margin-top: 15px; font-size: 14px; color: #aaa;">Obrigado por apoiar nosso projeto!</p>
+  </div>
+</div>
+
+<!-- Toast de sucesso -->
+<div id="toast" style="display: none; position: fixed; bottom: 20px; right: 20px; background-color: #222; color: #fff; padding: 10px 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.5); z-index: 10000; font-size: 14px;">
+  ✅ Chave Pix copiada com sucesso!
+</div>
+
+<script>
+  function copiarChavePix() {
+    const chave = document.getElementById("pix-chave");
+    navigator.clipboard.writeText(chave.value).then(() => {
+      mostrarToast();
     });
-  </script></body>
-    </html>
+  }
+
+  function mostrarToast() {
+    const toast = document.getElementById("toast");
+    toast.style.display = "block";
+    setTimeout(() => {
+      toast.style.display = "none";
+    }, 3000);
+  }
+</script>
+
+</body>
+</html>

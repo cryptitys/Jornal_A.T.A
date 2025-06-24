@@ -1,7 +1,6 @@
 # 📰 JORNAL A.T.A 
 
-![Banner Jornal Escolar](https://via.placeholder.com/800x200/2D3748/FFFFFF?text=JORNAL+A.T.A)  
-*(Adicione aqui uma imagem real do seu jornal ou projeto)*
+<a href="https://emoji.gg/emoji/55784-github"><img src="https://cdn3.emoji.gg/emojis/55784-github.png" width="64px" height="64px" alt="github"></a>
 
 > **Informação • Comunidade • Inovação**  
 > Uma plataforma desenvolvida para enriquecer o convívio escolar e simplificar o dia a dia da escola.

@@ -22,22 +22,20 @@ Desenvolvido com dedicação e sem nenhum apoio financeiro, este é meu primeiro
 | Seção          | Descrição                          |
 |----------------|-----------------------------------|
 | 📢 Notícias    | Atualizações sobre eventos escolares |
-| 📅 Agenda      | Calendário de atividades e prazos |
+| 📅 Agenda      | Calendário escolar, e muito mais  |
 | 🏆 Destaques   | Alunos e projetos em evidência    |
-| 💬 Fórum       | Espaço para discussões saudáveis  |
-| 📚 Recursos    | Materiais de estudo e utilidades  |
+| 📚 Recursos    | Materiais de estudo
+e utilidades  |    (logo disponível)
 
 ---
 
 ## 🛠️ Tecnologias Utilizadas
-- Frontend: HTML5, CSS3, JavaScript
-- Backend: (Adicione se aplicável)
-- Hospedagem: GitHub Pages / (Outra)
+- HTML , JAVASCRIPT ETC...
 
 ---
 
 ## 📌 Como Acessar
-🔗 [Link do Jornal A.T.A](#) *(insira o link real aqui)*  
+🔗 [Link do Jornal A.T.A](#) *(https://jornal-ata.netlify.app/)*  
 *(Atualizado em: 25/06/2024)*
 
 ---
@@ -48,5 +46,5 @@ Desenvolvido com dedicação e sem nenhum apoio financeiro, este é meu primeiro
    ┌────────────────┐
    │  🏆 Criador    │
    │  💻 Dev Junior │
-   │  ❤️ Voluntário │
+   │  🥇 Voluntário │
    └────────────────┘

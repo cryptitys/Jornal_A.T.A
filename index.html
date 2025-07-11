@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jornal A.T.A</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">Jornal A.T.A</div>
+    <div class="menu-icon" id="menuToggle">&#9776;</div>
+    <nav id="navMenu">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Horários de Aula</a></li>
+        <li><a href="#">Sobre</a></li>
+        <li><a href="#">Serviços</a></li>
+        <li><a href="#">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Quadro de Avisos -->
+    <section class="avisos">
+      <h2>Quadro de Avisos</h2>
+      <div class="aviso">
+        <h3>Inscrições abertas para o ENEM 2025</h3>
+        <p>As inscrições vão até o dia 15 de agosto...</p>
+        <a href="#">Leia mais</a>
+      </div>
+    </section>
+
+    <!-- Carrossel de Destaques -->
+    <section class="destaques">
+      <h2>Destaques do Dia</h2>
+      <div class="carrossel" id="carrossel">
+        <div class="item">Projeto Robótica</div>
+        <div class="item">Feira de Ciências</div>
+        <div class="item">Gincana Cultural</div>
+      </div>
+    </section>
+
+    <!-- Seção dos Pais / Sala do Futuro -->
+    <section class="pais">
+      <h2>Seção dos Pais</h2>
+      <a href="#">Acesse a Sala do Futuro</a>
+    </section>
+
+    <!-- Simulados -->
+    <section class="simulados">
+      <h2>Simulados</h2>
+      <div class="menu-simulados">
+        <button onclick="abrirSimulado('portugues')">Português</button>
+        <button onclick="abrirSimulado('historia')">História</button>
+        <button onclick="abrirSimulado('geografia')">Geografia</button>
+        <button onclick="abrirSimulado('matematica')">Matemática</button>
+        <button onclick="abrirSimulado('financas')">Educação Financeira</button>
+      </div>
+    </section>
+
+    <!-- Próximos Eventos -->
+    <section class="eventos">
+      <h2>O que vem por aí?</h2>
+      <div class="eventos-lista">
+        <div class="evento">
+          <h3>Feira de Ciências</h3>
+          <p>02 de agosto de 2025</p>
+        </div>
+        <div class="evento">
+          <h3>Reunião de Pais</h3>
+          <p>25 de julho de 2025</p>
+        </div>
+        <div class="evento">
+          <h3>Semana do Livro</h3>
+          <p>09 a 13 de agosto de 2025</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Conecte-se conosco:</p>
+    <div class="social">
+      <a href="#" target="_blank">Instagram</a>
+      <a href="#" target="_blank">Facebook</a>
+      <a href="mailto:contato@jornalata.com">E-mail</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

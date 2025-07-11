@@ -1,0 +1,133 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #1f1f1f;
+  color: #f0f0f0;
+  line-height: 1.6;
+}
+
+header {
+  background: #292929;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.menu-icon {
+  font-size: 2rem;
+  cursor: pointer;
+  display: none;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+main {
+  padding: 2rem;
+}
+
+section {
+  margin-bottom: 3rem;
+}
+
+.avisos, .destaques, .pais, .simulados, .eventos {
+  background: #2a2a2a;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.aviso a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: #4da6ff;
+}
+
+.carrossel {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding: 1rem 0;
+}
+
+.carrossel .item {
+  min-width: 200px;
+  background: #3a3a3a;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.menu-simulados button {
+  background: #4da6ff;
+  color: white;
+  border: none;
+  padding: 0.75rem 1rem;
+  margin: 0.5rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.menu-simulados button:hover {
+  background: #357ab8;
+}
+
+.eventos-lista .evento {
+  margin: 1rem 0;
+  padding: 1rem;
+  background: #3a3a3a;
+  border-left: 4px solid #4da6ff;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  background: #111;
+}
+
+.social a {
+  margin: 0 1rem;
+  color: #4da6ff;
+  text-decoration: none;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .menu-icon {
+    display: block;
+  }
+
+  nav ul {
+    display: none;
+    flex-direction: column;
+    background: #292929;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    padding: 1rem;
+    width: 200px;
+  }
+
+  nav ul.show {
+    display: flex;
+  }
+}

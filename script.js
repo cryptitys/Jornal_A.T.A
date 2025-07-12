@@ -142,3 +142,33 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+// Modal de Aviso
+document.addEventListener('DOMContentLoaded', function() {
+  const avisoModal = document.getElementById('avisoModal');
+  const fecharAviso = document.getElementById('fecharAviso');
+  
+  // Verifica se o usuário já fechou o aviso antes
+  const avisoFechado = localStorage.getItem('avisoFechado');
+  
+  if (!avisoFechado) {
+    // Mostra o aviso após 1 segundo (pode ajustar este tempo)
+    setTimeout(() => {
+      avisoModal.style.display = 'flex';
+    }, 1000);
+  }
+  
+  // Fechar o aviso quando clicar no X
+  fecharAviso.addEventListener('click', function() {
+    avisoModal.style.display = 'none';
+    // Armazena no localStorage que o usuário fechou o aviso
+    localStorage.setItem('avisoFechado', 'true');
+  });
+  
+  // Fechar o aviso quando clicar fora do conteúdo
+  avisoModal.addEventListener('click', function(e) {
+    if (e.target === avisoModal) {
+      avisoModal.style.display = 'none';
+      localStorage.setItem('avisoFechado', 'true');
+    }
+  });
+});

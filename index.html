@@ -1,95 +1,233 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jornal A.T.A</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Jornal escolar da instituição A.T.A com notícias, eventos e informações importantes">
+  <meta name="keywords" content="jornal escolar, ATA, escola, educação, notícias escolares">
+  <title>Jornal Escolar A.T.A | Escola de Ensino Fundamental e Médio</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
+  
   <header>
-    <div class="logo">Jornal A.T.A</div>
-    <div class="menu-icon" id="menuToggle">&#9776;</div>
-    <nav id="navMenu">
+    <div class="logo-container">
+      <div class="logo" aria-label="Jornal A.T.A - Página inicial">
+        <span class="logo-ata">Jornal A.T.A</span>
+        <span class="logo-sub">Escola de Ensino Fundamental e Médio</span>
+      </div>
+    </div>
+    <button class="menu-icon" id="menuToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Menu de navegação">
+      <span class="menu-bar"></span>
+      <span class="menu-bar"></span>
+      <span class="menu-bar"></span>
+    </button>
+    <nav id="navMenu" aria-label="Navegação principal">
       <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Horários de Aula</a></li>
-        <li><a href="#">Sobre</a></li>
-        <li><a href="#">Serviços</a></li>
+        <li><a href="#" aria-current="page">Home</a></li>
+        <li><a href="#">Horários</a></li>
+        <li><a href="#">Notícias</a></li>
+        <li><a href="#">Eventos</a></li>
         <li><a href="#">Contato</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
+  <main id="main-content">
     <!-- Quadro de Avisos -->
-    <section class="avisos">
-      <h2>Quadro de Avisos</h2>
-      <div class="aviso">
-        <h3>Inscrições abertas para o ENEM 2025</h3>
-        <p>As inscrições vão até o dia 15 de agosto...</p>
-        <a href="#">Leia mais</a>
+    <section class="avisos" aria-labelledby="avisos-heading">
+      <h2 id="avisos-heading"><span class="icon" aria-hidden="true">📢</span> Quadro de Avisos</h2>
+      <div class="avisos-grid">
+        <article class="aviso-card">
+          <h3>Inscrições abertas para o ENEM 2025</h3>
+          <p>As inscrições vão até o dia 15 de agosto. Não perca o prazo!</p>
+          <a href="#" class="btn-saiba-mais" aria-label="Leia mais sobre inscrições para o ENEM 2025">Saiba mais →</a>
+        </article>
+        <article class="aviso-card">
+          <h3>Reunião de Pais e Mestres</h3>
+          <p>Dia 25/07 às 19h no auditório principal.</p>
+          <a href="#" class="btn-saiba-mais" aria-label="Detalhes sobre a reunião de pais">Detalhes →</a>
+        </article>
+        <article class="aviso-card">
+          <h3>Olimpíada de Matemática</h3>
+          <p>Inscrições até 30/07 para alunos do 6º ao 9º ano.</p>
+          <a href="#" class="btn-saiba-mais" aria-label="Informações sobre a olimpíada de matemática">Informações →</a>
+        </article>
       </div>
     </section>
 
     <!-- Carrossel de Destaques -->
-    <section class="destaques">
-      <h2>Destaques do Dia</h2>
-      <div class="carrossel" id="carrossel">
-        <div class="item">Projeto Robótica</div>
-        <div class="item">Feira de Ciências</div>
-        <div class="item">Gincana Cultural</div>
+    <section class="destaques" aria-labelledby="destaques-heading">
+      <h2 id="destaques-heading"><span class="icon" aria-hidden="true">🌟</span> Destaques</h2>
+      <div class="carrossel-container">
+        <button class="carrossel-btn prev" aria-label="Slide anterior">&#10094;</button>
+        <div class="carrossel" tabindex="0">
+          <article class="destaque-card" style="background-color: #FF9E80;" tabindex="0">
+            <h3>Projeto Robótica</h3>
+            <p>Nossos alunos criam soluções inovadoras para problemas reais usando tecnologia.</p>
+            <a href="#" class="btn-card" aria-label="Saiba mais sobre o projeto de robótica">Ver projeto</a>
+          </article>
+          <article class="destaque-card" style="background-color: #80DEEA;" tabindex="0">
+            <h3>Feira de Ciências</h3>
+            <p>Confira os projetos incríveis que serão apresentados este ano.</p>
+            <a href="#" class="btn-card" aria-label="Saiba mais sobre a feira de ciências">Ver projetos</a>
+          </article>
+          <article class="destaque-card" style="background-color: #CE93D8;" tabindex="0">
+            <h3>Gincana Cultural</h3>
+            <p>Arte, música e diversão em nossa competição anual entre turmas.</p>
+            <a href="#" class="btn-card" aria-label="Saiba mais sobre a gincana cultural">Ver equipes</a>
+          </article>
+          <article class="destaque-card" style="background-color: #A5D6A7;" tabindex="0">
+            <h3>Campeonato Esportivo</h3>
+            <p>Participe das competições de vôlei, basquete e futsal.</p>
+            <a href="#" class="btn-card" aria-label="Saiba mais sobre o campeonato esportivo">Ver calendário</a>
+          </article>
+        </div>
+        <button class="carrossel-btn next" aria-label="Próximo slide">&#10095;</button>
+      </div>
+      <div class="carrossel-dots" aria-label="Navegação por pontos do carrossel">
+        <button class="dot active" aria-label="Slide 1" data-index="0"></button>
+        <button class="dot" aria-label="Slide 2" data-index="1"></button>
+        <button class="dot" aria-label="Slide 3" data-index="2"></button>
+        <button class="dot" aria-label="Slide 4" data-index="3"></button>
       </div>
     </section>
 
-    <!-- Seção dos Pais / Sala do Futuro -->
-    <section class="pais">
-      <h2>Seção dos Pais</h2>
-      <a href="#">Acesse a Sala do Futuro</a>
+    <!-- Seção dos Pais -->
+    <section class="pais" aria-labelledby="pais-heading">
+      <div class="pais-content">
+        <h2 id="pais-heading"><span class="icon" aria-hidden="true">👨‍👩‍👧‍👦</span> Espaço dos Pais</h2>
+        <p>Acompanhe a vida escolar do seu filho e participe ativamente da nossa comunidade.</p>
+        <div class="pais-buttons">
+          <a href="#" class="btn-acesse" aria-label="Acessar a Sala do Futuro">Sala do Futuro</a>
+          <a href="#" class="btn-acesse secundario" aria-label="Ver calendário escolar">Calendário Escolar</a>
+        </div>
+      </div>
+      <div class="pais-ilustracao" aria-hidden="true">
+        <div class="ilustracao-item">📚</div>
+        <div class="ilustracao-item">✏️</div>
+        <div class="ilustracao-item">🎒</div>
+      </div>
     </section>
 
     <!-- Simulados -->
-    <section class="simulados">
-      <h2>Simulados</h2>
-      <div class="menu-simulados">
-        <button onclick="abrirSimulado('portugues')">Português</button>
-        <button onclick="abrirSimulado('historia')">História</button>
-        <button onclick="abrirSimulado('geografia')">Geografia</button>
-        <button onclick="abrirSimulado('matematica')">Matemática</button>
-        <button onclick="abrirSimulado('financas')">Educação Financeira</button>
+    <section class="simulados" aria-labelledby="simulados-heading">
+      <h2 id="simulados-heading"><span class="icon" aria-hidden="true">✏️</span> Simulados Online</h2>
+      <p class="section-description">Teste seus conhecimentos e prepare-se para os principais exames!</p>
+      <div class="simulado-buttons" role="menu">
+        <button class="btn-simulado" style="background-color: #EF5350;" role="menuitem" aria-label="Simulado de Português">Português</button>
+        <button class="btn-simulado" style="background-color: #5C6BC0;" role="menuitem" aria-label="Simulado de História">História</button>
+        <button class="btn-simulado" style="background-color: #66BB6A;" role="menuitem" aria-label="Simulado de Geografia">Geografia</button>
+        <button class="btn-simulado" style="background-color: #FFA726;" role="menuitem" aria-label="Simulado de Matemática">Matemática</button>
+        <button class="btn-simulado" style="background-color: #26C6DA;" role="menuitem" aria-label="Simulado de Educação Financeira">Finanças</button>
+      </div>
+      <div class="simulado-info">
+        <p>Dica: Os simulados ficam disponíveis das 8h às 20h.</p>
       </div>
     </section>
 
-    <!-- Próximos Eventos -->
-    <section class="eventos">
-  <h2>O que vem por aí?</h2>
-  <p id="contador"></p>
-  <div class="eventos-lista">
-    <div class="evento">
-      <h3>Feira de Ciências</h3>
-      <p>02 de agosto de 2025</p>
-    </div>
-    <div class="evento">
-      <h3>Reunião de Pais</h3>
-      <p>25 de julho de 2025</p>
-    </div>
-    <div class="evento">
-      <h3>Semana do Livro</h3>
-      <p>09 a 13 de agosto de 2025</p>
-    </div>
-  </div>
-  </section>
+    <!-- Eventos -->
+    <section class="eventos" aria-labelledby="eventos-heading">
+      <h2 id="eventos-heading"><span class="icon" aria-hidden="true">📅</span> Próximos Eventos</h2>
+      <div class="contador-container">
+        <div class="contador-box">
+          <div class="contador" id="contador-dias">00</div>
+          <div class="contador-label">dias</div>
+        </div>
+        <div class="contador-box">
+          <div class="contador" id="contador-horas">00</div>
+          <div class="contador-label">horas</div>
+        </div>
+        <div class="contador-box">
+          <div class="contador" id="contador-minutos">00</div>
+          <div class="contador-label">min</div>
+        </div>
+        <p class="contador-texto">para a Feira de Ciências 2025!</p>
+      </div>
+      
+      <div class="eventos-lista">
+        <article class="evento-card" tabindex="0">
+          <div class="evento-data" aria-hidden="true">
+            <span class="dia">25</span>
+            <span class="mes">Jul</span>
+          </div>
+          <div class="evento-info">
+            <h3>Reunião de Pais</h3>
+            <p class="evento-horario">19h | Auditório Principal</p>
+            <p class="evento-descricao">Apresentação do planejamento pedagógico do 2º semestre.</p>
+            <a href="#" class="btn-evento" aria-label="Mais informações sobre a reunião de pais">Confirmar presença</a>
+          </div>
+        </article>
+        
+        <article class="evento-card" tabindex="0">
+          <div class="evento-data" aria-hidden="true">
+            <span class="dia">02</span>
+            <span class="mes">Ago</span>
+          </div>
+          <div class="evento-info">
+            <h3>Feira de Ciências</h3>
+            <p class="evento-horario">9h às 16h | Pátio da Escola</p>
+            <p class="evento-descricao">Projetos científicos desenvolvidos pelos alunos.</p>
+            <a href="#" class="btn-evento" aria-label="Mais informações sobre a feira de ciências">Ver programação</a>
+          </div>
+        </article>
+      </div>
+    </section>
   </main>
 
   <footer>
-    <p>Conecte-se conosco:</p>
-    <div class="social">
-      <a href="#" target="_blank">Instagram</a>
-      <a href="#" target="_blank">Facebook</a>
-      <a href="mailto:contato@jornalata.com">E-mail</a>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Jornal A.T.A</h3>
+        <p>Informação e conhecimento para toda comunidade escolar</p>
+        <div class="footer-logo">Jornal A.T.A</div>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Links Rápidos</h3>
+        <ul>
+          <li><a href="#">Horários de Aula</a></li>
+          <li><a href="#">Calendário Escolar</a></li>
+          <li><a href="#">Cardápio da Cantina</a></li>
+          <li><a href="#">Portal do Aluno</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Contato</h3>
+        <address>
+          <p>Rua da Educação, 123</p>
+          <p>Bairro do Conhecimento</p>
+          <p>contato@escolaata.edu.br</p>
+          <p>(XX) XXXX-XXXX</p>
+        </address>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Redes Sociais</h3>
+        <div class="social-icons">
+          <a href="#" class="social-icon" aria-label="Instagram">
+            <span aria-hidden="true">📷</span> Instagram
+          </a>
+          <a href="#" class="social-icon" aria-label="Facebook">
+            <span aria-hidden="true">👍</span> Facebook
+          </a>
+          <a href="#" class="social-icon" aria-label="YouTube">
+            <span aria-hidden="true">▶️</span> YouTube
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>© 2025 Jornal Escolar A.T.A - Todos os direitos reservados</p>
+      <div class="footer-creditos">
+        <p>Desenvolvido com ❤️ pelos alunos do curso de Informática</p>
+      </div>
     </div>
   </footer>
 
   <script src="script.js"></script>
 </body>
-</html>
+            </html>

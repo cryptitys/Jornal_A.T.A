@@ -184,7 +184,31 @@ const linksSimulados = {
   "Finanças": {
     senha: "333333",
     url: "https://docs.google.com/forms/d/e/1FAIpQLSfX...financas"
-  }
+  }, 
+  "Inglês": {
+  senha: "444444",
+  url: "https://docs.google.com/forms/d/e/1FAIpQLSfX...ingles"
+},
+"Física": {
+  senha: "555555",
+  url: "https://docs.google.com/forms/d/e/1FAIpQLSfX...fisica"
+},
+"Filosofia": {
+  senha: "666666",
+  url: "https://docs.google.com/forms/d/e/1FAIpQLSfX...filosofia"
+},
+"Biologia": {
+  senha: "777777",
+  url: "https://docs.google.com/forms/d/e/1FAIpQLSfX...biologia"
+},
+"Química": {
+  senha: "888888",
+  url: "https://docs.google.com/forms/d/e/1FAIpQLSfX...quimica"
+},
+"Artes": {
+  senha: "999999",
+  url: "https://docs.google.com/forms/d/e/1FAIpQLSfX...artes"
+}
 };
 
 let simuladoSelecionado = null;

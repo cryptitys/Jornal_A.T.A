@@ -893,3 +893,52 @@ address {
 .esconder-aviso {
   display: none !important;
 }
+/* Estilo do botão do menu */
+.menu-icon {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.menu-bar {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  transition: 0.3s;
+}
+
+/* Estilo padrão do menu */
+#navMenu {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Responsividade para celular */
+@media (max-width: 768px) {
+  .menu-icon {
+    display: flex;
+  }
+
+  #navMenu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 15px;
+    background-color: #1a1a1a;
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 10px;
+    z-index: 1000;
+  }
+
+  #navMenu.active {
+    display: flex;
+  }
+  }

@@ -92,6 +92,16 @@ document.addEventListener('DOMContentLoaded', function() {
   function atualizarContador() {
     const dataEvento = new Date('2025-08-02T00:00:00');
     const agora = new Date();
+    const menuToggle = document.getElementById('menuToggle');
+const navMenu = document.getElementById('navMenu');
+
+menuToggle.addEventListener('click', () => {
+  navMenu.classList.toggle('active');
+
+  // Atualiza o atributo de acessibilidade
+  const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+  menuToggle.setAttribute('aria-expanded', !expanded);
+});
     
     const diferenca = dataEvento - agora;
     

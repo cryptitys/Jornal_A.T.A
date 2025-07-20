@@ -152,3 +152,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+async function enviarMensagem(mensagemUsuario) {
+  const resposta = await fetch("/api/chat", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ message: mensagemUsuario })
+  });
+
+  const data = await resposta.json();
+  return data.reply;
+}

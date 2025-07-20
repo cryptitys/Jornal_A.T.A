@@ -1032,24 +1032,36 @@ address {
 .social-icons a:hover img {
   transform: scale(1.1); /* leve zoom no hover */
 }
-.simulado-buttons {
-  display: flex;
-  flex-wrap: nowrap;         /* todos em linha */
-  overflow-x: auto;          /* rolagem lateral */
-  gap: 12px;
-  padding: 16px;
-  scrollbar-width: none;     /* Firefox */
-  -ms-overflow-style: none;  /* IE e Edge */
+.simulados {
+  width: 100%;
+  overflow-x: visible;
+  padding: 20px;
+  text-align: center;
 }
 
+.simulado-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.simulado-buttons {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 12px;
+  padding: 12px 0;
+  width: max-content;
+  scrollbar-width: none; /* Firefox */
+}
+
+.simulado-scroll::-webkit-scrollbar,
 .simulado-buttons::-webkit-scrollbar {
-  display: none;             /* Chrome, Safari */
+  display: none; /* Chrome, Safari */
 }
 
 .btn-simulado {
   flex: 0 0 auto;
   width: 140px;
-  padding: 12px;
+  padding: 12px 16px;
   border: none;
   border-radius: 8px;
   color: white;

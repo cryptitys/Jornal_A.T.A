@@ -1016,3 +1016,18 @@ address {
 .modal-botoes button:hover {
   background: #0097a7;
         }
+.social-icons {
+  display: flex;
+  gap: 15px; /* espaçamento entre os ícones */
+  align-items: center;
+  justify-content: center; /* ou use 'flex-start' se quiser à esquerda */
+  margin-top: 10px;
+}
+
+.social-icons a img {
+  transition: transform 0.2s ease;
+}
+
+.social-icons a:hover img {
+  transform: scale(1.1); /* animação ao passar o mouse */
+  }

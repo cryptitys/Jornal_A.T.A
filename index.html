@@ -235,6 +235,20 @@
       </div>
     </div>
   </footer>
+  <div id="chatbot">
+  <input id="mensagem" type="text" placeholder="Digite sua pergunta..." />
+  <button onclick="enviar()">Enviar</button>
+  <p id="resposta"></p>
+</div>
+
+<script>
+  async function enviar() {
+    const input = document.getElementById("mensagem");
+    const resposta = await enviarMensagem(input.value);
+    document.getElementById("resposta").innerText = resposta;
+    input.value = "";
+  }
+</script>
   <!-- Modal de Aviso -->
 <div class="aviso-modal" id="avisoModal">
   <div class="aviso-modal-content">

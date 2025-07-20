@@ -941,4 +941,28 @@ address {
   #navMenu.active {
     display: flex;
   }
-  }
+  
+/* Estilos compartilhados para a página de projetos */
+.categoria-tag {
+  display: inline-block;
+  background: #e3f2fd;
+  color: #2196F3;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.btn-saiba-mais {
+  display: inline-block;
+  color: #2196F3;
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 1rem;
+  transition: color 0.3s;
+}
+
+.btn-saiba-mais:hover {
+  color: #0d47a1;
+  text-decoration: underline;
+}

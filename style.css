@@ -1057,3 +1057,29 @@ address {
   transform: scale(1.05);
   filter: brightness(1.1);
   }
+.simulado-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  padding: 20px;
+}
+
+.btn-simulado {
+  flex: 1 1 200px; /* Tamanho mínimo 200px, flexível */
+  max-width: 220px;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.2s, filter 0.2s;
+}
+
+.btn-simulado:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+  }

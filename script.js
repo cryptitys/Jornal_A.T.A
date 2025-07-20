@@ -236,3 +236,8 @@ document.getElementById('confirmarSenha').addEventListener('click', () => {
 document.getElementById('cancelarSenha').addEventListener('click', () => {
   document.getElementById('modalSenha').style.display = 'none';
 });
+// Mostra/esconde os botões de simulados ao clicar
+document.getElementById('toggleSimulados').addEventListener('click', function () {
+  const container = document.getElementById('simuladosContainer');
+  container.classList.toggle('hidden');
+});

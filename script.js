@@ -164,3 +164,51 @@ async function enviarMensagem(mensagemUsuario) {
   const data = await resposta.json();
   return data.reply;
 }
+const linksSimulados = {
+  "Português": {
+    senha: "123456",
+    url: "https://docs.google.com/forms/d/e/1FAIpQLSfX...portugues"
+  },
+  "História": {
+    senha: "654321",
+    url: "https://docs.google.com/forms/d/e/1FAIpQLSfX...historia"
+  },
+  "Geografia": {
+    senha: "111111",
+    url: "https://docs.google.com/forms/d/e/1FAIpQLSfX...geografia"
+  },
+  "Matemática": {
+    senha: "222222",
+    url: "https://docs.google.com/forms/d/e/1FAIpQLSfX...matematica"
+  },
+  "Finanças": {
+    senha: "333333",
+    url: "https://docs.google.com/forms/d/e/1FAIpQLSfX...financas"
+  }
+};
+
+let simuladoSelecionado = null;
+
+document.querySelectorAll('.btn-simulado').forEach(btn => {
+  btn.addEventListener('click', () => {
+    simuladoSelecionado = btn.textContent;
+    document.getElementById('modalSenha').style.display = 'flex';
+    document.getElementById('senhaInput').value = "";
+    document.getElementById('mensagemErro').style.display = 'none';
+  });
+});
+
+document.getElementById('confirmarSenha').addEventListener('click', () => {
+  const senhaDigitada = document.getElementById('senhaInput').value;
+  const info = linksSimulados[simuladoSelecionado];
+
+  if (info && senhaDigitada === info.senha) {
+    window.location.href = info.url;
+  } else {
+    document.getElementById('mensagemErro').style.display = 'block';
+  }
+});
+
+document.getElementById('cancelarSenha').addEventListener('click', () => {
+  document.getElementById('modalSenha').style.display = 'none';
+});

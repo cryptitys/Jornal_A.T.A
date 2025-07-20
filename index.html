@@ -66,7 +66,7 @@
           <article class="destaque-card" style="background-color: #FF9E80;" tabindex="0">
             <h3>ainda sem projetos</h3>
             <p>logo mais, novos projetos </p>
-            <a href="#" class="btn-card" aria-label="Saiba mais sobre o projeto de robótica">Ver projeto</a>
+            <a href="projetos.html" class="btn-card" aria-label="Saiba mais sobre o projeto de robótica">Ver projeto</a>
           </article>
           <article class="destaque-card" style="background-color: #80DEEA;" tabindex="0">
   <h3>ainda sem projetos</h3>
@@ -76,12 +76,12 @@
           <article class="destaque-card" style="background-color: #CE93D8;" tabindex="0">
             <h3>ainda sem projetos</h3>
             <p>logo mais, novidades!!</p>
-            <a href="#" class="btn-card" aria-label="Saiba mais sobre a gincana cultural">Ver equipes</a>
+            <a href="projetos.html" class="btn-card" aria-label="Saiba mais sobre a gincana cultural">Ver equipes</a>
           </article>
           <article class="destaque-card" style="background-color: #A5D6A7;" tabindex="0">
             <h3>interclasses</h3>
             <p>Campeonatos encerrados</p>
-            <a href="https://saladofuturo.educacao.sp.gov.br/" class="btn-card" aria-label="Saiba mais sobre o campeonato esportivo">Ver calendário</a>
+            <a href="#" class="btn-card" aria-label="Saiba mais sobre o campeonato esportivo">Ver calendário</a>
           </article>
         </div>
         <button class="carrossel-btn next" aria-label="Próximo slide">&#10095;</button>
@@ -240,7 +240,20 @@
   <button onclick="enviar()">Enviar</button>
   <p id="resposta"></p>
 </div>
-
+  
+<!-- Modal de Senha -->
+<div id="modalSenha" class="modal-senha" style="display: none;">
+  <div class="modal-content">
+    <h3>🔒 Para prosseguir, digite a senha:</h3>
+    <input type="password" id="senhaInput" placeholder="Digite a senha de 6 dígitos" maxlength="6" />
+    <div class="modal-botoes">
+      <button id="confirmarSenha">Confirmar</button>
+      <button id="cancelarSenha">Cancelar</_></button>
+    </div>
+    <p id="mensagemErro" style="color: red; display: none;">Senha incorreta!</p>
+  </div>
+</div>
+  
 <script>
   async function enviar() {
     const input = document.getElementById("mensagem");

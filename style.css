@@ -1034,25 +1034,30 @@ address {
 }
 .simulado-buttons {
   display: flex;
-  flex-wrap: nowrap;       /* Impede que quebrem para baixo */
-  justify-content: center; /* Centraliza horizontalmente */
-  overflow-x: auto;        /* Permite rolar lateralmente em telas pequenas */
+  flex-wrap: nowrap;         /* todos em linha */
+  overflow-x: auto;          /* rolagem lateral */
   gap: 12px;
-  padding: 20px;
+  padding: 16px;
+  scrollbar-width: none;     /* Firefox */
+  -ms-overflow-style: none;  /* IE e Edge */
+}
+
+.simulado-buttons::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari */
 }
 
 .btn-simulado {
-  flex: 0 0 auto;           /* Tamanho fixo, não cresce nem encolhe */
-  width: 150px;
-  padding: 12px 16px;
+  flex: 0 0 auto;
+  width: 140px;
+  padding: 12px;
   border: none;
   border-radius: 8px;
   color: white;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
-  text-align: center;
   white-space: nowrap;
+  text-align: center;
   transition: transform 0.2s, filter 0.2s;
 }
 

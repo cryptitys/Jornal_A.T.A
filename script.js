@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
       document.getElementById('contador-minutos').textContent = minutos.toString().padStart(2, '0');
     } else {
       document.querySelector('.contador-container').innerHTML = 
-        '<p class="contador-texto">Volta às aulas pós ferias!/p>';
+  '<p class="contador-texto">Volta às aulas pós férias!</p>';
     }
   }
 

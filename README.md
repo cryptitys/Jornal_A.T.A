@@ -29,8 +29,7 @@ e utilidades  |    (logo disponível)
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
-- HTML , JAVASCRIPT ETC...
+
 
 ---
 

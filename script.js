@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Contador para evento futuro (exemplo: feira de ciências)
   function atualizarContador() {
-    const dataEvento = new Date('2025-08-01T00:00:00');
+    const dataEvento = new Date('2025-08-18T00:00:00');
     const agora = new Date();
     const diferenca = dataEvento - agora;
 

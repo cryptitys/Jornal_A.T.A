@@ -34,8 +34,7 @@ e utilidades  |    (logo disponível)
 
 ---
 
-## 📌 Como Acessar
-🔗 [Link do Jornal A.T.A](#) *(https://jornal-ata.netlify.app/)*  
+  
 *(Atualizado em: 25/06/2024)*
 
 ---

@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Contador para evento futuro (exemplo: feira de ciências)
   function atualizarContador() {
-    const dataEvento = new Date('2025-08-02T00:00:00');
+    const dataEvento = new Date('2025-07-22T00:00:00');
     const agora = new Date();
     const diferenca = dataEvento - agora;
 
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
       document.getElementById('contador-minutos').textContent = minutos.toString().padStart(2, '0');
     } else {
       document.querySelector('.contador-container').innerHTML = 
-        '<p class="contador-texto">A Feira de Ciências 2025 está acontecendo agora! Venha nos visitar!</p>';
+        '<p class="contador-texto">Volta às aulas pós ferias!/p>';
     }
   }
 

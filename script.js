@@ -241,3 +241,23 @@ document.getElementById('toggleSimulados').addEventListener('click', function ()
   const container = document.getElementById('simuladosContainer');
   container.classList.toggle('hidden');
 });
+// Impede que a URL fique com '#' em links sem destino
+document.querySelectorAll('a[href="#"]').forEach(link => {
+  link.addEventListener('click', function (e) {
+    e.preventDefault(); // impede o comportamento padrão
+    history.replaceState(null, null, ' '); // remove o # da URL
+  });
+});
+
+// Também remove o # se alguém clicar em <a href="#algo"> que não existe
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', function (e) {
+    const targetId = this.getAttribute('href').substring(1);
+    const targetElement = document.getElementById(targetId);
+    
+    if (!targetElement) {
+      e.preventDefault();
+      history.replaceState(null, null, ' ');
+    }
+  });
+});

@@ -74,27 +74,36 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // Contador para evento futuro (exemplo: feira de ciências)
-  function atualizarContador() {
-    const dataEvento = new Date('2025-08-18T00:00:00');
-    const agora = new Date();
-    const diferenca = dataEvento - agora;
+  fun// Contador para evento futuro (exemplo: feira de ciências)
+function atualizarContador() {
+  const dataEvento = new Date('2025-08-01T00:00:00');
+  const agora = new Date();
+  const diferenca = dataEvento - agora;
 
-    if (diferenca > 0) {
-      const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
-      const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+  if (diferenca > 0) {
+    const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
 
-      document.getElementById('contador-dias').textContent = dias.toString().padStart(2, '0');
-      document.getElementById('contador-horas').textContent = horas.toString().padStart(2, '0');
-      document.getElementById('contador-minutos').textContent = minutos.toString().padStart(2, '0');
-    } else {
-      document.querySelector('.contador-container').innerHTML = 
-  '<p class="contador-texto">Volta às aulas pós férias!</p>';
+    const elDias = document.getElementById('contador-dias');
+    const elHoras = document.getElementById('contador-horas');
+    const elMinutos = document.getElementById('contador-minutos');
+
+    if (elDias && elHoras && elMinutos) {
+      elDias.textContent = dias.toString().padStart(2, '0');
+      elHoras.textContent = horas.toString().padStart(2, '0');
+      elMinutos.textContent = minutos.toString().padStart(2, '0');
+    }
+  } else {
+    const container = document.querySelector('.contador-container');
+    if (container) {
+      container.innerHTML = '<p class="contador-texto">Volta às aulas pós férias!</p>';
     }
   }
+}
 
-  atualizarContador();
-  setInterval(atualizarContador, 60000);
+atualizarContador();
+setInterval(atualizarContador, 60000);
 
   // Simulados
   document.querySelectorAll('.btn-simulado').forEach(btn => {

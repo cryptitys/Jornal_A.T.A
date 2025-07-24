@@ -270,3 +270,19 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     }
   });
 });
+document.addEventListener('DOMContentLoaded', () => {
+  const avisos = [
+    "📝 Prova de matemática dia 30/07 às 9h.",
+    "📢 Reunião de pais e mestres na próxima sexta-feira.",
+    "🎓 Inscrições abertas para o simulado ENEM.",
+    "🚫 Não haverá aula no dia 01/08 (feriado municipal)."
+  ];
+
+  const listaAvisos = document.getElementById('lista-avisos');
+
+  avisos.forEach(aviso => {
+    const li = document.createElement('li');
+    li.textContent = aviso;
+    listaAvisos.appendChild(li);
+  });
+});

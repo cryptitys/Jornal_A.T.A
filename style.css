@@ -1137,3 +1137,7 @@ body {
   color: #fff;
 }
 
+html, body {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}

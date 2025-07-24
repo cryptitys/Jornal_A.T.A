@@ -20,15 +20,26 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // Carrossel de Destaques
-  const carrossel = document.querySelector('.carrossel');
-  const carrosselItems = document.querySelectorAll('.destaque-card');
-  const dots = document.querySelectorAll('.dot');
-  const prevBtn = document.querySelector('.prev');
-  const nextBtn = document.querySelector('.next');
+  // Carrossel de Destaques
+const carrossel = document.querySelector('.carrossel');
+const carrosselItems = document.querySelectorAll('.destaque-card');
+const dots = document.querySelectorAll('.dot');
+const prevBtn = document.querySelector('.prev');
+const nextBtn = document.querySelector('.next');
 
-  let currentIndex = 0;
-  const itemWidth = carrosselItems[0]?.offsetWidth || 0;
-  const gap = 24;
+let currentIndex = 0;
+let itemWidth = 0;
+const gap = 24;
+let autoSlideInterval = null;
+
+// Protege contra carrossel vazio
+if (carrossel && carrosselItems.length > 0) {
+  // Calcula largura real do item usando ResizeObserver
+  const resizeObserver = new ResizeObserver(() => {
+    itemWidth = carrosselItems[0].offsetWidth;
+    goToSlide(currentIndex); // reposiciona corretamente
+  });
+  resizeObserver.observe(carrosselItems[0]);
 
   function updateDots() {
     dots.forEach((dot, index) => {
@@ -60,21 +71,21 @@ document.addEventListener('DOMContentLoaded', function() {
     goToSlide(currentIndex);
   });
 
-  let autoSlideInterval = setInterval(() => {
-    currentIndex = (currentIndex + 1) % carrosselItems.length;
-    goToSlide(currentIndex);
-  }, 5000);
-
-  carrossel?.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
-  carrossel?.addEventListener('mouseleave', () => {
+  function startAutoSlide() {
+    clearInterval(autoSlideInterval);
     autoSlideInterval = setInterval(() => {
       currentIndex = (currentIndex + 1) % carrosselItems.length;
       goToSlide(currentIndex);
     }, 5000);
-  });
+  }
 
+  startAutoSlide();
+
+  carrossel.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+  carrossel.addEventListener('mouseleave', startAutoSlide);
+    }
   // Contador para evento futuro (exemplo: feira de ciências)
-  fun// Contador para evento futuro (exemplo: feira de ciências)
+  // Contador para evento futuro (exemplo: feira de ciências)
 function atualizarContador() {
   const dataEvento = new Date('2025-08-01T00:00:00');
   const agora = new Date();

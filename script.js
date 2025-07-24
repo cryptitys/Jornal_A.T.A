@@ -84,48 +84,7 @@ if (carrossel && carrosselItems.length > 0) {
   carrossel.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
   carrossel.addEventListener('mouseleave', startAutoSlide);
     }
-  // Contador para evento futuro (exemplo: feira de ciências)
-  document.addEventListener('DOMContentLoaded', () => {
-  function iniciarContador(dataAlvo) {
-    const diasEl = document.getElementById('contador-dias');
-    const horasEl = document.getElementById('contador-horas');
-    const minutosEl = document.getElementById('contador-minutos');
-    const segundosEl = document.getElementById('contador-segundos');
-    const textoEl = document.querySelector('.contador-texto');
-
-    function atualizar() {
-      const agora = new Date().getTime();
-      const distancia = dataAlvo - agora;
-
-      if (distancia <= 0) {
-        diasEl.textContent = '00';
-        horasEl.textContent = '00';
-        minutosEl.textContent = '00';
-        segundosEl.textContent = '00';
-        textoEl.textContent = '🎉 O ano letivo terminou!';
-        return;
-      }
-
-      const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
-      const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
-      const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
-
-      diasEl.textContent = dias.toString().padStart(2, '0');
-      horasEl.textContent = horas.toString().padStart(2, '0');
-      minutosEl.textContent = minutos.toString().padStart(2, '0');
-      segundosEl.textContent = segundos.toString().padStart(2, '0');
-    }
-
-    atualizar(); // Atualização imediata
-    setInterval(atualizar, 1000); // Atualiza a cada segundo
-  }
-
-  // Data: 13 de dezembro de 2025 às 00:00
-  const dataEvento = new Date(2025, 11, 13, 0, 0, 0);
-  iniciarContador(dataEvento);
-});
-
+  
   // Simulados
   document.querySelectorAll('.btn-simulado').forEach(btn => {
     btn.addEventListener('click', function() {

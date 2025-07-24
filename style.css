@@ -1130,3 +1130,66 @@ address {
 .mural-avisos li:hover {
   background-color: #333;
 }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #121212;
+  color: #fff;
+}
+
+/* Seção de eventos */
+.eventos {
+  background-color: #1e1e1e;
+  color: #fff;
+  padding: 30px 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 12px #00000050;
+  max-width: 800px;
+  margin: 50px auto;
+  text-align: center;
+}
+
+.eventos h2 {
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  border-bottom: 2px solid #00c853;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.contador-container {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.contador-box {
+  background-color: #2c2c2c;
+  padding: 15px 20px;
+  border-radius: 10px;
+  min-width: 80px;
+  box-shadow: 0 0 8px #00000040;
+  text-align: center;
+}
+
+.contador {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #00c853;
+}
+
+.contador-label {
+  font-size: 1rem;
+  color: #ccc;
+  margin-top: 5px;
+}
+
+.contador-texto {
+  margin-top: 20px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #f1f1f1;
+  }

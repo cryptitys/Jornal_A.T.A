@@ -85,36 +85,46 @@ if (carrossel && carrosselItems.length > 0) {
   carrossel.addEventListener('mouseleave', startAutoSlide);
     }
   // Contador para evento futuro (exemplo: feira de ciências)
-  // Contador para evento futuro (exemplo: feira de ciências)
-function atualizarContador() {
-  const dataEvento = new Date('2025-08-01T00:00:00');
-  const agora = new Date();
-  const diferenca = dataEvento - agora;
+  document.addEventListener('DOMContentLoaded', () => {
+  function iniciarContador(dataAlvo) {
+    const diasEl = document.getElementById('contador-dias');
+    const horasEl = document.getElementById('contador-horas');
+    const minutosEl = document.getElementById('contador-minutos');
+    const segundosEl = document.getElementById('contador-segundos');
+    const textoEl = document.querySelector('.contador-texto');
 
-  if (diferenca > 0) {
-    const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
-    const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+    function atualizar() {
+      const agora = new Date().getTime();
+      const distancia = dataAlvo - agora;
 
-    const elDias = document.getElementById('contador-dias');
-    const elHoras = document.getElementById('contador-horas');
-    const elMinutos = document.getElementById('contador-minutos');
+      if (distancia <= 0) {
+        diasEl.textContent = '00';
+        horasEl.textContent = '00';
+        minutosEl.textContent = '00';
+        segundosEl.textContent = '00';
+        textoEl.textContent = '🎉 O ano letivo terminou!';
+        return;
+      }
 
-    if (elDias && elHoras && elMinutos) {
-      elDias.textContent = dias.toString().padStart(2, '0');
-      elHoras.textContent = horas.toString().padStart(2, '0');
-      elMinutos.textContent = minutos.toString().padStart(2, '0');
+      const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+      diasEl.textContent = dias.toString().padStart(2, '0');
+      horasEl.textContent = horas.toString().padStart(2, '0');
+      minutosEl.textContent = minutos.toString().padStart(2, '0');
+      segundosEl.textContent = segundos.toString().padStart(2, '0');
     }
-  } else {
-    const container = document.querySelector('.contador-container');
-    if (container) {
-      container.innerHTML = '<p class="contador-texto">Volta às aulas pós férias!</p>';
-    }
+
+    atualizar(); // Atualização imediata
+    setInterval(atualizar, 1000); // Atualiza a cada segundo
   }
-}
 
-atualizarContador();
-setInterval(atualizarContador, 60000);
+  // Data: 13 de dezembro de 2025 às 00:00
+  const dataEvento = new Date(2025, 11, 13, 0, 0, 0);
+  iniciarContador(dataEvento);
+});
 
   // Simulados
   document.querySelectorAll('.btn-simulado').forEach(btn => {

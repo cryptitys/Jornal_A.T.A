@@ -148,41 +148,38 @@ header {
     position: absolute;
     top: 100%;
     right: 0;
-    background-color: var(--primary-dark);
-    width: 200px;
-    display: none;
-    padding: 1rem;
-  }
-
-  .nav-menu ul.show {
-    display: flex;
-  }
-}
+/* Cabeçalho */
+header {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  color: var(--white);
+  padding: 15px 0;
+  position: sticky;
   top: 0;
   z-index: 1000;
+  box-shadow: var(--box-shadow);
 }
 
-.logo-container {
+header .container {
   display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
 .logo {
-  color: var(--white);
+  display: flex;
+  flex-direction: column;
 }
 
-.logo-ata {
+.logo-main {
   font-size: 1.8rem;
   font-weight: bold;
-  display: block;
-  line-height: 1.2;
+  line-height: 1;
 }
 
 .logo-sub {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   opacity: 0.9;
 }
-
 
 .menu-toggle {
   background: none;
@@ -236,7 +233,7 @@ header {
 .nav-menu a:hover,
 .nav-menu a.active {
   background-color: rgba(255,255,255,0.2);
-                        }
+  }}
 
 /* Conteúdo Principal */
 main {

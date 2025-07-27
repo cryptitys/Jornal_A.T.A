@@ -205,49 +205,69 @@
 
   <script>
     // Dados dos projetos (simulação)
-    const projetos = [
-      {
-        id: 1,
-        titulo: "Robótica Educacional",
-        descricao: "Alunos constroem robôs para solucionar problemas do cotidiano escolar.",
-        categoria: "tecnologia",
-        imagem: "img/imagens/projeto1.jpg"
-      },
-      {
-        id: 2,
-        titulo: "Horta Sustentável",
-        descricao: "Projeto de horta orgânica que abastece a merenda escolar.",
-        categoria: "sustentabilidade",
-        imagem: "img/imagens/projeto2.jpg"
-      },
-      {
-        id: 3,
-        titulo: "Teatro Estudantil",
-        descricao: "Grupo de teatro encena peças clássicas da literatura brasileira.",
-        categoria: "artes",
-        imagem: "img/imagens/projeto3.jpg"
-      },
-      {
-        id: 4,
-        titulo: "Feira de Ciências",
-        descricao: "Experimentos científicos criativos e inovadores dos alunos.",
-        categoria: "ciencias",
-        imagem: "img/imagens/projeto4.jpg"
-      },
-      {
-        id: 5,
-        titulo: "Programação para Todos",
-        descricao: "Oficinas de programação para estudantes do ensino fundamental.",
-        categoria: "tecnologia",
-        imagem: "img/imagens/projeto5.jpg"
-      }
-    ];
+const projetos = [
+  {
+    id: 1,
+    titulo: "Robótica Educacional",
+    descricao: "Alunos constroem robôs para solucionar problemas do cotidiano escolar.",
+    categoria: "tecnologia",
+    imagem: "img/imagens/projeto1.jpg",
+    link: "https://www.instagram.com/p/DMjImO-Rnbh/?img_index=1&igsh=cXJtaTV5cXc0aWlp"
+  },
+  {
+    id: 2,
+    titulo: "Horta Sustentável",
+    descricao: "Projeto de horta orgânica que abastece a merenda escolar.",
+    categoria: "sustentabilidade",
+    imagem: "img/imagens/projeto2.jpg",
+    link: "https://www.instagram.com/p/DMjImO-Rnbh/?img_index=2&igsh=example2"
+  },
+  {
+    id: 3,
+    titulo: "Teatro Estudantil",
+    descricao: "Grupo de teatro encena peças clássicas da literatura brasileira.",
+    categoria: "artes",
+    imagem: "img/imagens/projeto3.jpg",
+    link: "https://www.instagram.com/p/DMjImO-Rnbh/?img_index=3&igsh=example3"
+  },
+  {
+    id: 4,
+    titulo: "Feira de Ciências",
+    descricao: "Experimentos científicos criativos e inovadores dos alunos.",
+    categoria: "ciencias",
+    imagem: "img/imagens/projeto4.jpg",
+    link: "https://www.instagram.com/p/DMjImO-Rnbh/?img_index=4&igsh=example4"
+  },
+  {
+    id: 5,
+    titulo: "Programação para Todos",
+    descricao: "Oficinas de programação para estudantes do ensino fundamental.",
+    categoria: "tecnologia",
+    imagem: "img/imagens/projeto5.jpg",
+    link: "https://www.instagram.com/p/DMjImO-Rnbh/?img_index=5&igsh=example5"
+  }
+];
 
     // Carrossel de projetos
-    document.addEventListener('DOMContentLoaded', function() {
-      const slidesContainer = document.getElementById('slidesContainer');
-      const projetosGrid = document.getElementById('projetosGrid');
-      
+document.addEventListener('DOMContentLoaded', function() {
+  const slidesContainer = document.getElementById('slidesContainer');
+  const projetosGrid = document.getElementById('projetosGrid');
+
+  // Gerar slides do carrossel
+  projetos.forEach(projeto => {
+    const slide = document.createElement('div');
+    slide.className = 'slide';
+    slide.innerHTML = `
+      <img src="${projeto.imagem}" alt="${projeto.titulo}">
+      <div class="slide-info">
+        <h3>${projeto.titulo}</h3>
+        <p>${projeto.descricao}</p>
+        <a href="${projeto.link}" target="_blank" class="btn-saiba-mais">Ver detalhes →</a>
+      </div>
+    `;
+    slidesContainer.appendChild(slide);
+  });
+});      
       // Gerar slides do carrossel
       projetos.forEach(projeto => {
         const slide = document.createElement('div');

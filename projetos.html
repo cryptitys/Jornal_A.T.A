@@ -324,7 +324,21 @@ document.addEventListener('DOMContentLoaded', function() {
         currentSlide = (currentSlide + 1) % slides.length;
         showSlide(currentSlide);
       }, 5000);
-      
+      // Gerar cards da grade de projetos
+projetos.forEach(projeto => {
+  const card = document.createElement('div');
+  card.className = 'projeto-card';
+  card.innerHTML = `
+    <img src="${projeto.imagem}" alt="${projeto.titulo}">
+    <div class="projeto-info">
+      <span class="categoria">${capitalize(projeto.categoria)}</span>
+      <h4>${projeto.titulo}</h4>
+      <p>${projeto.descricao}</p>
+      <a href="${projeto.link}" target="_blank" class="btn-saiba-mais">Ver detalhes →</a>
+    </div>
+  `;
+  projetosGrid.appendChild(card);
+});
       // Filtro por categoria
       const categoriaBtns = document.querySelectorAll('.categoria-btn');
       

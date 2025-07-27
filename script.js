@@ -1,22 +1,23 @@
-document.addEventListener('DOMContentLoaded', function () {
-  // --- MENU MOBILE ---
-  const menuToggle = document.getElementById('menuToggle');
-  const navMenu = document.getElementById('navMenu');
-
-  menuToggle.addEventListener('click', function () {
-    const isExpanded = this.getAttribute('aria-expanded') === 'true';
-    this.setAttribute('aria-expanded', !isExpanded);
-    navMenu.classList.toggle('show');
-    document.body.style.overflow = isExpanded ? '' : 'hidden';
+document.addEventListener('DOMContentLoaded', function() {
+  // Menu Mobile
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navMenu = document.querySelector('.nav-menu');
+  
+  menuToggle.addEventListener('click', function() {
+    this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');
+    navMenu.classList.toggle('active');
+    document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
   });
 
-  navMenu.querySelectorAll('a').forEach(link => {
+  // Fechar menu ao clicar em um link
+  document.querySelectorAll('.nav-menu a').forEach(link => {
     link.addEventListener('click', () => {
       menuToggle.setAttribute('aria-expanded', 'false');
-      navMenu.classList.remove('show');
+      navMenu.classList.remove('active');
       document.body.style.overflow = '';
     });
   });
+});
 
   // --- CARROSSEL DE DESTAQUES ---
   const carrossel = document.querySelector('.carrossel');

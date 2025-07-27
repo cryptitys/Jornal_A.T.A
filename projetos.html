@@ -1,153 +1,1436 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Projetos - ATA</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projetos Escolares | Jornal A.T.A</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #4a6fa5;
+      --secondary-color: #ff7e5f;
+      --accent-color: #6bd6d6;
+      --dark-color: #2c3e50;
+      --light-color: #f8f9fa;
+      --success-color: #4caf50;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: #f5f7fa;
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--dark-color);
+      color: white;
+      padding: 8px;
+      z-index: 100;
+      text-decoration: none;
+    }
+    
+    .skip-link:focus {
+      top: 0;
+    }
+    
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+      color: white;
+      padding: 1rem 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    .logo-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      color: white;
+    }
+    
+    .logo span {
+      color: var(--accent-color);
+    }
+    
+    main {
+      max-width: 1400px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    
+    /* Hero Section */
+    .projetos-hero {
+      background: linear-gradient(rgba(74, 111, 165, 0.9), rgba(44, 62, 80, 0.9)), 
+                  url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover;
+      color: white;
+      text-align: center;
+      padding: 5rem 1rem;
+      margin-bottom: 3rem;
+      border-radius: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .projetos-hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      animation: fadeInDown 1s ease;
+    }
+    
+    .projetos-hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      animation: fadeInUp 1s ease;
+    }
+    
+    .btn-explorar {
+      display: inline-block;
+      background-color: var(--secondary-color);
+      color: white;
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      animation: pulse 2s infinite;
+    }
+    
+    .btn-explorar:hover {
+      background-color: #ff6a45;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    
+    /* Filtros e Pesquisa */
+    .filtros-container {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      margin-bottom: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .search-box {
+      flex: 1;
+      min-width: 250px;
+      position: relative;
+    }
+    
+    .search-box input {
+      width: 100%;
+      padding: 0.8rem 1rem 0.8rem 3rem;
+      border: 1px solid #ddd;
+      border-radius: 50px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .search-box input:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(74, 111, 165, 0.2);
+    }
+    
+    .search-box i {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #777;
+    }
+    
+    .categorias-projetos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    
+    .categoria-btn {
+      background: #f0f0f0;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .categoria-btn i {
+      font-size: 0.9rem;
+    }
+    
+    .categoria-btn.active, .categoria-btn:hover {
+      background: var(--primary-color);
+      color: white;
+    }
+    
+    /* Carrossel de Destaques */
+    .destaques-section {
+      margin-bottom: 3rem;
+    }
+    
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    
+    .section-header h2 {
+      font-size: 1.8rem;
+      color: var(--dark-color);
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+    
+    .section-header h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--secondary-color);
+    }
+    
+    .carrossel-projetos {
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    
+    .slides-container {
+      display: flex;
+      transition: transform 0.5s ease;
+      height: 500px;
+    }
+    
+    .slide {
+      min-width: 100%;
+      position: relative;
+    }
+    
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    
+    .slide-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+      color: white;
+      padding: 2rem;
+    }
+    
+    .slide-info h3 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .slide-info .participantes {
+      display: flex;
+      align-items: center;
+      margin: 0.8rem 0;
+    }
+    
+    .participantes .avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 2px solid white;
+      margin-right: -10px;
+      object-fit: cover;
+    }
+    
+    .participantes .mais-alunos {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      margin-left: 5px;
+    }
+    
+    .carrossel-nav {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 1rem;
+      transform: translateY(-50%);
+      z-index: 10;
+    }
+    
+    .carrossel-btn {
+      background: rgba(255,255,255,0.8);
+      color: var(--dark-color);
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .carrossel-btn:hover {
+      background: white;
+      transform: scale(1.1);
+    }
+    
+    .carrossel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #ddd;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .dot.active {
+      background: var(--primary-color);
+      transform: scale(1.2);
+    }
+    
+    /* Grid de Projetos */
+    .projetos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    
+    .projeto-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .projeto-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+    
+    .projeto-imagem {
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .projeto-imagem img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .projeto-card:hover .projeto-imagem img {
+      transform: scale(1.1);
+    }
+    
+    .categoria-tag {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--secondary-color);
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    
+    .projeto-card-content {
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .projeto-card h3 {
+      color: var(--dark-color);
+      margin-bottom: 0.8rem;
+      font-size: 1.3rem;
+    }
+    
+    .projeto-card p {
+      margin-bottom: 1.5rem;
+      color: #666;
+      flex: 1;
+    }
+    
+    .projeto-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid #eee;
+    }
+    
+    .alunos-participantes {
+      display: flex;
+      align-items: center;
+    }
+    
+    .alunos-participantes .avatar {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      border: 2px solid white;
+      margin-right: -8px;
+      object-fit: cover;
+    }
+    
+    .btn-saiba-mais {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-saiba-mais:hover {
+      color: var(--secondary-color);
+      gap: 0.8rem;
+    }
+    
+    /* Galeria de Fotos */
+    .galeria-section {
+      margin: 4rem 0;
+    }
+    
+    .galeria-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .galeria-item {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      height: 250px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .galeria-item:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    
+    .galeria-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .galeria-item:hover img {
+      transform: scale(1.1);
+    }
+    
+    .galeria-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      color: white;
+      padding: 1rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .galeria-item:hover .galeria-overlay {
+      opacity: 1;
+    }
+    
+    .galeria-overlay h4 {
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+    
+    .galeria-overlay p {
+      font-size: 0.8rem;
+      opacity: 0.9;
+    }
+    
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .modal.active {
+      display: flex;
+      opacity: 1;
+    }
+    
+    .modal-content {
+      background: white;
+      border-radius: 10px;
+      max-width: 900px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      animation: modalFadeIn 0.3s ease;
+    }
+    
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--secondary-color);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      border: none;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .modal-close:hover {
+      background: var(--primary-color);
+      transform: rotate(90deg);
+    }
+    
+    .modal-body {
+      padding: 2rem;
+    }
+    
+    .modal-header {
+      padding: 1.5rem 2rem;
+      background: var(--primary-color);
+      color: white;
+      border-radius: 10px 10px 0 0;
+    }
+    
+    .modal-header h3 {
+      font-size: 1.8rem;
+    }
+    
+    .modal-header .modal-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+    
+    .modal-imagem {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin: 1rem 0;
+    }
+    
+    .modal-alunos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    
+    .aluno-card {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      background: #f5f7fa;
+      padding: 0.8rem;
+      border-radius: 50px;
+      width: fit-content;
+    }
+    
+    .aluno-card img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    
+    /* Responsividade */
+    @media (max-width: 992px) {
+      .projetos-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      }
+      
+      .galeria-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .slides-container {
+        height: 400px;
+      }
+      
+      .filtros-container {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .search-box {
+        width: 100%;
+      }
+      
+      .projetos-hero {
+        padding: 3rem 1rem;
+      }
+      
+      .projetos-hero h1 {
+        font-size: 2rem;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .projetos-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .slides-container {
+        height: 300px;
+      }
+      
+      .slide-info {
+        padding: 1rem;
+      }
+      
+      .slide-info h3 {
+        font-size: 1.4rem;
+      }
+      
+      .modal-content {
+        width: 95%;
+      }
+    }
+    
+    /* Animações */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(255, 126, 95, 0.7);
+      }
+      70% {
+        box-shadow: 0 0 0 15px rgba(255, 126, 95, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(255, 126, 95, 0);
+      }
+    }
+    
+    @keyframes modalFadeIn {
+      from {
+        transform: translateY(-20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  </style>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
+  
   <header>
-    <h1>🌟 Projetos em Destaque</h1>
-    <p>Conheça os projetos mais inspiradores da nossa escola.</p>
+    <div class="logo-container">
+      <div class="logo" aria-label="Jornal A.T.A - Página inicial">
+        <span>Jornal</span> <span class="logo-ata">A.T.A</span>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="projetos.html" class="active">Projetos</a>
+        <a href="noticias.html">Notícias</a>
+        <a href="contato.html">Contato</a>
+      </nav>
+    </div>
   </header>
-
-  <main id="projetos-container" class="projetos-grid">
-    <!-- Projetos serão inseridos via JS -->
+  
+  <main id="main-content">
+    <section class="projetos-hero">
+      <h1>Nossos Projetos Escolares</h1>
+      <p>Descubra as iniciativas criativas e inovadoras desenvolvidas por nossos alunos e professores</p>
+      <a href="#projetos" class="btn-explorar">Explorar Projetos</a>
+    </section>
+    
+    <div class="filtros-container">
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" id="searchInput" placeholder="Pesquisar projetos...">
+      </div>
+      
+      <div class="categorias-projetos">
+        <button class="categoria-btn active" data-categoria="todos">
+          <i class="fas fa-layer-group"></i> Todos
+        </button>
+        <button class="categoria-btn" data-categoria="ciencias">
+          <i class="fas fa-flask"></i> Ciências
+        </button>
+        <button class="categoria-btn" data-categoria="tecnologia">
+          <i class="fas fa-robot"></i> Tecnologia
+        </button>
+        <button class="categoria-btn" data-categoria="artes">
+          <i class="fas fa-paint-brush"></i> Artes
+        </button>
+        <button class="categoria-btn" data-categoria="sustentabilidade">
+          <i class="fas fa-leaf"></i> Sustentabilidade
+        </button>
+        <button class="categoria-btn" data-categoria="sociais">
+          <i class="fas fa-hands-helping"></i> Sociais
+        </button>
+      </div>
+    </div>
+    
+    <section class="destaques-section">
+      <div class="section-header">
+        <h2>Projetos em Destaque</h2>
+        <a href="#" class="btn-saiba-mais">Ver todos os destaques</a>
+      </div>
+      
+      <div class="carrossel-projetos">
+        <div class="slides-container" id="slidesContainer">
+          <!-- Slides serão gerados por JavaScript -->
+        </div>
+        
+        <div class="carrossel-nav">
+          <button class="carrossel-btn prev" id="prevBtn">&#10094;</button>
+          <button class="carrossel-btn next" id="nextBtn">&#10095;</button>
+        </div>
+        
+        <div class="carrossel-dots" id="carrosselDots">
+          <!-- Dots serão gerados por JavaScript -->
+        </div>
+      </div>
+    </section>
+    
+    <section id="projetos">
+      <div class="section-header">
+        <h2>Todos os Projetos</h2>
+        <div class="sort-by">
+          <label for="sortSelect">Ordenar por:</label>
+          <select id="sortSelect">
+            <option value="recentes">Mais recentes</option>
+            <option value="antigos">Mais antigos</option>
+            <option value="participantes">Mais participantes</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="projetos-grid" id="projetosGrid">
+        <!-- Projetos serão gerados por JavaScript -->
+      </div>
+    </section>
+    
+    <section class="galeria-section">
+      <div class="section-header">
+        <h2>Galeria de Fotos</h2>
+        <a href="#" class="btn-saiba-mais">Ver todas as fotos</a>
+      </div>
+      
+      <div class="galeria-grid" id="galeriaGrid">
+        <!-- Fotos serão geradas por JavaScript -->
+      </div>
+    </section>
   </main>
 
-  <script src="script.js"></script>
-</body>
-</html>body {
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to bottom, #f0f4ff, #ffffff);
-  margin: 0;
-  padding: 0;
-}
-
-header {
-  background: #005ef7;
-  color: white;
-  padding: 2rem;
-  text-align: center;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-}
-
-.projetos-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  padding: 2rem;
-  max-width: 1200px;
-  margin: auto;
-}
-
-.projeto-card {
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: transform 0.2s;
-}
-
-.projeto-card:hover {
-  transform: translateY(-5px);
-}
-
-.projeto-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-
-.projeto-card .content {
-  padding: 1rem;
-}
-
-.projeto-card h3 {
-  margin: 0 0 0.5rem;
-  color: #005ef7;
-}
-
-.projeto-card p {
-  font-size: 0.95rem;
-  color: #555;
-}
-
-.projeto-card .categoria {
-  display: inline-block;
-  margin-bottom: 0.8rem;
-  padding: 0.25rem 0.7rem;
-  background: #dce8ff;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  color: #003eaa;
-}
-
-.projeto-card a {
-  display: inline-block;
-  margin-top: 1rem;
-  text-decoration: none;
-  color: #005ef7;
-  font-weight: bold;
-}const projetos = [
-  {
-    id: 1,
-    titulo: "Robótica Educacional",
-    descricao: "Alunos constroem robôs para solucionar problemas do cotidiano escolar.",
-    categoria: "Tecnologia",
-    imagem: "img/imagens/projeto1.jpg",
-    link: "https://www.instagram.com/p/DMjImO-Rnbh/?img_index=1"
-  },
-  {
-    id: 2,
-    titulo: "Horta Sustentável",
-    descricao: "Projeto de horta orgânica que abastece a merenda escolar.",
-    categoria: "Sustentabilidade",
-    imagem: "img/imagens/projeto2.jpg",
-    link: "https://www.instagram.com/p/DMjIEXemplo"
-  },
-  {
-    id: 3,
-    titulo: "Teatro Estudantil",
-    descricao: "Grupo de teatro encena peças clássicas da literatura brasileira.",
-    categoria: "Artes",
-    imagem: "img/imagens/projeto3.jpg",
-    link: "https://www.instagram.com/p/DMjITeatro"
-  },
-  {
-    id: 4,
-    titulo: "Feira de Ciências",
-    descricao: "Experimentos científicos criativos e inovadores dos alunos.",
-    categoria: "Ciências",
-    imagem: "img/imagens/projeto4.jpg",
-    link: "https://www.instagram.com/p/DMjIFeira"
-  },
-  {
-    id: 5,
-    titulo: "Programação para Todos",
-    descricao: "Oficinas de programação para estudantes do ensino fundamental.",
-    categoria: "Tecnologia",
-    imagem: "img/imagens/projeto5.jpg",
-    link: "https://www.instagram.com/p/DMjICodigos"
-  }
-];
-
-document.addEventListener('DOMContentLoaded', () => {
-  const container = document.getElementById('projetos-container');
-  projetos.forEach(projeto => {
-    const card = document.createElement('div');
-    card.className = 'projeto-card';
-    card.innerHTML = `
-      <img src="${projeto.imagem}" alt="${projeto.titulo}">
-      <div class="content">
-        <span class="categoria">${projeto.categoria}</span>
-        <h3>${projeto.titulo}</h3>
-        <p>${projeto.descricao}</p>
-        <a href="${projeto.link}" target="_blank">Ver detalhes →</a>
+  <footer>
+    <div class="footer-container">
+      <div class="footer-logo">
+        <div class="logo">Jornal <span>A.T.A</span></div>
+        <p>Informando e conectando nossa comunidade escolar</p>
       </div>
-    `;
-    container.appendChild(card);
-  });
-});
+      
+      <div class="footer-links">
+        <div class="footer-column">
+          <h4>Navegação</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projetos.html">Projetos</a></li>
+            <li><a href="noticias.html">Notícias</a></li>
+            <li><a href="contato.html">Contato</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Contato</h4>
+          <ul>
+            <li><i class="fas fa-envelope"></i> contato@jornalata.com</li>
+            <li><i class="fas fa-phone"></i> (11) 1234-5678</li>
+            <li><i class="fas fa-map-marker-alt"></i> Rua da Escola, 123 - São Paulo</li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Redes Sociais</h4>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2023 Jornal A.T.A - Todos os direitos reservados</p>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal" id="projetoModal">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <div class="modal-header">
+        <h3 id="modalTitle">Título do Projeto</h3>
+        <div class="modal-meta">
+          <span id="modalCategoria">Categoria</span>
+          <span id="modalData">Publicado em 10/10/2023</span>
+        </div>
+      </div>
+      <div class="modal-body">
+        <img src="" alt="" class="modal-imagem" id="modalImagem">
+        <p id="modalDescricao">Descrição detalhada do projeto...</p>
+        
+        <h4>Objetivos</h4>
+        <ul id="modalObjetivos">
+          <!-- Objetivos serão gerados por JavaScript -->
+        </ul>
+        
+        <h4>Alunos Participantes</h4>
+        <div class="modal-alunos" id="modalAlunos">
+          <!-- Alunos serão gerados por JavaScript -->
+        </div>
+        
+        <h4>Mais Fotos</h4>
+        <div class="modal-galeria" id="modalGaleria">
+          <!-- Fotos adicionais serão geradas por JavaScript -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Dados dos projetos (simulação - em um projeto real, isso viria de um banco de dados)
+    const projetos = [
+      {
+        id: 1,
+        titulo: "Robótica Educacional",
+        descricao: "Alunos do ensino médio desenvolvem robôs autônomos capazes de resolver problemas do cotidiano escolar, como organização de livros e limpeza de áreas comuns.",
+        categoria: "tecnologia",
+        data: "15/10/2023",
+        imagem: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+        objetivos: [
+          "Desenvolver habilidades de programação e engenharia",
+          "Resolver problemas reais da escola",
+          "Promover trabalho em equipe"
+        ],
+        alunos: [
+          { nome: "Carlos Silva", foto: "https://randomuser.me/api/portraits/men/32.jpg" },
+          { nome: "Ana Oliveira", foto: "https://randomuser.me/api/portraits/women/44.jpg" },
+          { nome: "Pedro Santos", foto: "https://randomuser.me/api/portraits/men/22.jpg" },
+          { nome: "Mariana Costa", foto: "https://randomuser.me/api/portraits/women/63.jpg" }
+        ],
+        fotos: [
+          "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+          "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+          "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+        ]
+      },
+      {
+        id: 2,
+        titulo: "Horta Sustentável",
+        descricao: "Projeto de horta orgânica cultivada pelos alunos que abastece a merenda escolar e promove educação ambiental.",
+        categoria: "sustentabilidade",
+        data: "05/09/2023",
+        imagem: "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1482&q=80",
+        objetivos: [
+          "Promover alimentação saudável",
+          "Ensinar sobre agricultura sustentável",
+          "Reduzir o desperdício de alimentos"
+        ],
+        alunos: [
+          { nome: "João Pereira", foto: "https://randomuser.me/api/portraits/men/28.jpg" },
+          { nome: "Luiza Fernandes", foto: "https://randomuser.me/api/portraits/women/33.jpg" },
+          { nome: "Rafael Souza", foto: "https://randomuser.me/api/portraits/men/45.jpg" }
+        ],
+        fotos: [
+          "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1482&q=80",
+          "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1482&q=80",
+          "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1482&q=80"
+        ]
+      },
+      {
+        id: 3,
+        titulo: "Teatro Estudantil",
+        descricao: "Grupo de teatro encena peças clássicas da literatura brasileira com adaptações contemporâneas.",
+        categoria: "artes",
+        data: "22/08/2023",
+        imagem: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+        objetivos: [
+          "Promover a cultura brasileira",
+          "Desenvolver habilidades de expressão",
+          "Trabalhar em equipe"
+        ],
+        alunos: [
+          { nome: "Fernanda Lima", foto: "https://randomuser.me/api/portraits/women/29.jpg" },
+          { nome: "Gustavo Henrique", foto: "https://randomuser.me/api/portraits/men/36.jpg" },
+          { nome: "Isabela Santos", foto: "https://randomuser.me/api/portraits/women/42.jpg" },
+          { nome: "Lucas Martins", foto: "https://randomuser.me/api/portraits/men/51.jpg" },
+          { nome: "Camila Oliveira", foto: "https://randomuser.me/api/portraits/women/55.jpg" }
+        ],
+        fotos: [
+          "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+          "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+          "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+        ]
+      },
+      {
+        id: 4,
+        titulo: "Feira de Ciências",
+        descricao: "Evento anual onde alunos apresentam experimentos científicos criativos e inovadores para toda a comunidade escolar.",
+        categoria: "ciencias",
+        data: "12/07/2023",
+        imagem: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+        objetivos: [
+          "Estimular o interesse pela ciência",
+          "Desenvolver projetos de pesquisa",
+          "Apresentar resultados para a comunidade"
+        ],
+        alunos: [
+          { nome: "Ricardo Almeida", foto: "https://randomuser.me/api/portraits/men/31.jpg" },
+          { nome: "Patrícia Souza", foto: "https://randomuser.me/api/portraits/women/48.jpg" },
+          { nome: "Bruno Costa", foto: "https://randomuser.me/api/portraits/men/24.jpg" },
+          { nome: "Amanda Rocha", foto: "https://randomuser.me/api/portraits/women/52.jpg" }
+        ],
+        fotos: [
+          "https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+          "https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+          "https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+        ]
+      },
+      {
+        id: 5,
+        titulo: "Programação para Todos",
+        descricao: "Oficinas de programação para estudantes do ensino fundamental, introduzindo conceitos básicos de forma lúdica e acessível.",
+        categoria: "tecnologia",
+        data: "30/06/2023",
+        imagem: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+        objetivos: [
+          "Introduzir programação para crianças",
+          "Desenvolver pensamento lógico",
+          "Promover inclusão digital"
+        ],
+        alunos: [
+          { nome: "Tiago Mendes", foto: "https://randomuser.me/api/portraits/men/33.jpg" },
+          { nome: "Juliana Ferreira", foto: "https://randomuser.me/api/portraits/women/41.jpg" },
+          { nome: "Marcos Vinicius", foto: "https://randomuser.me/api/portraits/men/29.jpg" }
+        ],
+        fotos: [
+          "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+          "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+          "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+        ]
+      },
+      {
+        id: 6,
+        titulo: "Arte nas Paredes",
+        descricao: "Projeto de grafite e arte mural que transformou os muros da escola em galeria de arte a céu aberto.",
+        categoria: "artes",
+        data: "18/05/2023",
+        imagem: "https://images.unsplash.com/photo-1547891654-e66ed7ebb968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+        objetivos: [
+          "Embelezar o ambiente escolar",
+          "Expressar criatividade dos alunos",
+          "Promover arte urbana"
+        ],
+        alunos: [
+          { nome: "Diego Ramos", foto: "https://randomuser.me/api/portraits/men/35.jpg" },
+          { nome: "Carolina Dias", foto: "https://randomuser.me/api/portraits/women/38.jpg" },
+          { nome: "Vinícius Castro", foto: "https://randomuser.me/api/portraits/men/42.jpg" },
+          { nome: "Larissa Monteiro", foto: "https://randomuser.me/api/portraits/women/47.jpg" }
+        ],
+        fotos: [
+          "https://images.unsplash.com/photo-1547891654-e66ed7ebb968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+          "https://images.unsplash.com/photo-1547891654-e66ed7ebb968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+          "https://images.unsplash.com/photo-1547891654-e66ed7ebb968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+        ]
+      },
+      {
+        id: 7,
+        titulo: "Reciclagem Criativa",
+        descricao: "Oficinas que transformam materiais recicláveis em objetos úteis e artísticos, promovendo consciência ambiental.",
+        categoria: "sustentabilidade",
+        data: "03/04/2023",
+        imagem: "https://images.unsplash.com/photo-1584971934534-af9a9a638b81?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+        objetivos: [
+          "Reduzir resíduos na escola",
+          "Promover reciclagem criativa",
+          "Conscientizar sobre sustentabilidade"
+        ],
+        alunos: [
+          { nome: "Roberta Alves", foto: "https://randomuser.me/api/portraits/women/31.jpg" },
+          { nome: "Felipe Nogueira", foto: "https://randomuser.me/api/portraits/men/37.jpg" },
+          { nome: "Beatriz Lima", foto: "https://randomuser.me/api/portraits/women/43.jpg" }
+        ],
+        fotos: [
+          "https://images.unsplash.com/photo-1584971934534-af9a9a638b81?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+          "https://images.unsplash.com/photo-1584971934534-af9a9a638b81?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+          "https://images.unsplash.com/photo-1584971934534-af9a9a638b81?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+        ]
+      },
+      {
+        id: 8,
+        titulo: "Ação Social na Comunidade",
+        descricao: "Projeto que leva alunos para atividades voluntárias em instituições carentes do entorno da escola.",
+        categoria: "sociais",
+        data: "20/03/2023",
+        imagem: "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
+        objetivos: [
+          "Promover solidariedade",
+          "Integrar escola e comunidade",
+          "Desenvolver empatia social"
+        ],
+        alunos: [
+          { nome: "Gabriel Santos", foto: "https://randomuser.me/api/portraits/men/26.jpg" },
+          { nome: "Laura Mendonça", foto: "https://randomuser.me/api/portraits/women/34.jpg" },
+          { nome: "Rodrigo Barbosa", foto: "https://randomuser.me/api/portraits/men/39.jpg" },
+          { nome: "Tatiane Silva", foto: "https://randomuser.me/api/portraits/women/46.jpg" },
+          { nome: "Eduardo Costa", foto: "https://randomuser.me/api/portraits/men/48.jpg" }
+        ],
+        fotos: [
+          "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
+          "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
+          "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80"
+        ]
+      }
+    ];
+
+    // Fotos para a galeria (simulação)
+    const fotosGaleria = [
+      { 
+        imagem: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+        titulo: "Feira de Ciências 2023",
+        descricao: "Alunos apresentando projetos científicos"
+      },
+      { 
+        imagem: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80",
+        titulo: "Trabalho em Equipe",
+        descricao: "Grupo desenvolvendo projeto colaborativo"
+      },
+      { 
+        imagem: "https://images.unsplash.com/photo-1541178735493-479c1a27ed24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80",
+        titulo: "Aula Prática de Biologia",
+        descricao: "Estudantes em atividade de laboratório"
+      },
+      { 
+        imagem: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+        titulo: "Oficina de Arte",
+        descricao: "Alunos criando pinturas coletivas"
+      },
+      { 
+        imagem: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+        titulo: "Apresentação Musical",
+        descricao: "Banda escolar no festival de artes"
+      },
+      { 
+        imagem: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80",
+        titulo: "Aula ao Ar Livre",
+        descricao: "Estudantes em atividade no pátio da escola"
+      },
+      { 
+        imagem: "https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80",
+        titulo: "Robótica Educacional",
+        descricao: "Equipe trabalhando em protótipo de robô"
+      },
+      { 
+        imagem: "https://images.unsplash.com/photo-1588072432904-843af37f03ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80",
+        titulo: "Experimento Científico",
+        descricao: "Demonstração na feira de ciências"
+      }
+    ];
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const slidesContainer = document.getElementById('slidesContainer');
+      const carrosselDots = document.getElementById('carrosselDots');
+      const projetosGrid = document.getElementById('projetosGrid');
+      const galeriaGrid = document.getElementById('galeriaGrid');
+      const projetoModal = document.getElementById('projetoModal');
+      const modalClose = document.getElementById('modalClose');
+      const searchInput = document.getElementById('searchInput');
+      const sortSelect = document.getElementById('sortSelect');
+      
+      // Gerar slides do carrossel (apenas os 3 primeiros projetos)
+      const projetosDestaque = projetos.slice(0, 3);
+      projetosDestaque.forEach((projeto, index) => {
+        // Slide
+        const slide = document.createElement('div');
+        slide.className = 'slide';
+        slide.innerHTML = `
+          <img src="${projeto.imagem}" alt="${projeto.titulo}">
+          <div class="slide-info">
+            <h3>${projeto.titulo}</h3>
+            <p>${projeto.descricao}</p>
+            <div class="participantes">
+              ${projeto.alunos.slice(0, 3).map(aluno => 
+                `<img src="${aluno.foto}" alt="${aluno.nome}" class="avatar" title="${aluno.nome}">`
+              ).join('')}
+              ${projeto.alunos.length > 3 ? 
+                `<div class="mais-alunos">+${projeto.alunos.length - 3}</div>` : ''}
+            </div>
+            <button class="btn-saiba-mais" data-id="${projeto.id}">Ver projeto completo →</button>
+          </div>
+        `;
+        slidesContainer.appendChild(slide);
+        
+        // Dot de navegação
+        const dot = document.createElement('div');
+        dot.className = `dot ${index === 0 ? 'active' : ''}`;
+        dot.dataset.index = index;
+        carrosselDots.appendChild(dot);
+      });
+      
+      // Gerar grid de projetos
+      projetos.forEach(projeto => {
+        const card = document.createElement('div');
+        card.className = `projeto-card ${projeto.categoria}`;
+        card.innerHTML = `
+          <div class="projeto-imagem">
+            <img src="${projeto.imagem}" alt="${projeto.titulo}">
+            <span class="categoria-tag">${projeto.categoria.charAt(0).toUpperCase() + projeto.categoria.slice(1)}</span>
+          </div>
+          <div class="projeto-card-content">
+            <h3>${projeto.titulo}</h3>
+            <p>${projeto.descricao}</p>
+            <div class="projeto-meta">
+              <div class="alunos-participantes">
+                ${projeto.alunos.slice(0, 4).map(aluno => 
+                  `<img src="${aluno.foto}" alt="${aluno.nome}" class="avatar" title="${aluno.nome}">`
+                ).join('')}
+              </div>
+              <a href="#" class="btn-saiba-mais" data-id="${projeto.id}">Saiba mais →</a>
+            </div>
+          </div>
+        `;
+        projetosGrid.appendChild(card);
+      });
+      
+      // Gerar galeria de fotos
+      fotosGaleria.forEach(foto => {
+        const item = document.createElement('div');
+        item.className = 'galeria-item';
+        item.innerHTML = `
+          <img src="${foto.imagem}" alt="${foto.titulo}">
+          <div class="galeria-overlay">
+            <h4>${foto.titulo}</h4>
+            <p>${foto.descricao}</p>
+          </div>
+        `;
+        galeriaGrid.appendChild(item);
+      });
+      
+      // Funcionalidade do carrossel
+      const slides = document.querySelectorAll('.slide');
+      const dots = document.querySelectorAll('.dot');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      let currentSlide = 0;
+      let autoSlideInterval;
+      
+      function showSlide(index) {
+        slidesContainer.style.transform = `translateX(-${index * 100}%)`;
+        
+        // Atualizar dots ativos
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[index].classList.add('active');
+        
+        currentSlide = index;
+      }
+      
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+      }
+      
+      function prevSlide() {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+      }
+      
+      function startAutoSlide() {
+        autoSlideInterval = setInterval(nextSlide, 5000);
+      }
+      
+      function stopAutoSlide() {
+        clearInterval(autoSlideInterval);
+      }
+      
+      prevBtn.addEventListener('click', () => {
+        prevSlide();
+        stopAutoSlide();
+        startAutoSlide();
+      });
+      
+      nextBtn.addEventListener('click', () => {
+        nextSlide();
+        stopAutoSlide();
+        startAutoSlide();
+      });
+      
+      dots.forEach(dot => {
+        dot.addEventListener('click', function() {
+          const slideIndex = parseInt(this.dataset.index);
+          showSlide(slideIndex);
+          stopAutoSlide();
+          startAutoSlide();
+        });
+      });
+      
+      // Iniciar auto slide
+      startAutoSlide();
+      
+      // Pausar auto slide quando o mouse estiver sobre o carrossel
+      const carrossel = document.querySelector('.carrossel-projetos');
+      carrossel.addEventListener('mouseenter', stopAutoSlide);
+      carrossel.addEventListener('mouseleave', startAutoSlide);
+      
+      // Filtro por categoria
+      const categoriaBtns = document.querySelectorAll('.categoria-btn');
+      
+      categoriaBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          // Atualizar botão ativo
+          categoriaBtns.forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          
+          const categoria = this.getAttribute('data-categoria');
+          
+          // Filtrar projetos
+          const cards = document.querySelectorAll('.projeto-card');
+          cards.forEach(card => {
+            if (categoria === 'todos' || card.classList.contains(categoria)) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+      
+      // Pesquisa de projetos
+      searchInput.addEventListener('input', function() {
+        const termo = this.value.toLowerCase();
+        const cards = document.querySelectorAll('.projeto-card');
+        
+        cards.forEach(card => {
+          const titulo = card.querySelector('h3').textContent.toLowerCase();
+          const descricao = card.querySelector('p').textContent.toLowerCase();
+          const categoria = card.querySelector('.categoria-tag').textContent.toLowerCase();
+          
+          if (titulo.includes(termo) || descricao.includes(termo) || categoria.includes(termo)) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+      
+      // Ordenação de projetos
+      sortSelect.addEventListener('change', function() {
+        const ordem = this.value;
+        const grid = document.getElementById('projetosGrid');
+        const cards = Array.from(grid.querySelectorAll('.projeto-card'));
+        
+        cards.sort((a, b) => {
+          if (ordem === 'recentes') {
+            // Ordenar por data (simulação - em um projeto real, usaria datas reais)
+            return 0; // Mantém a ordem original (já está ordenado por data)
+          } else if (ordem === 'antigos') {
+            return 0; // Ordem inversa (simulação)
+          } else if (ordem === 'participantes') {
+            // Ordenar por número de participantes (simulação)
+            const aAlunos = a.querySelectorAll('.avatar').length;
+            const bAlunos = b.querySelectorAll('.avatar').length;
+            return bAlunos - aAlunos;
+          }
+          return 0;
+        });
+        
+        // Reordenar os cards no grid
+        cards.forEach(card => grid.appendChild(card));
+      });
+      
+      // Modal de projeto
+      const saibaMaisBtns = document.querySelectorAll('.btn-saiba-mais');
+      
+      saibaMaisBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const projetoId = parseInt(this.dataset.id);
+          const projeto = projetos.find(p => p.id === projetoId);
+          
+          if (projeto) {
+            // Preencher modal com dados do projeto
+            document.getElementById('modalTitle').textContent = projeto.titulo;
+            document.getElementById('modalCategoria').textContent = projeto.categoria.charAt(0).toUpperCase() + projeto.categoria.slice(1);
+            document.getElementById('modalData').textContent = `Publicado em ${projeto.data}`;
+            document.getElementById('modalImagem').src = projeto.imagem;
+            document.getElementById('modalImagem').alt = projeto.titulo;
+            document.getElementById('modalDescricao').textContent = projeto.descricao;
+            
+            // Preencher objetivos
+            const objetivosList = document.getElementById('modalObjetivos');
+            objetivosList.innerHTML = '';
+            projeto.objetivos.forEach(objetivo => {
+              const li = document.createElement('li');
+              li.textContent = objetivo;
+              objetivosList.appendChild(li);
+            });
+            
+            // Preencher alunos participantes
+            const alunosContainer = document.getElementById('modalAlunos');
+            alunosContainer.innerHTML = '';
+            projeto.alunos.forEach(aluno => {
+              const alunoCard = document.createElement('div');
+              alunoCard.className = 'aluno-card';
+              alunoCard.innerHTML = `
+                <img src="${aluno.foto}" alt="${aluno.nome}">
+                <span>${aluno.nome}</span>
+              `;
+              alunosContainer.appendChild(alunoCard);
+            });
+            
+            // Preencher galeria de fotos
+            const galeriaContainer = document.getElementById('modalGaleria');
+            galeriaContainer.innerHTML = '';
+            projeto.fotos.forEach((foto, index) => {
+              const img = document.createElement('img');
+              img.src = foto;
+              img.alt = `${projeto.titulo} - Foto ${index + 1}`;
+              img.style.width = '100%';
+              img.style.margin = '0.5rem 0';
+              img.style.borderRadius = '5px';
+              galeriaContainer.appendChild(img);
+            });
+            
+            // Mostrar modal
+            projetoModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+          }
+        });
+      });
+      
+      // Fechar modal
+      modalClose.addEventListener('click', function() {
+        projetoModal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      });
+      
+      // Fechar modal ao clicar fora do conteúdo
+      projetoModal.addEventListener('click', function(e) {
+        if (e.target === projetoModal) {
+          projetoModal.classList.remove('active');
+          document.body.style.overflow = 'auto';
+        }
+      });
+    });
+  </script>
+</body>
+  </html>

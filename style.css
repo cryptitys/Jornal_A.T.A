@@ -171,60 +171,51 @@ h2 {
   max-width: 700px;
 }
 
-/* Quadro de Avisos */
-.avisos {
-  background: var(--white);
-  padding: 2rem;
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-}
-
-.avisos-grid {
+/* Avisos */
+.notices-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
+  gap: 20px;
 }
 
-.aviso-card {
-  background: #FFF9C4;
-  padding: 1.5rem;
+.notice-card {
+  display: flex;
+  background-color: var(--white);
   border-radius: var(--border-radius);
-  border-left: 5px solid var(--secondary-color);
+  padding: 20px;
+  box-shadow: var(--box-shadow);
   transition: var(--transition);
+  border-left: 4px solid var(--primary-color);
 }
 
-.aviso-card:hover {
+.notice-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
 }
 
-.aviso-card h3 {
-  color: var(--text-color);
-  margin-bottom: 0.5rem;
-  font-size: 1.2rem;
+.notice-card.urgent {
+  border-left-color: var(--error-color);
 }
 
-.aviso-card p {
-  color: var(--text-light);
-  margin-bottom: 1rem;
-}
-
-.btn-saiba-mais {
+.notice-icon {
+  font-size: 1.5rem;
   color: var(--primary-color);
-  text-decoration: none;
-  font-weight: 500;
-  display: inline-flex;
-  align-items: center;
-  transition: var(--transition);
+  margin-right: 15px;
 }
 
-.btn-saiba-mais:hover,
-.btn-saiba-mais:focus {
-  color: var(--primary-dark);
-  text-decoration: underline;
-  outline: none;
+.notice-card.urgent .notice-icon {
+  color: var(--error-color);
 }
 
+.notice-content h3 {
+  margin-bottom: 8px;
+}
+
+.notice-date {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-light);
+  margin-top: 10px;
+}
 /* Destaques */
 .destaques {
   background: var(--white);

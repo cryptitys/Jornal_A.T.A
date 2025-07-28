@@ -357,42 +357,54 @@ h2 {
 .carrossel-btn:hover,
 .carrossel-btn:focus {
   background: rgba(0,0,0,0.7);
-  outline: none;
+/* Destaques */
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
 }
 
-.prev {
-  left: 0;
-}
-
-.next {
-  right: 0;
-}
-
-.carrossel-dots {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-top: 1rem;
-}
-
-.dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #ccc;
-  border: none;
-  cursor: pointer;
+.highlight-card {
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
   transition: var(--transition);
 }
 
-.dot.active {
-  background: var(--primary-color);
+.highlight-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
-.dot:hover,
-.dot:focus {
-  background: var(--primary-dark);
-  outline: none;
+.highlight-image {
+  height: 200px;
+  overflow: hidden;
+}
+
+.highlight-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.highlight-card:hover .highlight-image img {
+  transform: scale(1.1);
+}
+
+.highlight-content {
+  padding: 20px;
+}
+
+.highlight-content h3 {
+  margin-bottom: 10px;
+  color: var(--primary-color);
+}
+
+.highlight-content p {
+  color: var(--text-light);
+  margin-bottom: 15px;
 }
 
 /* Seção dos Pais */

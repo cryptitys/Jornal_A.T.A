@@ -95,16 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // --- AVISOS (REDIRECIONAMENTO) ---
-  document.querySelectorAll('.btn-saiba-mais').forEach(btn => {
-    btn.addEventListener('click', function (e) {
-      e.preventDefault();
-      const aviso = this.closest('.aviso-card')?.querySelector('h3')?.textContent || 'aviso';
-      const url = this.getAttribute('href');
-      alert(`Você será redirecionado para mais informações sobre: ${aviso}`);
-      window.location.href = url;
-    });
-  });
+
 
   // --- MODAL DE AVISO ---
   const avisoModal = document.getElementById('avisoModal');

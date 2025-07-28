@@ -3,21 +3,21 @@ document.addEventListener('DOMContentLoaded', function() {
   const menuToggle = document.querySelector('.menu-toggle');
   const navMenu = document.querySelector('.nav-menu');
   
-  menuToggle.addEventListener('click', function() {
-    this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');
-    navMenu.classList.toggle('active');
-    document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+  menuToggle?.addEventListener('click', function() {
+    const expanded = this.getAttribute('aria-expanded') === 'true';
+    this.setAttribute('aria-expanded', String(!expanded));
+    navMenu?.classList.toggle('active');
+    document.body.style.overflow = navMenu?.classList.contains('active') ? 'hidden' : '';
   });
 
   // Fechar menu ao clicar em um link
   document.querySelectorAll('.nav-menu a').forEach(link => {
     link.addEventListener('click', () => {
-      menuToggle.setAttribute('aria-expanded', 'false');
-      navMenu.classList.remove('active');
+      menuToggle?.setAttribute('aria-expanded', 'false');
+      navMenu?.classList.remove('active');
       document.body.style.overflow = '';
     });
   });
-});
 
   // --- CARROSSEL DE DESTAQUES ---
   const carrossel = document.querySelector('.carrossel');
@@ -165,57 +165,45 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
-});
 
-// --- FUNÇÃO DE MENSAGEM VIA API (opcional) ---
-async function enviarMensagem(mensagemUsuario) {
-  const resposta = await fetch("/api/chat", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ message: mensagemUsuario })
+  // --- LINKS E SENHAS DOS SIMULADOS ---
+  const linksSimulados = {
+    "Português": { senha: "123456", url: "https://docs.google.com/forms/d/e/1FAIpQLSfX...portugues" },
+    "História": { senha: "654321", url: "https://docs.google.com/forms/d/e/1FAIpQLSfX...historia" },
+    "Geografia": { senha: "111111", url: "https://docs.google.com/forms/d/e/1FAIpQLSfX...geografia" },
+    "Matemática": { senha: "222222", url: "https://docs.google.com/forms/d/e/1FAIpQLSfX...matematica" },
+    "Finanças": { senha: "333333", url: "https://docs.google.com/forms/d/e/1FAIpQLSfX...financas" },
+    "Inglês": { senha: "444444", url: "https://docs.google.com/forms/d/e/1FAIpQLSfX...ingles" },
+    "Física": { senha: "555555", url: "https://docs.google.com/forms/d/e/1FAIpQLSfX...fisica" },
+    "Filosofia": { senha: "666666", url: "https://docs.google.com/forms/d/e/1FAIpQLSfX...filosofia" },
+    "Biologia": { senha: "777777", url: "https://docs.google.com/forms/d/e/1FAIpQLSfX...biologia" },
+    "Química": { senha: "888888", url: "https://docs.google.com/forms/d/e/1FAIpQLSfX...quimica" },
+    "Artes": { senha: "999999", url: "https://docs.google.com/forms/d/e/1FAIpQLSfX...artes" }
+  };
+
+  let simuladoSelecionado = null;
+
+  document.querySelectorAll('.btn-simulado').forEach(btn => {
+    btn.addEventListener('click', () => {
+      simuladoSelecionado = btn.textContent;
+      document.getElementById('modalSenha').style.display = 'flex';
+      document.getElementById('senhaInput').value = "";
+      document.getElementById('mensagemErro').style.display = 'none';
+    });
   });
 
-  const data = await resposta.json();
-  return data.reply;
-}
+  document.getElementById('confirmarSenha')?.addEventListener('click', () => {
+    const senhaDigitada = document.getElementById('senhaInput').value;
+    const info = linksSimulados[simuladoSelecionado];
 
-// --- LINKS E SENHAS DOS SIMULADOS ---
-const linksSimulados = {
-  "Português": { senha: "123456", url: "https://docs.google.com/forms/d/e/1FAIpQLSfX...portugues" },
-  "História": { senha: "654321", url: "https://docs.google.com/forms/d/e/1FAIpQLSfX...historia" },
-  "Geografia": { senha: "111111", url: "https://docs.google.com/forms/d/e/1FAIpQLSfX...geografia" },
-  "Matemática": { senha: "222222", url: "https://docs.google.com/forms/d/e/1FAIpQLSfX...matematica" },
-  "Finanças": { senha: "333333", url: "https://docs.google.com/forms/d/e/1FAIpQLSfX...financas" },
-  "Inglês": { senha: "444444", url: "https://docs.google.com/forms/d/e/1FAIpQLSfX...ingles" },
-  "Física": { senha: "555555", url: "https://docs.google.com/forms/d/e/1FAIpQLSfX...fisica" },
-  "Filosofia": { senha: "666666", url: "https://docs.google.com/forms/d/e/1FAIpQLSfX...filosofia" },
-  "Biologia": { senha: "777777", url: "https://docs.google.com/forms/d/e/1FAIpQLSfX...biologia" },
-  "Química": { senha: "888888", url: "https://docs.google.com/forms/d/e/1FAIpQLSfX...quimica" },
-  "Artes": { senha: "999999", url: "https://docs.google.com/forms/d/e/1FAIpQLSfX...artes" }
-};
-
-let simuladoSelecionado = null;
-
-document.querySelectorAll('.btn-simulado').forEach(btn => {
-  btn.addEventListener('click', () => {
-    simuladoSelecionado = btn.textContent;
-    document.getElementById('modalSenha').style.display = 'flex';
-    document.getElementById('senhaInput').value = "";
-    document.getElementById('mensagemErro').style.display = 'none';
+    if (info && senhaDigitada === info.senha) {
+      window.location.href = info.url;
+    } else {
+      document.getElementById('mensagemErro').style.display = 'block';
+    }
   });
-});
 
-document.getElementById('confirmarSenha')?.addEventListener('click', () => {
-  const senhaDigitada = document.getElementById('senhaInput').value;
-  const info = linksSimulados[simuladoSelecionado];
-
-  if (info && senhaDigitada === info.senha) {
-    window.location.href = info.url;
-  } else {
-    document.getElementById('mensagemErro').style.display = 'block';
-  }
-});
-
-document.getElementById('cancelarSenha')?.addEventListener('click', () => {
-  document.getElementById('modalSenha').style.display = 'none';
+  document.getElementById('cancelarSenha')?.addEventListener('click', () => {
+    document.getElementById('modalSenha').style.display = 'none';
+  });
 });

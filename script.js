@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // --- LINKS E SENHAS DOS SIMULADOS ---
   const linksSimulados = {
-    "Português": { senha: "123456", url: "https://docs.google.com/forms/d/e/1FAIpQLSfX...portugues" },
+    "Português": { senha: "123456", url: "https://studio.firebase.google.com/app-06467154...portugues" },
     "História": { senha: "654321", url: "https://docs.google.com/forms/d/e/1FAIpQLSfX...historia" },
     "Geografia": { senha: "111111", url: "https://docs.google.com/forms/d/e/1FAIpQLSfX...geografia" },
     "Matemática": { senha: "222222", url: "https://docs.google.com/forms/d/e/1FAIpQLSfX...matematica" },

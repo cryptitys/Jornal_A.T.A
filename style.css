@@ -86,6 +86,7 @@ header {
 
 /* Botão do menu (hambúrguer) */
 .menu-toggle {
+  margin-left: auto;
   background: none;
   border: none;
   width: 30px;

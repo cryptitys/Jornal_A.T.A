@@ -198,3 +198,30 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('modalSenha').style.display = 'none';
   });
 });
+<script>
+  let destino = "";
+
+  function pedirCaptcha(url) {
+    destino = url;
+    document.getElementById("captcha-modal").style.display = "block";
+  }
+
+  function verificado() {
+    if (destino) {
+      window.location.href = destino;
+    }
+  }
+
+  function fecharCaptcha() {
+    document.getElementById("captcha-modal").style.display = "none";
+    grecaptcha.reset(); // limpa o reCAPTCHA
+  }
+
+  // Fecha ao clicar fora do modal
+  window.onclick = function(event) {
+    const modal = document.getElementById("captcha-modal");
+    if (event.target == modal) {
+      fecharCaptcha();
+    }
+  }
+</script>

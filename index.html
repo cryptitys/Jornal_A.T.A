@@ -8,32 +8,46 @@
   <title>Jornal Escolar A.T.A | Escola de Ensino Fundamental e Médio</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <style>
+    #captcha-box {
+      display: none;
+      margin: 20px;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Barra de Navegação -->
+  <!-- Barra de Navegação -->
   <header>
-  <div class="logo-container">
-    <span class="logo-ata">A.T.A</span>
-    <span class="logo-sub">Educação de Qualidade</span>
-  </div>
-
-  <button class="menu-toggle" aria-expanded="false">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-      <nav class="nav-menu">
-        <ul>
-          <li><a href="#" class="active"><i class="fas fa-home"></i> Início</a></li>
-          <li><a href="noticias.html"><i class="fas fa-newspaper"></i> Notícias</a></li>
-          <li><a href="projetos.html"><i class="fas fa-project-diagram"></i> Projetos</a></li>
-          <li><a href="#calendar"><i class="fas fa-calendar-alt"></i> Calendário</a></li>
-          <li><a href="#contato"><i class="fas fa-envelope"></i> Contato</a></li>
-        </ul>
-      </nav>
+    <div class="logo-container">
+      <span class="logo-ata">A.T.A</span>
+      <span class="logo-sub">Educação de Qualidade</span>
     </div>
+
+    <button class="menu-toggle" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="nav-menu">
+      <ul>
+        <li><a href="#" class="active"><i class="fas fa-home"></i> Início</a></li>
+        <li><a href="#" onclick="pedirCaptcha('noticias.html')"><i class="fas fa-newspaper"></i> Notícias</a></li>
+        <li><a href="#" onclick="pedirCaptcha('projetos.html')"><i class="fas fa-project-diagram"></i> Projetos</a></li>
+        <li><a href="#calendar"><i class="fas fa-calendar-alt"></i> Calendário</a></li>
+        <li><a href="#contato"><i class="fas fa-envelope"></i> Contato</a></li>
+      </ul>
+    </nav>
   </header>
+
+  <!-- Caixa do reCAPTCHA -->
+  <div id="captcha-box">
+    <p>Confirme que você é humano para continuar:</p>
+    <div class="g-recaptcha" data-sitekey="6LcAvJMrAAAAAPcVoy2JvbpXmkEb4xy7QPjSNak2" data-callback="verificado"></div>
+  </div>
 
   <!-- Banner Principal -->
   <section class="hero-banner">
@@ -222,7 +236,21 @@ Motuca SP</p>
   </footer>
 
 
-  
+  <script>
+  let destino = "";
+
+  function pedirCaptcha(url) {
+    destino = url;
+    document.getElementById("captcha-box").style.display = "block";
+    window.scrollTo(0, document.body.scrollHeight); // rola até o captcha
+  }
+
+  function verificado() {
+    if (destino) {
+      window.location.href = destino;
+    }
+  }
+  </script>
 <script>
   async function enviar() {
     const input = document.getElementById("mensagem");

@@ -51,7 +51,7 @@ body {
 /* Cabeçalho */
 header {
   background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-  padding: 1rem 2rem;
+  padding: 1rem 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -62,26 +62,27 @@ header {
   color: var(--white);
 }
 
+/* Logo alinhado verticalmente */
 .logo-container {
   display: flex;
-  align-items: center;
-}
-
-.logo {
-  color: var(--white);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
 }
 
 .logo-ata {
-  font-size: 1.8rem;
-  font-weight: bold;
-  display: block;
-  line-height: 1.2;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1;
 }
 
 .logo-sub {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  color: var(--white);
   opacity: 0.9;
-}
+  line-height: 1.1;
+  }
 
 /* Botão do menu (hambúrguer) */
 .menu-toggle {

@@ -189,24 +189,7 @@ header {
   margin-bottom: 40px;
   overflow: hidden;
 }
-/* Conteúdo do banner */
-.hero-content {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
 
-.hero-content h1 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-}
-
-.hero-content p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-  opacity: 0.9;
-  }
 /* Conteúdo Principal */
 main {
   padding: 2rem;

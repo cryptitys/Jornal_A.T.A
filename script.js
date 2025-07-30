@@ -199,18 +199,13 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// Mostrar o banner SEM verificar cookies
-window.addEventListener("load", () => {
-  document.getElementById("cookie-banner").classList.remove("hidden");
-});
+<script>
+  // Exibe o banner SEM verificar cookies
+  window.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("cookie-banner").style.display = "flex";
+  });
 
-// Função para ocultar o banner ao clicar em "Aceitar"
-function aceitarCookies() {
-  document.cookie = "cookieConsent=true; max-age=31536000; path=/";
-  document.getElementById("cookie-banner").classList.add("hidden");
-}
-
-// (opcional) Função para ocultar ao clicar em "Fechar"
-function fecharBanner() {
-  document.getElementById("cookie-banner").style.display = "none";
-                          }
+  function fecharBanner() {
+    document.getElementById("cookie-banner").style.display = "none";
+  }
+</script>

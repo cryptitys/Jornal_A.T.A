@@ -198,12 +198,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('modalSenha').style.display = 'none';
   });
 });
-// Mostrar o banner só se ainda não aceitou
-window.onload = function() {
-  if (!getCookie("cookieConsent")) {
-    document.getElementById("cookie-banner").classList.remove("hidden");
-  }
-};
 
 // Função para aceitar
 function aceitarCookies() {

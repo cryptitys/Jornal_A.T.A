@@ -217,3 +217,6 @@ function getCookie(nome) {
   const partes = value.split(`; ${nome}=`);
   if (partes.length === 2) return partes.pop().split(";").shift();
         }
+function fecharBanner() {
+  document.getElementById("cookie-banner").style.display = "none";
+}

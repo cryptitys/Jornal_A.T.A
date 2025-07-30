@@ -43,16 +43,15 @@
     </nav>
   </header>
 
-  <!-- Modal do reCAPTCHA -->
-<div id="captcha-modal" class="modal">
+  <div id="recaptcha-modal">
   <div class="modal-content">
-    <span class="close-btn" onclick="fecharCaptcha()">&times;</span>
+    <span class="close">&times;</span>
     <p>Confirme que você é humano para continuar:</p>
     <div class="g-recaptcha"
          data-sitekey="6LchvJMrAAAAAIzKpS_W03QsS-RBDl80qImyDMbU"
-         data-callback="verificado"></div>
+         data-callback="onRecaptchaSuccess"></div>
   </div>
-</div>
+  </div>
 
   <!-- Banner Principal -->
   <section class="hero-banner">

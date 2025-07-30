@@ -200,12 +200,3 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 <script>
-  // Exibe o banner SEM verificar cookies
-  window.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("cookie-banner").style.display = "flex";
-  });
-
-  function fecharBanner() {
-    document.getElementById("cookie-banner").style.display = "none";
-  }
-</script>

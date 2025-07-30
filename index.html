@@ -38,19 +38,6 @@
   </header>
 
 
-<!-- Modal do reCAPTCHA -->
-<div id="recaptcha-modal">
-  <div class="modal-content">
-    <span class="close-btn" onclick="fecharModal()">&times;</span>
-    <p>Confirme que você é humano para continuar:</p>
-    <div id="recaptcha-container">
-      <div class="g-recaptcha" data-sitekey="6LchvJMrAAAAAIzKpS_W03QsS-RBDl80qImyDMbU" data-callback="verificado"></div>
-    </div>
-  </div>
-</div>
-
-<!-- API do reCAPTCHA -->
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
   <!-- Banner Principal -->
   <section class="hero-banner">
@@ -218,7 +205,7 @@ Motuca SP</p>
     <a href="https://api.whatsapp.com/send?phone=551633481147&text=.%0A">
       <img src="https://cdn3.emoji.gg/emojis/7578-whatsapp.png" width="30px" height="30px" alt="WhatsApp">
     </a>
-
+     <!--não mexe em nada que não sabe🙄,..,->
     
     <!-- adm -->
     <a href="https://www.instagram.com/vitorrodrigues._s?igsh=amM4NmJhc213b2Nk">
@@ -238,30 +225,6 @@ Motuca SP</p>
     </div>
   </footer>
 
-
-  <script>
-  let destino = "";
-
-  function pedirCaptcha(url) {
-    destino = url;
-    document.getElementById("captcha-box").style.display = "block";
-    window.scrollTo(0, document.body.scrollHeight); // rola até o captcha
-  }
-
-  function verificado() {
-    if (destino) {
-      window.location.href = destino;
-    }
-  }
-  </script>
-<script>
-  async function enviar() {
-    const input = document.getElementById("mensagem");
-    const resposta = await enviarMensagem(input.value);
-    document.getElementById("resposta").innerText = resposta;
-    input.value = "";
-  }
-</script>
 	<!--cookies-->
 	<div id="cookie-banner" class="cookie-banner">
   <p>Usamos cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa política.</p>

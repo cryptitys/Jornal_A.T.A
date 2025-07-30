@@ -985,27 +985,3 @@ address {
 .mural-avisos li:hover {
   background-color: #333;
   }
-/* Modal de verificação */
-.cookie-banner {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background: #222;
-  color: #fff;
-  padding: 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 9999;
-}
-.cookie-banner button {
-  background: #4CAF50;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  cursor: pointer;
-  border-radius: 4px;
-}
-.cookie-banner.hidden {
-  display: none;
-}

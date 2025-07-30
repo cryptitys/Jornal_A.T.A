@@ -198,19 +198,22 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('modalSenha').style.display = 'none';
   });
 });
-const projetosBtn = document.getElementById("projetos-btn");
-const modal = document.getElementById("recaptcha-modal");
+// Mostrar o banner só se ainda não aceitou
+window.onload = function() {
+  if (!getCookie("cookieConsent")) {
+    document.getElementById("cookie-banner").classList.remove("hidden");
+  }
+};
 
-projetosBtn.addEventListener("click", function (e) {
-  e.preventDefault();
-  modal.classList.add("active");
-});
-
-function fecharModal() {
-  modal.classList.remove("active");
+// Função para aceitar
+function aceitarCookies() {
+  document.cookie = "cookieConsent=true; max-age=31536000; path=/";
+  document.getElementById("cookie-banner").classList.add("hidden");
 }
 
-// Callback do reCAPTCHA
-function verificado() {
-  window.location.href = "projetos.html";
-                          }
+// Função para ler cookies
+function getCookie(nome) {
+  const value = `; ${document.cookie}`;
+  const partes = value.split(`; ${nome}=`);
+  if (partes.length === 2) return partes.pop().split(";").shift();
+        }

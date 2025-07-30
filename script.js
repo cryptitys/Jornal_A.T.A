@@ -198,30 +198,35 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('modalSenha').style.display = 'none';
   });
 });
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script>
-  let destino = "";
+  document.addEventListener("DOMContentLoaded", function () {
+    const projetosLink = document.querySelector('a[href="projetos.html"]');
+    const modal = document.getElementById("recaptcha-modal");
+    const closeBtn = document.querySelector("#recaptcha-modal .close");
 
-  function pedirCaptcha(url) {
-    destino = url;
-    document.getElementById("captcha-modal").style.display = "block";
-  }
-
-  function verificado() {
-    if (destino) {
-      window.location.href = destino;
+    if (projetosLink && modal) {
+      projetosLink.addEventListener("click", function (e) {
+        e.preventDefault();
+        modal.style.display = "flex";
+      });
     }
-  }
 
-  function fecharCaptcha() {
-    document.getElementById("captcha-modal").style.display = "none";
-    grecaptcha.reset(); // limpa o reCAPTCHA
-  }
+    // Fecha ao clicar no botão X
+    closeBtn.addEventListener("click", function () {
+      modal.style.display = "none";
+    });
 
-  // Fecha ao clicar fora do modal
-  window.onclick = function(event) {
-    const modal = document.getElementById("captcha-modal");
-    if (event.target == modal) {
-      fecharCaptcha();
-    }
-  }
+    // Fecha ao clicar fora do modal
+    window.addEventListener("click", function (e) {
+      if (e.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+
+    // Callback do reCAPTCHA
+    window.onRecaptchaSuccess = function () {
+      window.location.href = "projetos.html";
+    };
+  });
 </script>

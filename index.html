@@ -9,13 +9,7 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  <style>
-    #captcha-box {
-      display: none;
-      margin: 20px;
-      text-align: center;
-    }
-  </style>
+  
 </head>
 <body>
 
@@ -43,15 +37,23 @@
     </nav>
   </header>
 
-  <div id="recaptcha-modal">
+  <ul>
+  <li><a href="#" id="projetos-btn"><i class="fas fa-project-diagram"></i> Projetos</a></li>
+</ul>
+
+<!-- Modal do reCAPTCHA -->
+<div id="recaptcha-modal">
   <div class="modal-content">
-    <span class="close">&times;</span>
+    <span class="close-btn" onclick="fecharModal()">&times;</span>
     <p>Confirme que você é humano para continuar:</p>
-    <div class="g-recaptcha"
-         data-sitekey="6LchvJMrAAAAAIzKpS_W03QsS-RBDl80qImyDMbU"
-         data-callback="onRecaptchaSuccess"></div>
+    <div id="recaptcha-container">
+      <div class="g-recaptcha" data-sitekey="6LchvJMrAAAAAIzKpS_W03QsS-RBDl80qImyDMbU" data-callback="verificado"></div>
+    </div>
   </div>
-  </div>
+</div>
+
+<!-- API do reCAPTCHA -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
   <!-- Banner Principal -->
   <section class="hero-banner">

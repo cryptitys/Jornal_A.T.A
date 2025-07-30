@@ -198,35 +198,3 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('modalSenha').style.display = 'none';
   });
 });
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const projetosLink = document.querySelector('a[href="projetos.html"]');
-    const modal = document.getElementById("recaptcha-modal");
-    const closeBtn = document.querySelector("#recaptcha-modal .close");
-
-    if (projetosLink && modal) {
-      projetosLink.addEventListener("click", function (e) {
-        e.preventDefault();
-        modal.style.display = "flex";
-      });
-    }
-
-    // Fecha ao clicar no botão X
-    closeBtn.addEventListener("click", function () {
-      modal.style.display = "none";
-    });
-
-    // Fecha ao clicar fora do modal
-    window.addEventListener("click", function (e) {
-      if (e.target === modal) {
-        modal.style.display = "none";
-      }
-    });
-
-    // Callback do reCAPTCHA
-    window.onRecaptchaSuccess = function () {
-      window.location.href = "projetos.html";
-    };
-  });
-</script>

@@ -199,18 +199,18 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// Função para aceitar
+// Mostrar o banner SEM verificar cookies
+window.addEventListener("load", () => {
+  document.getElementById("cookie-banner").classList.remove("hidden");
+});
+
+// Função para ocultar o banner ao clicar em "Aceitar"
 function aceitarCookies() {
   document.cookie = "cookieConsent=true; max-age=31536000; path=/";
   document.getElementById("cookie-banner").classList.add("hidden");
 }
 
-// Função para ler cookies
-function getCookie(nome) {
-  const value = `; ${document.cookie}`;
-  const partes = value.split(`; ${nome}=`);
-  if (partes.length === 2) return partes.pop().split(";").shift();
-        }
+// (opcional) Função para ocultar ao clicar em "Fechar"
 function fecharBanner() {
   document.getElementById("cookie-banner").style.display = "none";
-}
+                          }

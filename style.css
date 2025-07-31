@@ -985,3 +985,9 @@ address {
 .mural-avisos li:hover {
   background-color: #333;
   }
+.logo-sp-educacao-central {
+  display: block;
+  margin: 10px auto;
+  width: 80px;
+  height: auto;
+  }

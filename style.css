@@ -49,132 +49,163 @@ body {
 }
 
 /* Cabeçalho */
-header {
-  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-  padding: 1rem 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: var(--box-shadow);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  color: var(--white);
-}
-
-/* Logo alinhado verticalmente */
-.logo-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.2rem;
-}
-
-.logo-ata {
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: var(--white);
-  line-height: 1;
-}
-
-.logo-sub {
-  font-size: 0.95rem;
-  color: var(--white);
-  opacity: 0.9;
-  line-height: 1.1;
-  }
-
-/* Botão do menu (hambúrguer) */
-.menu-toggle {
-  margin-left: auto;
-  background: none;
-  border: none;
-  width: 30px;
-  height: 24px;
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  cursor: pointer;
-  z-index: 1001;
-}
-
-.menu-toggle span {
-  display: block;
-  height: 3px;
-  width: 100%;
-  background-color: var(--white);
-  transition: var(--transition);
-}
-
-.menu-toggle[aria-expanded="true"] span:nth-child(1) {
-  transform: translateY(10px) rotate(45deg);
-}
-
-.menu-toggle[aria-expanded="true"] span:nth-child(2) {
-  opacity: 0;
-}
-
-.menu-toggle[aria-expanded="true"] span:nth-child(3) {
-  transform: translateY(-10px) rotate(-45deg);
-}
-
-/* Menu padrão em desktop */
-.nav-menu ul {
-  display: flex;
-  list-style: none;
-  gap: 20px;
-}
-
-.nav-menu a {
-  color: var(--white);
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  border-radius: var(--border-radius);
-  transition: var(--transition);
-  text-decoration: none;
-}
-
-.nav-menu a:hover,
-.nav-menu a.active {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-/* Responsividade: mostrar menu hambúrguer e adaptar o menu */
-@media (max-width: 768px) {
-  .menu-toggle {
+/* ===== NAVBAR ===== */
+.navbar {
     display: flex;
-  }
-
-  .nav-menu ul {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: var(--white);
-    box-shadow: var(--box-shadow);
-    padding: 1rem;
-    z-index: 999;
-  }
-
-  .nav-menu.active ul {
-    display: flex;
-  }
-
-  .nav-menu ul li a {
-    color: var(--text-color);
-    padding: 12px;
-  }
-
-  .nav-menu ul li a:hover,
-  .nav-menu ul li a:focus {
-    background-color: rgba(0, 0, 0, 0.05);
-  }
+    justify-content: space-around;
+    align-items: center;
+    min-height: 10vh;
+    background-color: #ffffff; /* Navbar branca */
+    color: #333;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s ease-out;
+     justify-content: space-between; /* separa logo e menu */
+     padding: 0 25px; /* AUMENTE OU DIMINUA ESSE VALOR */
 }
+
+/* Navbar ao rolar */
+.navbar.scrolled {
+    min-height: 8vh;
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== LOGO ===== */
+.logo a {
+    color: #6d28d9; /* Roxo vibrante */
+    text-decoration: none;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.logo a:hover {
+    color: #2563eb; /* Azul suave ao passar o mouse */
+}
+/* Logo com imagem */
+.logo img {
+    height: 60px; /* tamanho ideal para a navbar */
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+/* Efeito ao rolar */
+.navbar.scrolled .logo img {
+    height: 45px; /* diminui levemente ao rolar */
+}
+
+/* Efeito hover opcional */
+.logo a:hover img {
+    transform: scale(1.05);
+    }
+/*nav burguer*/
+
+    /* Botão hamburguer */
+    .menu-btn {
+      width: 44px; height: 44px;
+      background: transparent; border: none;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      cursor: pointer; z-index: 201;
+      position: absolute;
+      top: 10px; right: 20px;
+    }
+    .menu-btn span {
+      display: block;
+      height: 2px; width: 28px;
+      background: #8B5CF6;
+      margin: 5px 0;
+      border-radius: 2px;
+      transition: .3s;
+    }
+    .menu-btn.open span:nth-child(1) {
+      transform: translateY(9px) rotate(45deg);
+    }
+    .menu-btn.open span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-btn.open span:nth-child(3) {
+      transform: translateY(-9px) rotate(-45deg);
+    }
+
+    /* MENU GRADIENTE ROXO - abaixo do header */
+    .nav-menu {
+      position: absolute;
+      top: 64px;
+      left: 0;
+      width: 100vw;
+      max-height: 0;
+      background: linear-gradient(135deg, #8B5CF6 0%, #C084FC 100%);
+      box-shadow: 0 4px 32px rgba(140,92,246,0.10);
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.52,0.16,0.24,0.96);
+      z-index: 199;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .nav-menu.open {
+      max-height: 350px;
+    }
+
+    .nav-menu ul {
+      margin: 0; padding: 0;
+      list-style: none;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .nav-menu li {
+      width: 100%;
+    }
+    .nav-menu a {
+      color: #fff;
+      padding: 16px 0;
+      text-align: center;
+      width: 100%;
+      font-size: 1.15em;
+      text-decoration: none;
+      transition: background .18s, font-weight .18s;
+      display: block;
+    }
+    .nav-menu a:hover {
+      background: rgba(255,255,255,0.07);
+      font-weight: 600;
+    }
+
+    @media(min-width: 768px) {
+      .navbar { position: relative; box-shadow: none;}
+      .menu-btn { display: none !important; }
+      .nav-menu {
+        position: static;
+        background: none;
+        box-shadow: none;
+        max-height: none;
+        flex-direction: row;
+        align-items: center;
+        width: auto;
+        top: auto;
+        left: auto;
+      }
+      .nav-menu.open { max-height: none; }
+      .nav-menu ul { flex-direction: row;}
+      .nav-menu li { width: auto;}
+      .nav-menu a {
+        color: #8B5CF6;
+        padding: 12px 18px;
+        background: transparent;
+        font-weight: 500;
+      }
+    }
+
+
 /* Banner Principal */
 .hero-banner {
   position: relative;

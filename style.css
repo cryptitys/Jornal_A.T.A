@@ -263,6 +263,17 @@ body {
         font-size: 2.3rem;
     }
       }
+.hero-handwrite {
+  
+    animation: floatText 4s ease-in-out infinite;
+}
+
+@keyframes floatText {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0); }
+}
+
 /* ===== fim da hero ===== */
         
 /* Conteúdo Principal */

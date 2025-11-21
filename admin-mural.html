@@ -1,183 +1,214 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Mural Escolar</title>
+<meta charset="UTF-8">
+<title>Admin Mural</title>
+<style>
+    body {
+        font-family: Poppins, sans-serif;
+        background: #f4f4f4;
+        padding: 20px;
+    }
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f6fa;
-            margin: 0;
-            padding: 0;
-        }
+    h2 {
+        margin-bottom: 10px;
+    }
 
-        .container {
-            max-width: 600px;
-            background: white;
-            padding: 25px;
-            margin: 40px auto;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-        }
+    .card {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+    }
 
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+    select, input, textarea, button {
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        margin-top: 10px;
+        font-size: 15px;
+    }
 
-        label {
-            font-weight: 600;
-            display: block;
-            margin-bottom: 5px;
-        }
+    button {
+        background: #4a4ae8;
+        color: white;
+        cursor: pointer;
+        border: none;
+        transition: 0.2s;
+    }
 
-        input, textarea, select {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 18px;
-            border-radius: 8px;
-            border: 1px solid #bbb;
-            font-size: 15px;
-        }
+    button:hover {
+        opacity: 0.9;
+    }
 
-        textarea {
-            height: 120px;
-            resize: none;
-        }
+    /* Estilos dos avisos */
+    .aviso {
+        padding: 15px;
+        border-radius: 10px;
+        color: white;
+        margin-bottom: 15px;
+    }
 
-        button {
-            width: 100%;
-            padding: 14px;
-            border: none;
-            border-radius: 8px;
-            background: #4a35c6;
-            color: white;
-            font-size: 17px;
-            cursor: pointer;
-            transition: 0.2s;
-        }
+    .azul { background: #1e88e5; }
+    .vermelho { background: #e53935; }
+    .amarelo { background: #fbc02d; color: #000; }
 
-        button:hover {
-            opacity: .9;
-        }
+    .excluir-btn {
+        background: #00000055;
+        color: white;
+        padding: 6px 12px;
+        border-radius: 6px;
+        float: right;
+        cursor: pointer;
+    }
 
-        /* Modal */
-        .modal-bg {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.55);
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
+    /* Modal */
+    #modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.6);
+        display: none;
+        align-items: center;
+        justify-content: center;
+    }
 
-        .modal-box {
-            background: white;
-            padding: 25px 30px;
-            border-radius: 10px;
-            text-align: center;
-            width: 90%;
-            max-width: 340px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.25);
-        }
-
-        .modal-box button {
-            background: #4a35c6;
-            margin-top: 15px;
-        }
-
-    </style>
+    #modal .conteudo {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        width: 80%;
+        max-width: 300px;
+    }
+</style>
 </head>
 <body>
 
-    <div class="container">
-        <h2>Admin - Publicar Aviso</h2>
+<h2>📌 Publicar aviso no mural</h2>
 
-        <label>Título do aviso</label>
-        <input type="text" id="titulo" placeholder="Digite o título">
+<div class="card">
+    <label>Cor do aviso:</label>
+    <select id="cor">
+        <option value="azul">Azul</option>
+        <option value="vermelho">Vermelho</option>
+        <option value="amarelo">Amarelo</option>
+    </select>
 
-        <label>Mensagem</label>
-        <textarea id="mensagem" placeholder="Escreva o aviso"></textarea>
+    <label>Título:</label>
+    <input type="text" id="titulo" placeholder="Digite o título...">
 
-        <label>Link (opcional)</label>
-        <input type="text" id="link" placeholder="https://exemplo.com">
+    <label>Mensagem:</label>
+    <textarea id="mensagem" rows="4" placeholder="Digite o aviso..."></textarea>
 
-        <label>Cor do marcador</label>
-        <select id="cor">
-            <option value="azul">Azul</option>
-            <option value="vermelho">Vermelho</option>
-            <option value="amarelo">Amarelo</option>
-        </select>
+    <button id="publicar">Publicar aviso</button>
+</div>
 
-        <button onclick="publicarAviso()">Publicar Aviso</button>
+<h2>📋 Avisos publicados</h2>
+<div id="lista-avisos"></div>
+
+<!-- Modal -->
+<div id="modal">
+    <div class="conteudo">
+        <h3>Publicado!</h3>
+        <p>O aviso foi enviado ao mural.</p>
+        <button onclick="fecharModal()">OK</button>
     </div>
+</div>
 
+<script type="module">
+    // ------ IMPORTS ------
+    import { initializeApp }
+        from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+    import { getAnalytics }
+        from "https://www.gstatic.com/firebasejs/12.6.0/firebase-analytics.js";
+    import { getDatabase, ref, push, set, onValue, remove }
+        from "https://www.gstatic.com/firebasejs/12.6.0/firebase-database.js";
 
-    <!-- Modal -->
-    <div class="modal-bg" id="modal">
-        <div class="modal-box">
-            <h3>Aviso publicado! 🎉</h3>
-            <p>O aviso já está visível no mural público.</p>
-            <button onclick="fecharModal()">Fechar</button>
-        </div>
-    </div>
+    // ------ CONFIG -------
+    const firebaseConfig = {
+        apiKey: "AIzaSyAAkBk52aOoo9IZsbEIHRBwOyIZ66Mbhx0",
+        authDomain: "mural-af763.firebaseapp.com",
+        projectId: "mural-af763",
+        storageBucket: "mural-af763.firebasestorage.app",
+        messagingSenderId: "418040841130",
+        appId: "1:418040841130:web:9d96121172ccede5dea1d3",
+        measurementId: "G-W4QTRV47TM"
+    };
 
-    <script type="module">
-        // --- IMPORTAR FIREBASE ---
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-        import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
+    // ------ INIT -------
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const db = getDatabase(app);
 
-        // --- CONFIG DO SEU FIREBASE (troque pelos seus dados) ---
-        const firebaseConfig = {
-            apiKey: "SUA_API_KEY",
-            authDomain: "SEU_AUTH_DOMAIN",
-            databaseURL: "https://bibliotecaata-2619e-default-rtdb.firebaseio.com/",
-            projectId: "bibliotecaata-2619e",
-            storageBucket: "bibliotecaata-2619e.appspot.com",
-            messagingSenderId: "SENDER_ID",
-            appId: "APP_ID"
-        };
+    // Referência do mural no DB
+    const muralRef = ref(db, "mural");
 
-        const app = initializeApp(firebaseConfig);
-        const db = getDatabase(app);
+    // ------ PUBLICAR ------
+    document.getElementById("publicar").onclick = () => {
+        const cor = document.getElementById("cor").value;
+        const titulo = document.getElementById("titulo").value.trim();
+        const mensagem = document.getElementById("mensagem").value.trim();
 
-        // --- PUBLICAR AVISO ---
-        window.publicarAviso = function () {
-            const titulo = document.getElementById("titulo").value.trim();
-            const mensagem = document.getElementById("mensagem").value.trim();
-            const link = document.getElementById("link").value.trim();
-            const cor = document.getElementById("cor").value;
-
-            if (!titulo || !mensagem) {
-                alert("Preencha o título e a mensagem!");
-                return;
-            }
-
-            const avisoRef = ref(db, "avisos");
-            const novoAviso = push(avisoRef);
-
-            set(novoAviso, {
-                titulo,
-                mensagem,
-                link: link || null,
-                cor,
-                timestamp: Date.now()
-            });
-
-            document.getElementById("titulo").value = "";
-            document.getElementById("mensagem").value = "";
-            document.getElementById("link").value = "";
-            document.getElementById("cor").value = "azul";
-
-            document.getElementById("modal").style.display = "flex";
+        if (!titulo || !mensagem) {
+            alert("Preencha título e mensagem!");
+            return;
         }
 
-        window.fecharModal = function () {
-            document.getElementById("modal").style.display = "none";
-        }
-    </script>
+        const novoAviso = push(muralRef);
+
+        set(novoAviso, {
+            cor,
+            titulo,
+            mensagem,
+            data: Date.now()
+        });
+
+        document.getElementById("titulo").value = "";
+        document.getElementById("mensagem").value = "";
+
+        abrirModal();
+    };
+
+    // ------ LISTAR AVISOS ------
+    onValue(muralRef, (snapshot) => {
+        const lista = document.getElementById("lista-avisos");
+        lista.innerHTML = "";
+
+        snapshot.forEach(child => {
+            const id = child.key;
+            const aviso = child.val();
+
+            const div = document.createElement("div");
+            div.className = `aviso ${aviso.cor}`;
+            div.innerHTML = `
+                <span class="excluir-btn" onclick="excluirAviso('${id}')">Excluir</span>
+                <h3>${aviso.titulo}</h3>
+                <p>${aviso.mensagem}</p>
+            `;
+
+            lista.appendChild(div);
+        });
+    });
+
+    // ------ EXCLUIR ------
+    window.excluirAviso = (id) => {
+        remove(ref(db, "mural/" + id));
+    };
+
+    // ------ MODAL ------
+    window.abrirModal = () => {
+        document.getElementById("modal").style.display = "flex";
+    };
+
+    window.fecharModal = () => {
+        document.getElementById("modal").style.display = "none";
+    };
+</script>
 
 </body>
 </html>

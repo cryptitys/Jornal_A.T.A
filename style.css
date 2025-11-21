@@ -243,6 +243,9 @@ body {
     background-repeat: no-repeat;
 
     padding: 4rem 2rem;
+
+    margin-top: 80px; /* empurra o hero para baixo */
+
 }
 
 /* ===== TEXTO EM LETRA DE MÃO ===== */

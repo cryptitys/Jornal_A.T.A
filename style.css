@@ -193,8 +193,8 @@ body {
     display: block;
     cursor: pointer;
     position: absolute;
-    left: 20px; /* distância da borda esquerda */
-    top: 50%;   /* centraliza verticalmente */
+    right: 20px; /* distância da borda direita */
+    top: 50%;    /* centraliza verticalmente */
     transform: translateY(-50%); /* corrige o centralizado */
 }
 

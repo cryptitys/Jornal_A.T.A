@@ -51,75 +51,67 @@
     </div>
   </section>
       <!-- Avisos Importantes -->
-   <section class="mural-publico">
-    <h2>Mural de Avisos</h2>
-    <div id="muralLista"></div>
+   
+    <section id="mural-escolar">
+    <h2 class="mural-title">📢 Mural de Avisos</h2>
+    <div id="avisos-container"></div>
 </section>
 
 <style>
-    .mural-publico {
-        max-width: 800px;
-        margin: 40px auto;
-        padding: 20px;
+    #mural-escolar {
+        padding: 60px 5%;
+        background: linear-gradient(135deg, #f5f5f5, #e8e8e8);
+        border-radius: 12px;
+        margin-top: 40px;
+    }
+
+    .mural-title {
         font-family: Poppins, sans-serif;
-    }
-
-    .mural-publico h2 {
         text-align: center;
-        margin-bottom: 25px;
         font-size: 28px;
+        margin-bottom: 30px;
+        color: #333;
     }
 
-    .cardPublico {
-        position: relative;
-        background: white;
+    .aviso-card {
         padding: 18px;
+        border-radius: 12px;
         margin-bottom: 18px;
-        border-radius: 10px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        color: white;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        animation: fadeIn 0.3s ease;
     }
 
-    .faixaPublica {
-        width: 8px;
-        height: 100%;
-        position: absolute;
-        left: 0;
-        top: 0;
-        border-radius: 8px 0 0 8px;
-    }
+    .azul     { background: #1e88e5; }
+    .vermelho { background: #e53935; }
+    .amarelo  { background: #fbc02d; color: #000; }
 
-    .azul { background: #007BFF; }
-    .vermelho { background: #FF3B3B; }
-    .amarelo { background: #FFC107; }
-
-    .cardPublico h3 {
-        margin: 0 0 8px;
+    .aviso-card h3 {
+        margin-bottom: 6px;
         font-size: 20px;
     }
 
-    .cardPublico p {
-        margin-bottom: 10px;
+    .aviso-card p {
+        font-size: 16px;
+        opacity: 0.9;
     }
 
-    .btn-link {
-        display: inline-block;
-        padding: 8px 12px;
-        background: #4a2db6;
-        color: white;
-        border-radius: 6px;
-        font-size: 14px;
-        text-decoration: none;
-    }
-
-    .btn-link:hover {
-        opacity: 0.8;
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to   { opacity: 1; transform: translateY(0); }
     }
 </style>
 
 <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
-    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-database.js";
+    // IMPORTS
+    import { initializeApp }
+        from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+    import { getAnalytics }
+        from "https://www.gstatic.com/firebasejs/12.6.0/firebase-analytics.js";
+    import { getDatabase, ref, onValue }
+        from "https://www.gstatic.com/firebasejs/12.6.0/firebase-database.js";
 
+    // CONFIGURAÇÃO
     const firebaseConfig = {
         apiKey: "AIzaSyAAkBk52aOoo9IZsbEIHRBwOyIZ66Mbhx0",
         authDomain: "mural-af763.firebaseapp.com",
@@ -127,41 +119,34 @@
         storageBucket: "mural-af763.firebasestorage.app",
         messagingSenderId: "418040841130",
         appId: "1:418040841130:web:9d96121172ccede5dea1d3",
-        measurementId: "G-W4QTRV47TM",
-        databaseURL: "https://mural-af763-default-rtdb.firebaseio.com"
+        measurementId: "G-W4QTRV47TM"
     };
 
+    // INIT
     const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
     const db = getDatabase(app);
 
-    const muralLista = document.getElementById("muralLista");
+    // REFERÊNCIA DO BANCO
+    const muralRef = ref(db, "mural");
+    const container = document.getElementById("avisos-container");
 
-    // Carregar avisos na página pública
-    onValue(ref(db, "avisos"), (snapshot) => {
-        muralLista.innerHTML = "";
-        const dados = snapshot.val();
-        if (!dados) {
-            muralLista.innerHTML = "<p>Nenhum aviso disponível no momento.</p>";
-            return;
-        }
+    // CARREGAR EM TEMPO REAL
+    onValue(muralRef, (snapshot) => {
+        container.innerHTML = "";
 
-        // Ordenar por data (mais recentes primeiro)
-        const avisosOrdenados = Object.entries(dados).sort((a, b) => b[1].data - a[1].data);
+        snapshot.forEach(child => {
+            const aviso = child.val();
 
-        avisosOrdenados.forEach(([id, aviso]) => {
             const card = document.createElement("div");
-            card.className = "cardPublico";
+            card.className = `aviso-card ${aviso.cor}`;
 
             card.innerHTML = `
-                <div class="faixaPublica ${aviso.cor}"></div>
-
                 <h3>${aviso.titulo}</h3>
                 <p>${aviso.mensagem}</p>
-
-                ${aviso.link ? `<a class="btn-link" href="${aviso.link}" target="_blank">Acessar link</a>` : ""}
             `;
 
-            muralLista.appendChild(card);
+            container.appendChild(card);
         });
     });
 </script>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Jornal A.T.A</title>
+    <link rel="stylesheet" href="adm/admin.css">
+</head>
+<body>
+
+    <!-- ===== SIDEBAR / MENU LATERAL ===== -->
+    <aside class="sidebar">
+        <h2>ADMIN</h2>
+        <nav>
+            <a href="#" class="active">Dashboard</a>
+            <a href="#">Publicar notícia</a>
+            <a href="#">Gerenciar notícias</a>
+            <a href="#">Usuários</a>
+            <a href="#">Sair</a>
+        </nav>
+    </aside>
+
+
+    <!-- ===== ÁREA PRINCIPAL ===== -->
+    <main class="content">
+        <header>
+            <h1>Painel Administrativo</h1>
+            <p>Bem-vindo ao painel do Jornal A.T.A</p>
+        </header>
+
+        <section class="dashboard-cards">
+            <div class="card">Notícias Publicadas: <span id="countNoticias">0</span></div>
+            <div class="card">Usuários Registrados: <span id="countUsuarios">0</span></div>
+            <div class="card">Rascunhos: <span id="countRascunhos">0</span></div>
+        </section>
+
+        <section class="future-content">
+            <h2>Próximas funcionalidades</h2>
+            <ul>
+                <li>✔ Criar notícias</li>
+                <li>✔ Editar notícias</li>
+                <li>✔ Excluir notícias</li>
+                <li>✔ Sistema de login admin</li>
+                <li>✔ Upload de imagens</li>
+                <li>✔ Dashboard de estatísticas</li>
+            </ul>
+        </section>
+    </main>
+
+<script src="adm/admin.js"></script>
+</body>
+  </html>

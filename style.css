@@ -189,7 +189,14 @@ body {
     }
   }
 
-
+.hamburger {
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    left: 20px; /* distância da borda esquerda */
+    top: 50%;   /* centraliza verticalmente */
+    transform: translateY(-50%); /* corrige o centralizado */
+}
 
 /* Banner Principal 
 .hero-banner {

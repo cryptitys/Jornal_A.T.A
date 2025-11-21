@@ -725,6 +725,15 @@ h2 {
 .logo-box.ata-logo img {
     filter: none !important; /* mantém as cores reais da logo A.T.A */
 }
+/* Caixa da logo SP com fundo preto total */
+.logo-box.sp-logo {
+    background: #000000 !important;
+    border: 1px solid #222;
+}
+
+.logo-box.sp-logo img {
+    filter: brightness(1) !important;
+}
 /* Conteúdo */
 .footer-info {
     display: grid;

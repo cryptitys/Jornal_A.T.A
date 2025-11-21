@@ -206,7 +206,7 @@ body {
     }
 
 
-/* Banner Principal */
+/* Banner Principal 
 .hero-banner {
   position: relative;
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
@@ -216,13 +216,325 @@ body {
   padding: 100px 20px;
   text-align: center;
   border: 4px solid #ffffffcc;
-  border-radius: 0 0 20px 20px; /* Só cantos inferiores arredondados */
+  border-radius: 0 0 20px 20px;  Só cantos inferiores arredondados 
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   margin: 0;
   margin-bottom: 40px;
   overflow: hidden;
 }
 
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Elementos Decorativos Animados */
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .shape1 {
+            width: 300px;
+            height: 300px;
+            background: white;
+            border-radius: 50%;
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .shape2 {
+            width: 200px;
+            height: 200px;
+            background: white;
+            border-radius: 50%;
+            bottom: 15%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .shape3 {
+            width: 150px;
+            height: 150px;
+            background: white;
+            top: 50%;
+            right: 5%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-30px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 10;
+            max-width: 800px;
+            padding: 20px;
+            animation: slideUp 1s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content h1 {
+            font-size: 60px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 22px;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        /* Ícones de Destaque */
+        .hero-features {
+            display: flex;
+            justify-content: space-around;
+            gap: 40px;
+            margin-top: 60px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 10;
+        }
+
+        .feature {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            min-width: 150px;
+            transition: all 0.3s ease;
+        }
+
+        .feature:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-10px);
+        }
+
+        .feature i {
+            font-size: 40px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .feature h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .feature p {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        /* Scroll Down Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .scroll-indicator i {
+            font-size: 30px;
+            color: white;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+          }
+/* Responsivo */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 40px;
+            }
+
+            .hero-content p {
+                font-size: 18px;
+            }
+
+            
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="floating-shapes">
+            <div class="shape shape1"></div>
+            <div class="shape shape2"></div>
+            <div class="shape shape3"></div>
+        </div>
+
+        <div class="hero-content">
+            <h1>Bem-vindo à Nossa Escola</h1>
+            <p>Educação de qualidade para transformar vidas e construir um futuro melhor</p>
+
+            <div class="hero-buttons">
+                <button class="btn btn-primary">Conhecer Mais</button>
+                <button class="btn btn-secondary">Inscreva-se</button>
+            </div>
+
+            <div class="hero-features">
+                <div class="feature">
+                    <i class="fas fa-chalkboard-user"></i>
+                    <h3>Mestres</h3>
+                    <p>Professores dedicados</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-book"></i>
+                    <h3>Cursos</h3>
+                    <p>Diversos e modernos</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Excelência</h3>
+                    <p>Qualidade garantida</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-users"></i>
+                    <h3>Comunidade</h3>
+                    <p>Alunos engajados</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+            .hero-features {
+                gap: 20px;
+            }
+
+            .feature {
+                min-width: 120px;
+                padding: 15px;
+            }
+
+            .hero-buttons {
+                gap: 10px;
+            }
+
+            .btn {
+                padding: 12px 30px;
+                font-size: 14px;
+            }
+        }@media (max-width: 480px) {
+            
+          .hero-content h1 {
+                font-size: 28px;
+                margin-bottom: 15px;
+            }
+
+            .hero-content p {
+                font-size: 16px;
+                margin-bottom: 20px;
+            }
+
+            .hero-features {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .feature {
+                min-width: auto;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .shape {
+                display: none;
+            }
+        }
 /* Conteúdo Principal */
 main {
   padding: 2rem;

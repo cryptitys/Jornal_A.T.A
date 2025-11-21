@@ -1,135 +1,112 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>Admin Mural</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Mural Escolar</title>
+</head>
+    <body>
+<section class="adm-section">
+    <h2>Painel Admin – Mural Escolar</h2>
+
+    <!-- FORMULÁRIO -->
+    <div class="adm-form">
+        <input id="titulo" type="text" placeholder="Título do aviso">
+        <textarea id="mensagem" placeholder="Mensagem"></textarea>
+
+        <label>Cor da faixa lateral:</label>
+        <select id="cor">
+            <option value="azul">Azul</option>
+            <option value="vermelho">Vermelho</option>
+            <option value="amarelo">Amarelo</option>
+        </select>
+
+        <input id="linkOpcional" type="text" placeholder="Link (opcional)">
+
+        <button id="btnPublicar">Publicar Aviso</button>
+    </div>
+
+    <h3>Avisos Publicados</h3>
+    <div id="listaAvisos"></div>
+</section>
+
 <style>
-    body {
+    .adm-section {
+        max-width: 700px;
+        margin: 40px auto;
+        padding: 20px;
         font-family: Poppins, sans-serif;
-        background: #f4f4f4;
-        padding: 20px;
     }
 
-    h2 {
-        margin-bottom: 10px;
+    .adm-form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 40px;
     }
 
-    .card {
-        background: white;
-        padding: 20px;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        margin-bottom: 20px;
-    }
-
-    select, input, textarea, button {
-        width: 100%;
+    .adm-form input, .adm-form textarea, .adm-form select {
         padding: 12px;
-        border-radius: 8px;
         border: 1px solid #ccc;
-        margin-top: 10px;
+        border-radius: 8px;
         font-size: 15px;
     }
 
-    button {
-        background: #4a4ae8;
+    .adm-form button {
+        background: #4a2db6;
         color: white;
-        cursor: pointer;
         border: none;
-        transition: 0.2s;
+        padding: 12px;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
     }
 
-    button:hover {
-        opacity: 0.9;
-    }
-
-    /* Estilos dos avisos */
-    .aviso {
+    .cardAdm {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        background: white;
         padding: 15px;
         border-radius: 10px;
-        color: white;
         margin-bottom: 15px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        position: relative;
     }
 
-    .azul { background: #1e88e5; }
-    .vermelho { background: #e53935; }
-    .amarelo { background: #fbc02d; color: #000; }
+    .faixa {
+        width: 8px;
+        height: 100%;
+        border-radius: 8px;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
 
-    .excluir-btn {
-        background: #00000055;
+    .azul { background: #007BFF; }
+    .vermelho { background: #FF3B3B; }
+    .amarelo { background: #FFC107; }
+
+    .info {
+        margin-left: 15px;
+        flex: 1;
+    }
+
+    .cardAdm button {
+        background: #ff3b3b;
+        border: none;
         color: white;
-        padding: 6px 12px;
+        padding: 8px 12px;
         border-radius: 6px;
-        float: right;
         cursor: pointer;
     }
 
-    /* Modal */
-    #modal {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.6);
-        display: none;
-        align-items: center;
-        justify-content: center;
-    }
-
-    #modal .conteudo {
-        background: white;
-        padding: 20px;
-        border-radius: 10px;
-        text-align: center;
-        width: 80%;
-        max-width: 300px;
-    }
 </style>
-</head>
-<body>
-
-<h2>📌 Publicar aviso no mural</h2>
-
-<div class="card">
-    <label>Cor do aviso:</label>
-    <select id="cor">
-        <option value="azul">Azul</option>
-        <option value="vermelho">Vermelho</option>
-        <option value="amarelo">Amarelo</option>
-    </select>
-
-    <label>Título:</label>
-    <input type="text" id="titulo" placeholder="Digite o título...">
-
-    <label>Mensagem:</label>
-    <textarea id="mensagem" rows="4" placeholder="Digite o aviso..."></textarea>
-
-    <button id="publicar">Publicar aviso</button>
-</div>
-
-<h2>📋 Avisos publicados</h2>
-<div id="lista-avisos"></div>
-
-<!-- Modal -->
-<div id="modal">
-    <div class="conteudo">
-        <h3>Publicado!</h3>
-        <p>O aviso foi enviado ao mural.</p>
-        <button onclick="fecharModal()">OK</button>
-    </div>
-</div>
 
 <script type="module">
-    // ------ IMPORTS ------
-    import { initializeApp }
-        from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
-    import { getAnalytics }
-        from "https://www.gstatic.com/firebasejs/12.6.0/firebase-analytics.js";
-    import { getDatabase, ref, push, set, onValue, remove }
-        from "https://www.gstatic.com/firebasejs/12.6.0/firebase-database.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+    import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-database.js";
 
-    // ------ CONFIG -------
     const firebaseConfig = {
         apiKey: "AIzaSyAAkBk52aOoo9IZsbEIHRBwOyIZ66Mbhx0",
         authDomain: "mural-af763.firebaseapp.com",
@@ -137,78 +114,78 @@
         storageBucket: "mural-af763.firebasestorage.app",
         messagingSenderId: "418040841130",
         appId: "1:418040841130:web:9d96121172ccede5dea1d3",
-        measurementId: "G-W4QTRV47TM"
+        measurementId: "G-W4QTRV47TM",
+        databaseURL: "https://mural-af763-default-rtdb.firebaseio.com"
     };
 
-    // ------ INIT -------
     const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
     const db = getDatabase(app);
 
-    // Referência do mural no DB
-    const muralRef = ref(db, "mural");
+    const btn = document.getElementById("btnPublicar");
+    const lista = document.getElementById("listaAvisos");
 
-    // ------ PUBLICAR ------
-    document.getElementById("publicar").onclick = () => {
-        const cor = document.getElementById("cor").value;
+    // Publicar aviso
+    btn.addEventListener("click", () => {
         const titulo = document.getElementById("titulo").value.trim();
         const mensagem = document.getElementById("mensagem").value.trim();
+        const cor = document.getElementById("cor").value;
+        const linkOpcional = document.getElementById("linkOpcional").value.trim();
 
         if (!titulo || !mensagem) {
-            alert("Preencha título e mensagem!");
+            alert("Preencha pelo menos título e mensagem!");
             return;
         }
 
-        const novoAviso = push(muralRef);
-
-        set(novoAviso, {
-            cor,
+        push(ref(db, "avisos"), {
             titulo,
             mensagem,
+            cor,
+            link: linkOpcional || null,
             data: Date.now()
         });
 
+        alert("Publicado com sucesso!");
+
         document.getElementById("titulo").value = "";
         document.getElementById("mensagem").value = "";
+        document.getElementById("linkOpcional").value = "";
+        document.getElementById("cor").value = "azul";
+    });
 
-        abrirModal();
-    };
-
-    // ------ LISTAR AVISOS ------
-    onValue(muralRef, (snapshot) => {
-        const lista = document.getElementById("lista-avisos");
+    // Carregar avisos na lista ADM
+    onValue(ref(db, "avisos"), (snapshot) => {
         lista.innerHTML = "";
+        const dados = snapshot.val();
+        if (!dados) {
+            lista.innerHTML = "<p>Nenhum aviso publicado ainda.</p>";
+            return;
+        }
 
-        snapshot.forEach(child => {
-            const id = child.key;
-            const aviso = child.val();
-
+        Object.entries(dados).forEach(([id, aviso]) => {
             const div = document.createElement("div");
-            div.className = `aviso ${aviso.cor}`;
+            div.className = "cardAdm";
             div.innerHTML = `
-                <span class="excluir-btn" onclick="excluirAviso('${id}')">Excluir</span>
-                <h3>${aviso.titulo}</h3>
-                <p>${aviso.mensagem}</p>
+                <div class="faixa ${aviso.cor}"></div>
+
+                <div class="info">
+                    <h4>${aviso.titulo}</h4>
+                    <p>${aviso.mensagem}</p>
+                    ${aviso.link ? `<a href="${aviso.link}" target="_blank">Abrir link</a>` : ""}
+                </div>
+
+                <button onclick="excluirAviso('${id}')">Excluir</button>
             `;
 
             lista.appendChild(div);
         });
     });
 
-    // ------ EXCLUIR ------
+    // Excluir aviso
     window.excluirAviso = (id) => {
-        remove(ref(db, "mural/" + id));
-    };
-
-    // ------ MODAL ------
-    window.abrirModal = () => {
-        document.getElementById("modal").style.display = "flex";
-    };
-
-    window.fecharModal = () => {
-        document.getElementById("modal").style.display = "none";
+        if (confirm("Tem certeza que deseja excluir?")) {
+            remove(ref(db, "avisos/" + id));
+        }
     };
 </script>
-
 </body>
-    </html>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel Admin - Mural ATA</title>
+
+<style>
+    body {
+        font-family: Poppins, sans-serif;
+        background: #f4f6fb;
+        padding: 20px;
+    }
+
+    h2 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 25px;
+    }
+
+    .card {
+        background: #fff;
+        padding: 20px;
+        border-radius: 12px;
+        max-width: 500px;
+        margin: auto;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    input, textarea, button {
+        width: 100%;
+        padding: 12px;
+        margin-top: 10px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 15px;
+    }
+
+    button {
+        background: #4c6ef5;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        border: none;
+        transition: 0.2s;
+    }
+
+    button:hover {
+        background: #3b5bdb;
+    }
+
+    .ok {
+        color: green;
+        margin-top: 10px;
+        text-align: center;
+        font-weight: bold;
+    }
+</style>
+</head>
+
+<body>
+
+<h2>Painel Admin – Criar Aviso</h2>
+
+<div class="card">
+    <input type="text" id="titulo" placeholder="Título do aviso">
+    <textarea id="mensagem" placeholder="Texto do aviso" rows="4"></textarea>
+
+    <button onclick="criarAviso()">Publicar Aviso</button>
+
+    <div id="status"></div>
+</div>
+
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+    import { getDatabase, ref, push } 
+      from "https://www.gstatic.com/firebasejs/12.6.0/firebase-database.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyAAkBk52aOoo9IZsbEIHRBwOyIZ66Mbhx0",
+        authDomain: "mural-af763.firebaseapp.com",
+        databaseURL: "https://mural-af763-default-rtdb.firebaseio.com",
+        projectId: "mural-af763",
+        storageBucket: "mural-af763.firebasestorage.app",
+        messagingSenderId: "418040841130",
+        appId: "1:418040841130:web:9d96121172ccede5dea1d3"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    window.criarAviso = () => {
+        const titulo = document.getElementById("titulo").value.trim();
+        const mensagem = document.getElementById("mensagem").value.trim();
+
+        if (titulo === "" || mensagem === "") {
+            alert("Preencha tudo!");
+            return;
+        }
+
+        push(ref(db, "mural"), {
+            titulo,
+            mensagem,
+            data: new Date().toLocaleString("pt-BR")
+        }).then(() => {
+            document.getElementById("status").innerHTML =
+              "<p class='ok'>Aviso publicado!</p>";
+
+            document.getElementById("titulo").value = "";
+            document.getElementById("mensagem").value = "";
+        });
+    };
+</script>
+
+</body>
+  </html>

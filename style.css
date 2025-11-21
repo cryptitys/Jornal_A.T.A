@@ -188,13 +188,7 @@ body {
         transform: translateY(-8px) rotate(-45deg);
     }
   }
-.navbar {
-    display: flex;
-    /* Distribui o espaço entre os itens: Logo (esquerda) -- Menu (centro) -- Hambúrguer (direita) */
-    justify-content: space-between; 
-    align-items: center; /* Alinha os itens verticalmente no centro */
-    padding: 10px 5%; /* Adiciona um respiro nas laterais */
-}
+
 
 
 /* Banner Principal 

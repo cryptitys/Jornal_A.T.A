@@ -1,117 +1,214 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Painel Admin - Mural ATA</title>
-
+<title>Admin Mural</title>
 <style>
     body {
         font-family: Poppins, sans-serif;
-        background: #f4f6fb;
+        background: #f4f4f4;
         padding: 20px;
     }
 
     h2 {
-        text-align: center;
-        color: #333;
-        margin-bottom: 25px;
+        margin-bottom: 10px;
     }
 
     .card {
-        background: #fff;
+        background: white;
         padding: 20px;
         border-radius: 12px;
-        max-width: 500px;
-        margin: auto;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
     }
 
-    input, textarea, button {
+    select, input, textarea, button {
         width: 100%;
         padding: 12px;
-        margin-top: 10px;
         border-radius: 8px;
         border: 1px solid #ccc;
+        margin-top: 10px;
         font-size: 15px;
     }
 
     button {
-        background: #4c6ef5;
+        background: #4a4ae8;
         color: white;
-        font-weight: bold;
         cursor: pointer;
         border: none;
         transition: 0.2s;
     }
 
     button:hover {
-        background: #3b5bdb;
+        opacity: 0.9;
     }
 
-    .ok {
-        color: green;
-        margin-top: 10px;
+    /* Estilos dos avisos */
+    .aviso {
+        padding: 15px;
+        border-radius: 10px;
+        color: white;
+        margin-bottom: 15px;
+    }
+
+    .azul { background: #1e88e5; }
+    .vermelho { background: #e53935; }
+    .amarelo { background: #fbc02d; color: #000; }
+
+    .excluir-btn {
+        background: #00000055;
+        color: white;
+        padding: 6px 12px;
+        border-radius: 6px;
+        float: right;
+        cursor: pointer;
+    }
+
+    /* Modal */
+    #modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.6);
+        display: none;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #modal .conteudo {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
         text-align: center;
-        font-weight: bold;
+        width: 80%;
+        max-width: 300px;
     }
 </style>
 </head>
-
 <body>
 
-<h2>Painel Admin – Criar Aviso</h2>
+<h2>📌 Publicar aviso no mural</h2>
 
 <div class="card">
-    <input type="text" id="titulo" placeholder="Título do aviso">
-    <textarea id="mensagem" placeholder="Texto do aviso" rows="4"></textarea>
+    <label>Cor do aviso:</label>
+    <select id="cor">
+        <option value="azul">Azul</option>
+        <option value="vermelho">Vermelho</option>
+        <option value="amarelo">Amarelo</option>
+    </select>
 
-    <button onclick="criarAviso()">Publicar Aviso</button>
+    <label>Título:</label>
+    <input type="text" id="titulo" placeholder="Digite o título...">
 
-    <div id="status"></div>
+    <label>Mensagem:</label>
+    <textarea id="mensagem" rows="4" placeholder="Digite o aviso..."></textarea>
+
+    <button id="publicar">Publicar aviso</button>
 </div>
 
+<h2>📋 Avisos publicados</h2>
+<div id="lista-avisos"></div>
+
+<!-- Modal -->
+<div id="modal">
+    <div class="conteudo">
+        <h3>Publicado!</h3>
+        <p>O aviso foi enviado ao mural.</p>
+        <button onclick="fecharModal()">OK</button>
+    </div>
+</div>
 
 <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
-    import { getDatabase, ref, push } 
-      from "https://www.gstatic.com/firebasejs/12.6.0/firebase-database.js";
+    // ------ IMPORTS ------
+    import { initializeApp }
+        from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+    import { getAnalytics }
+        from "https://www.gstatic.com/firebasejs/12.6.0/firebase-analytics.js";
+    import { getDatabase, ref, push, set, onValue, remove }
+        from "https://www.gstatic.com/firebasejs/12.6.0/firebase-database.js";
 
+    // ------ CONFIG -------
     const firebaseConfig = {
         apiKey: "AIzaSyAAkBk52aOoo9IZsbEIHRBwOyIZ66Mbhx0",
         authDomain: "mural-af763.firebaseapp.com",
-        databaseURL: "https://mural-af763-default-rtdb.firebaseio.com",
         projectId: "mural-af763",
         storageBucket: "mural-af763.firebasestorage.app",
         messagingSenderId: "418040841130",
-        appId: "1:418040841130:web:9d96121172ccede5dea1d3"
+        appId: "1:418040841130:web:9d96121172ccede5dea1d3",
+        measurementId: "G-W4QTRV47TM"
     };
 
+    // ------ INIT -------
     const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
     const db = getDatabase(app);
 
-    window.criarAviso = () => {
+    // Referência do mural no DB
+    const muralRef = ref(db, "mural");
+
+    // ------ PUBLICAR ------
+    document.getElementById("publicar").onclick = () => {
+        const cor = document.getElementById("cor").value;
         const titulo = document.getElementById("titulo").value.trim();
         const mensagem = document.getElementById("mensagem").value.trim();
 
-        if (titulo === "" || mensagem === "") {
-            alert("Preencha tudo!");
+        if (!titulo || !mensagem) {
+            alert("Preencha título e mensagem!");
             return;
         }
 
-        push(ref(db, "mural"), {
+        const novoAviso = push(muralRef);
+
+        set(novoAviso, {
+            cor,
             titulo,
             mensagem,
-            data: new Date().toLocaleString("pt-BR")
-        }).then(() => {
-            document.getElementById("status").innerHTML =
-              "<p class='ok'>Aviso publicado!</p>";
-
-            document.getElementById("titulo").value = "";
-            document.getElementById("mensagem").value = "";
+            data: Date.now()
         });
+
+        document.getElementById("titulo").value = "";
+        document.getElementById("mensagem").value = "";
+
+        abrirModal();
+    };
+
+    // ------ LISTAR AVISOS ------
+    onValue(muralRef, (snapshot) => {
+        const lista = document.getElementById("lista-avisos");
+        lista.innerHTML = "";
+
+        snapshot.forEach(child => {
+            const id = child.key;
+            const aviso = child.val();
+
+            const div = document.createElement("div");
+            div.className = `aviso ${aviso.cor}`;
+            div.innerHTML = `
+                <span class="excluir-btn" onclick="excluirAviso('${id}')">Excluir</span>
+                <h3>${aviso.titulo}</h3>
+                <p>${aviso.mensagem}</p>
+            `;
+
+            lista.appendChild(div);
+        });
+    });
+
+    // ------ EXCLUIR ------
+    window.excluirAviso = (id) => {
+        remove(ref(db, "mural/" + id));
+    };
+
+    // ------ MODAL ------
+    window.abrirModal = () => {
+        document.getElementById("modal").style.display = "flex";
+    };
+
+    window.fecharModal = () => {
+        document.getElementById("modal").style.display = "none";
     };
 </script>
 
 </body>
-  </html>
+    </html>

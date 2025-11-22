@@ -245,9 +245,122 @@
     </div>
 </div>
 
+<style>
+/* Botão */
+.collab-btn {
+    padding: 12px 26px;
+    background: #4a3c7a;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: .3s;
+}
+
+.collab-btn:hover {
+    background: #32295a;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(4px);
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn .25s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    background: white;
+    width: 90%;
+    max-width: 480px;
+    padding: 25px;
+    border-radius: 18px;
+    position: relative;
+    animation: pop .25s ease;
+}
+
+@keyframes pop {
+    from { transform: scale(.85); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* X fechar */
+.close {
+    position: absolute;
+    right: 14px;
+    top: 10px;
+    font-size: 32px;
+    cursor: pointer;
+    color: #555;
+}
+
+/* Lista */
+.collab-list {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.collab-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #f7f7f7;
+    padding: 12px;
+    border-radius: 12px;
+}
+
+.collab-card img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.collab-card .info h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.collab-card .info p {
+    margin: 0;
+    color: #555;
+    font-size: 14px;
+	}
+</sytle>
+
+<script>
+function openCollaborators() {
+    document.getElementById("collab-modal").style.display = "flex";
+}
+
+function closeCollaborators() {
+    document.getElementById("collab-modal").style.display = "none";
+}
+
+// Fechar clicando fora
+document.addEventListener("click", function(e) {
+    let modal = document.getElementById("collab-modal");
+    if (e.target === modal) {
+        closeCollaborators();
+    }
+});	
+</script>
 
 
 
+	
 <section class="faq-section">
   <h2>Perguntas Frequentes (FAQ)</h2>
   <div class="faq-item">

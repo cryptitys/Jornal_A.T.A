@@ -267,6 +267,42 @@ button:hover {
     column-gap: 3rem;
   }
     }
+    /* ===== FIX FOOTER MOBILE ===== */
+.footer {
+    padding: 20px 0 !important; /* reduz o tamanho geral */
+}
+
+.footer__container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 colunas no mobile */
+    gap: 1rem;
+}
+
+.footer__content {
+    text-align: left;
+}
+
+.footer__social {
+    justify-content: flex-start;
+}
+
+.footer__copy {
+    margin-top: 2rem;
+    font-size: 0.75rem;
+}
+
+/* Telas muito pequenas */
+@media (max-width: 480px) {
+    .footer {
+        padding: 15px 0 10px !important;
+    }
+    .footer__container {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.7rem;
+    }
+    }
 </style>
 
 <!--=============== BOXICONS ===============-->

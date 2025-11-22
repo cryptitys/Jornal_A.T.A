@@ -1462,16 +1462,7 @@ h2 {
     border-radius: 50%;
 }
 
-/* Seção com a imagem que você enviou */
-.secao-contato-custom {
-    width: 100%;
-    background-image: url('img/fotos/20251122_092825_0000.png'); /* AGORA CORRETO */
-    background-size: cover;
-    background-position: center;
-    padding: 80px 20px;
-    text-align: center;
-    border-radius: 0;
-}
+
 
 /* Título */
 .contato-titulo {

@@ -4,7 +4,10 @@
 <meta charset="UTF-8">
 <title>Admin Mural</title>
 <style>
-/* ===== Estilos base ===== */
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+    
+    /* ===== Estilos base ===== */
 body {
     font-family: Poppins, sans-serif;
     background: #f4f4f4;
@@ -162,8 +165,111 @@ button:hover {
         padding: 15px;
     }
     }
-    
+    /* Footer */
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 40px 0;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.footer {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  background-color: #1e1e1e;
+  color: #fff;
+  transition: 0.5s;
+  padding-bottom: 2rem;
+}
+.footer__container {
+  max-width: 968px;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  row-gap: 2rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.footer__title {
+  font-size: 1.125rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.footer__link {
+  text-decoration: none;
+  color: darkgray;
+  font-size: 0.813rem;
+}
+.footer__links {
+  list-style: none;
+  display: grid;
+  row-gap: 0.5rem;
+}
+.footer__social {
+  display: flex;
+  column-gap: 1.5rem;
+}
+.footer__link:hover {
+  text-decoration: underline;
+  color: rgb(213, 213, 213);
+}
+.footer__social-link {
+  color: white;
+  font-size: 1.25rem;
+}
+
+.footer__copy {
+  margin-top: 6rem;
+  text-align: center;
+  font-size: 0.75rem;
+}
+@media screen and (max-width: 360px) {
+  .footer {
+    padding: 3.5rem 0 1rem;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .footer__container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media screen and (min-width: 767px) {
+  .footer {
+    margin: 0;
+    padding: 6rem 0 2rem;
+  }
+}
+
+@media screen and (min-width: 968px) {
+  .footer__container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .footer__social {
+    align-items: flex-start;
+  }
+  .footer__social-link {
+    font-size: 1.45rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .footer__container {
+    margin-left: auto;
+    margin-right: auto;
+    column-gap: 3rem;
+  }
+    }
 </style>
+
+<!--=============== BOXICONS ===============-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
+    />
 </head>
 <body>
 
@@ -198,7 +304,57 @@ button:hover {
     </div>
 </div>
 
-<script type="module">
+<!--=============== FOOTER ===============-->
+    <footer class="footer">
+      <div class="footer__container">
+        <div class="footer__content">
+          <h3 class="footer__title">Our Services</h3>
+          <ul class="footer__links">
+            <li><a href="#" class="footer__link">Support </a></li>
+            <li><a href="#" class="footer__link">Donate </a></li>
+            <li><a href="#" class="footer__link">Report a bug</a></li>
+            <li><a href="#" class="footer__link">Terms of Service</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__content">
+          <h3 class="footer__title">Our Company</h3>
+          <ul class="footer__links">
+            <li><a href="#" class="footer__link">Blog</a></li>
+            <li><a href="#" class="footer__link">Our mission</a></li>
+            <li><a href="#" class="footer__link">Get in touch</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__content">
+          <h3 class="footer__title">Community</h3>
+          <ul class="footer__links">
+            <li><a href="#" class="footer__link">Support</a></li>
+            <li><a href="#" class="footer__link">Questions</a></li>
+            <li><a href="#" class="footer__link">Usage help</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__social">
+          <a href="#" class="footer__social-link"
+            ><i class="bx bxl-facebook-circle"></i
+          ></a>
+          <a href="#" class="footer__social-link"
+            ><i class="bx bxl-github"></i
+          ></a>
+          <a href="#" class="footer__social-link"
+            ><i class='bx bxl-instagram'></i></a>
+        </div>
+      </div>
+
+      <p class="footer__copy">&#169; John Wick. All right reserved</p>
+    </footer>
+    
+    
+    
+    
+    
+    <script type="module">
     // ------ IMPORTS ------
     import { initializeApp }
         from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";

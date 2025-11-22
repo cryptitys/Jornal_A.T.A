@@ -217,237 +217,38 @@ teste12330292jsksksks
 </section>
 
 	
+<section class="secao-fotos-elegante">
+    <h2 class="secao-titulo">Galeria Especial</h2>
 
-<!-- MODAL GERAL -->
-<div id="modal-bg" class="modal-bg">
-  <div class="modal">
+    <div class="foto-card" onclick="abrirModalGaleria()">
+        <div class="foto-card-img">
+            <img src="https://images.pexels.com/photos/746386/pexels-photo-746386.jpeg" alt="Galeria de Fotos">
+            <span class="foto-tag">Fotos</span>
+        </div>
 
-    <!-- TOPO AZUL COM TÍTULO -->
-    <div class="modal-header">
-      <h2 id="modal-title"></h2>
-      <button id="modal-close" class="modal-close">&times;</button>
+        <div class="foto-card-content">
+            <h3 class="foto-card-title">Momentos Incríveis</h3>
+            <p class="foto-card-text">
+                Uma coleção de fotos marcantes registradas pelos alunos em diversos eventos.
+            </p>
 
-      <div class="modal-meta">
-        <span id="modal-category" class="modal-category"></span>
-        <span id="modal-date"></span>
-      </div>
+            <a class="foto-card-button">Ver mais →</a>
+        </div>
     </div>
-
-    <!-- CORPO DO MODAL -->
-    <div class="modal-body">
-
-      <!-- IMAGEM PRINCIPAL -->
-      <img id="modal-img" class="modal-main-img" src="" alt="Imagem">
-
-      <!-- CAIXA BRANCA COM CONTEÚDO -->
-      <div class="modal-content-box">
-
-        <p id="modal-desc" class="modal-desc"></p>
-
-        <h3 class="section-title">Objetivos</h3>
-        <ul id="modal-objectives" class="modal-list"></ul>
-
-        <h3 class="section-title">Alunos Participantes</h3>
-        <div id="modal-students" class="students-list"></div>
-
-        <h3 class="section-title">Mais Fotos</h3>
-        <div id="modal-gallery" class="gallery-list"></div>
-
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<style>
-	/* Fundo escuro */
-.modal-bg {
-  position: fixed;
-  inset: 0;
-  background: #00000080;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 100;
-}
-
-/* Ativar modal */
-.modal-bg.active {
-  display: flex;
-}
-
-/* Estrutura principal do modal */
-.modal {
-  width: 95%;
-  max-width: 430px;
-  background: transparent;
-  border-radius: 18px;
-  overflow: hidden;
-  animation: fadeIn .3s ease;
-}
-
-/* Topo azul */
-.modal-header {
-  background: #5470c6;
-  color: white;
-  padding: 22px;
-  padding-right: 55px;
-  position: relative;
-  font-size: 1.3em;
-  border-radius: 18px 18px 0 0;
-}
-
-/* Botão redondo de fechar */
-.modal-close {
-  position: absolute;
-  right: 18px;
-  top: 18px;
-  width: 32px;
-  height: 32px;
-  background: #fc6853;
-  border: none;
-  border-radius: 50%;
-  font-size: 1.3em;
-  color: white;
-  cursor: pointer;
-  box-shadow: 0 2px 6px #0002;
-}
-
-/* Meta (categoria e data) */
-.modal-meta {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 8px;
-  font-size: .85em;
-  opacity: .9;
-}
-
-.modal-category {
-  background: #ff7a45;
-  padding: 3px 10px;
-  border-radius: 12px;
-  color: white;
-}
-
-/* Corpo */
-.modal-body {
-  background: white;
-  border-radius: 0 0 18px 18px;
-  overflow-y: auto;
-  max-height: 78vh;
-}
-
-/* Imagem grande */
-.modal-main-img {
-  width: 100%;
-  height: 230px;
-  object-fit: cover;
-}
-
-/* Caixa branca que envolve textos e listas */
-.modal-content-box {
-  padding: 20px;
-}
-
-.modal-desc {
-  font-size: 1em;
-  color: #344a6a;
-  margin-bottom: 15px;
-}
-
-/* Títulos das seções */
-.section-title {
-  margin-top: 20px;
-  margin-bottom: 10px;
-  font-weight: bold;
-  color: #2a3b55;
-}
-
-/* Objetivos */
-.modal-list {
-  padding-left: 20px;
-  margin-bottom: 20px;
-}
-
-/* Lista de alunos */
-.students-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.students-list .student-row {
-  background: #eef2ff;
-  padding: 8px 12px;
-  border-radius: 18px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.student-row img {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-/* Mais Fotos — estilo das imagens grandes */
-.gallery-list img {
-  width: 100%;
-  border-radius: 12px;
-  margin-bottom: 12px;
-  object-fit: cover;
-}
-
-/* Animação */
-@keyframes fadeIn {
-  from {opacity: 0; transform: scale(0.97);}
-  to {opacity: 1; transform: scale(1);}
-	}
-</style>
+</section>
+        
 <script>
-	// Abrir modal com dados
-function openModal(i) {
-  const p = projetos[i];
-
-  modalTitle.textContent = p.title;
-  modalCategory.textContent = p.category;
-  modalDate.textContent = "Publicado em " + p.date;
-  
-  modalImg.src = p.image;
-
-  modalDesc.textContent = p.description;
-
-  // Objetivos
-  modalObjectives.innerHTML = p.objectives
-    .map(obj => `<li>${obj}</li>`)
-    .join("");
-
-  // Alunos
-  modalStudents.innerHTML = p.students
-    .map(s => `
-      <div class="student-row">
-        <img src="${s.avatar}">
-        <span>${s.name}</span>
-      </div>
-    `)
-    .join("");
-
-  // Galeria (imagens grandes)
-  modalGallery.innerHTML = p.gallery
-    .map(img => `<img src="${img}">`)
-    .join("");
-
-  modalBg.classList.add("active");
+function abrirModalGaleria() {
+    document.getElementById("modalGaleria").style.display = "flex";
 }
 
-// Fechar modal
-modalClose.onclick = () => modalBg.classList.remove("active");
-modalBg.onclick = e => { if (e.target === modalBg) modalBg.classList.remove("active"); };
-document.addEventListener("keydown", e => { if (e.key === "Escape") modalBg.classList.remove("active"); });
+function fecharModalGaleria(event) {
+    if (event.target.id === "modalGaleria" || event.target.classList.contains("modal-close")) {
+        document.getElementById("modalGaleria").style.display = "none";
+    }
+}
 </script>
-    
+
 
 
 <!--Footer-->	
@@ -506,7 +307,65 @@ document.addEventListener("keydown", e => { if (e.key === "Escape") modalBg.clas
 	
 </main>
 
+<div id="modalGaleria" onclick="fecharModalGaleria(event)">
+    <div class="modal-conteudo">
+        
+        <div class="modal-header">
+            <h2>Momentos Incríveis</h2>
+            <div class="modal-close" onclick="fecharModalGaleria(event)">×</div>
+        </div>
 
+        <div class="modal-body">
+            
+            <img 
+                class="modal-capa" 
+                src="https://images.pexels.com/photos/746386/pexels-photo-746386.jpeg"
+            >
+
+            <p>
+                Uma coleção especial de fotos capturadas durante eventos, projetos e atividades
+                escolares que marcaram nossos alunos.
+            </p>
+
+            <h3>Alunos Participantes</h3>
+
+            <div class="aluno">
+                <img src="https://randomuser.me/api/portraits/men/31.jpg">
+                <span>Gabriel Santos</span>
+            </div>
+
+            <div class="aluno">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg">
+                <span>Laura Mendonça</span>
+            </div>
+
+            <div class="aluno">
+                <img src="https://randomuser.me/api/portraits/men/12.jpg">
+                <span>Rodrigo Barbosa</span>
+            </div>
+
+            <div class="aluno">
+                <img src="https://randomuser.me/api/portraits/women/68.jpg">
+                <span>Tatiane Silva</span>
+            </div>
+
+            <div class="aluno">
+                <img src="https://randomuser.me/api/portraits/men/16.jpg">
+                <span>Eduardo Costa</span>
+            </div>
+
+            <h3 style="margin-top: 20px;">Mais Fotos</h3>
+
+            <div class="mais-fotos">
+                <img src="https://images.pexels.com/photos/746386/pexels-photo-746386.jpeg">
+                <img src="https://images.pexels.com/photos/746386/pexels-photo-746386.jpeg">
+                <img src="https://images.pexels.com/photos/746386/pexels-photo-746386.jpeg">
+            </div>
+
+        </div>
+
+    </div>
+</div>
 		
 	  <!-- Modal de Aviso -->
 <div class="aviso-modal" id="avisoModal">

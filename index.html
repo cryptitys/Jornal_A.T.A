@@ -48,7 +48,59 @@
     <h1 class="hero-handwrite">Bem-vindo(a)!</h1>
 </section>
 	
-	 
+	 <style>
+		 /* ===== HERO SECTION PROFISSIONAL ===== */
+/* ===== HERO COM IMAGEM DE FUNDO ===== */
+.hero-escola {
+    position: relative;
+    width: 100%;
+    min-height: 70vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    background-image: url("logo/20251121_000544_0000.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    padding: 4rem 2rem;
+
+    margin-top: 80px; /* empurra o hero para baixo */
+
+}
+
+/* ===== TEXTO EM LETRA DE MÃO ===== */
+.hero-handwrite {
+    font-family: 'Pacifico', cursive; /* letra de mão bonita */
+    font-size: 3rem;
+    color: #333;
+    text-shadow: 0 2px 8px rgba(255,255,255,0.9);
+    letter-spacing: 2px;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 600px) {
+    .hero-handwrite {
+        font-size: 2.3rem;
+    }
+      }
+.hero-handwrite {
+  
+    animation: floatText 4s ease-in-out infinite;
+}
+
+@keyframes floatText {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0); }
+}
+
+/* ===== fim da hero ===== */
+        
+	 </style>
 	<!-- Banner Principal 
   <section class="hero-banner">
     <div class="container">

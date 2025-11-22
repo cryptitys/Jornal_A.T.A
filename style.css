@@ -1215,58 +1215,95 @@ h2 {
     transform: translateY(-3px);
     box-shadow: 0 6px 16px rgba(30,96,255,0.55);
       }
+/**/
+/* container geral */
 .social-school {
-    width: 100%;
-    max-width: 900px;
-    margin: 60px auto 40px;
-    text-align: center;
-    padding: 0 20px;
+  width: 100%;
+  max-width: 920px;
+  margin: 50px auto;
+  padding: 0 20px 40px;
+  box-sizing: border-box;
 }
 
-.social-school .social-image img {
-    max-width: 100%;
-    width: 100%;
-    border-radius: 20px;
+/* cartão que contém imagem e espaço branco */
+.card-social {
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 12px 40px rgba(15,35,80,0.06);
 }
 
-.social-buttons {
-    margin-top: 20px;
-    display: flex;
-    gap: 20px;
-    justify-content: center;
+/* imagem de fundo (o layout que você enviou) */
+.card-bg {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  /* força a imagem ocupar o espaço do cartão mantendo proporção */
 }
 
+/* área dos ícones: posicionada dentro do espaço branco do card */
+.card-icons {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  /* Ajuste vertical: baixa os ícones para o espaço em branco abaixo do texto.
+     A porcentagem abaixo funciona bem para a maioria das imagens; ajuste se preciso. */
+  top: 64%;
+  display: flex;
+  gap: 22px;
+  z-index: 5;
+  pointer-events: auto;
+}
+
+/* estilo dos botões (ícones) */
 .social-btn {
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, #b2c5ff, #4d6bff);
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    transition: 0.3s ease;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  width: 68px;
+  height: 68px;
+  border-radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 8px 28px rgba(30,72,200,0.15);
+  transition: transform .28s ease, box-shadow .28s ease;
+  background: linear-gradient(135deg,#9fbaff,#5b79ff);
 }
 
+/* Ícones (Font Awesome) */
 .social-btn i {
-    font-size: 28px;
-    color: white;
+  color: #fff;
+  font-size: 28px;
 }
 
+/* Hover */
 .social-btn:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 8px 18px rgba(0,0,0,0.20);
+  transform: translateY(-6px) scale(1.06);
+  box-shadow: 0 14px 36px rgba(30,72,200,0.24);
 }
 
-/* Responsivo */
-@media (max-width: 480px) {
-    .social-btn {
-        width: 55px;
-        height: 55px;
-    }
+/* Pequena diferença visual entre Instagram e Facebook (opcional) */
+.social-btn.instagram { background: linear-gradient(135deg,#ff9ec3,#7a66ff); }
+.social-btn.facebook  { background: linear-gradient(135deg,#6ea9ff,#375fbf); }
 
-    .social-btn i {
-        font-size: 24px;
-    }
+/* Tornar responsivo: em telas menores reduzimos tamanho e empilhamos se necessário */
+@media (max-width: 640px) {
+  .card-icons {
+    top: 68%;
+    gap: 14px;
   }
+  .social-btn {
+    width: 58px;
+    height: 58px;
+    border-radius: 14px;
+  }
+  .social-btn i { font-size: 24px; }
+}
+
+/* Muito pequenos: centralizamos verticalmente um pouco mais */
+@media (max-width: 420px) {
+  .card-icons { top: 70%; }
+  .social-btn { width: 52px; height: 52px; }
+  .social-btn i { font-size: 22px; }
+}

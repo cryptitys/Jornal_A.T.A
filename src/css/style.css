@@ -1462,25 +1462,18 @@ h2 {
     border-radius: 50%;
 }
 
-/* mais fotos */
-
-.mais-fotos img {
-    width: 100%;
-    border-radius: 12px;
-    margin-top: 15px;
-}
 /* Seção com a imagem que você enviou */
 .secao-contato-custom {
     width: 100%;
-    background-image: url('Img/fotos/20251122_092825_0000.png');
+    background-image: url('img/fotos/20251122_092825_0000.png'); /* AGORA CORRETO */
     background-size: cover;
     background-position: center;
     padding: 80px 20px;
     text-align: center;
-    border-radius: 0; /* sem borda */
+    border-radius: 0;
 }
 
-/* Título em letra de mão (você já importa a fonte, só aplicar esta classe) */
+/* Título */
 .contato-titulo {
     font-size: 48px;
     color: #0e5ea8;
@@ -1491,7 +1484,7 @@ h2 {
     font-family: 'SuaFonteDeMao', cursive;
 }
 
-/* Container dos botões */
+/* Botões */
 .contato-opcoes {
     display: flex;
     justify-content: center;
@@ -1499,7 +1492,6 @@ h2 {
     flex-wrap: wrap;
 }
 
-/* Cada item */
 .contato-item {
     display: flex;
     align-items: center;
@@ -1520,8 +1512,7 @@ h2 {
     background: rgba(255,255,255,0.95);
 }
 
-/* ícones */
 .contato-item img {
     width: 32px;
     height: 32px;
-  }    
+                     }

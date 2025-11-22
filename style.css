@@ -1215,3 +1215,58 @@ h2 {
     transform: translateY(-3px);
     box-shadow: 0 6px 16px rgba(30,96,255,0.55);
       }
+.social-school {
+    width: 100%;
+    max-width: 900px;
+    margin: 60px auto 40px;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.social-school .social-image img {
+    max-width: 100%;
+    width: 100%;
+    border-radius: 20px;
+}
+
+.social-buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.social-btn {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #b2c5ff, #4d6bff);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.social-btn i {
+    font-size: 28px;
+    color: white;
+}
+
+.social-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.20);
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+    .social-btn {
+        width: 55px;
+        height: 55px;
+    }
+
+    .social-btn i {
+        font-size: 24px;
+    }
+  }

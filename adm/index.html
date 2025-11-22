@@ -218,6 +218,53 @@ button:hover {
         padding-left: 16px;
     }
         }
+    /* ===== MODAL DE LOGIN ===== */
+.login-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.login-box {
+    background: #fff;
+    padding: 25px;
+    width: 85%;
+    max-width: 350px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.login-box input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 1px solid #bbb;
+}
+
+.login-box button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border: none;
+    background: #4a4ae8;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.login-box button:hover {
+    opacity: 0.9;
+}
 </style>
 
 <!--=============== BOXICONS ===============-->
@@ -372,6 +419,20 @@ button:hover {
         document.getElementById("modal").style.display = "none";
     };
 </script>
-
+<script src="adm/modal.js"></script>
 </body>
+  
+    
+    <div id="loginModal" class="login-modal">
+    <div class="login-box">
+        <h3>🔐 Acesso Restrito</h3>
+        <p>Digite o usuário e a senha para continuar.</p>
+
+        <input type="text" id="loginUser" placeholder="Usuário">
+        <input type="password" id="loginPass" placeholder="Senha">
+
+        <button onclick="validarLogin()">Entrar</button>
+    </div>
+    </div>
+    
 </html>

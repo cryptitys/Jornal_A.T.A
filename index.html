@@ -327,7 +327,100 @@
 </style>
 
 
+<section class="sobre-nos-section">
+  <h2>Sobre Nós</h2>
+  <p>Somos uma escola de ótimo aprendizado, dedicada a formar cidadãos preparados para o futuro. Nosso compromisso é oferecer ensino de qualidade, ambiente acolhedor e desenvolvimento integral dos alunos.</p>
+</section>
 
+<section class="faq-section">
+  <h2>Perguntas Frequentes (FAQ)</h2>
+  <div class="faq-item">
+    <button class="faq-question">Quais são os horários das aulas?</button>
+    <div class="faq-answer">
+      <p>As aulas acontecem de segunda a sexta, das 7h30 às 12h e das 13h às 17h.</p>
+    </div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-question">Como faço para me matricular?</button>
+    <div class="faq-answer">
+      <p>As matrículas são feitas presencialmente na secretaria da escola, com documentos básicos do aluno e responsável.</p>
+    </div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-question">Quais atividades extracurriculares são oferecidas?</button>
+    <div class="faq-answer">
+      <p>Oferecemos esportes, música, teatro e clubes de ciência e tecnologia.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .sobre-nos-section, .faq-section {
+    background-color: #f0f7ff;
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 30px 40px;
+    border-radius: 14px;
+    box-shadow: 0 8px 22px rgba(33, 150, 243, 0.12);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #1f2533;
+    text-align: center;
+  }
+  .sobre-nos-section h2, .faq-section h2 {
+    color: #1976d2;
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+  }
+  .sobre-nos-section p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+  }
+  .faq-item {
+    text-align: left;
+    margin-bottom: 15px;
+  }
+  .faq-question {
+    width: 100%;
+    background-color: #2196f3;
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    text-align: left;
+    transition: background-color 0.3s ease;
+  }
+  .faq-question:hover {
+    background-color: #1976d2;
+  }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    background: white;
+    color: #333;
+    padding: 0 20px;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 4px 10px rgba(33, 150, 243, 0.1);
+    transition: max-height 0.35s ease;
+  }
+  .faq-answer p {
+    margin: 15px 0;
+  }
+  .faq-item.active .faq-answer {
+    max-height: 150px;
+    padding: 15px 20px;
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.faq-question').forEach(button => {
+    button.addEventListener('click', () => {
+      const faqItem = button.parentElement;
+      faqItem.classList.toggle('active');
+    });
+  });
+</script>
 
 	
 <footer class="school-footer">

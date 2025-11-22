@@ -1464,46 +1464,104 @@ h2 {
 
 
 
-/* Título */
-.contato-titulo {
-    font-size: 48px;
-    color: #0e5ea8;
-    margin-bottom: 40px;
+/* ===== TÍTULO SOBRE A IMAGEM ===== */
+.contact-title {
+  position: absolute;
+  top: 22%;              /* sobe / desce o título na imagem */
+  left: 50%;
+  transform: translateX(-50%);
+  
+  color: #0f3b6f;
+  font-size: 38px;
+  font-weight: 700;
+  text-shadow: 0 5px 18px rgba(0,0,0,0.20);
+
+  background: rgba(255,255,255,0.82);
+  padding: 6px 20px;
+  border-radius: 14px;
+
+  margin: 0;
+  z-index: 10;
 }
 
-.letra-mao {
-    font-family: 'SuaFonteDeMao', cursive;
+/* ===== ÍCONES SOBRE A IMAGEM ===== */
+.contact-icons {
+  position: absolute;
+  top: 58%;               /* posição vertical dos botões */
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  gap: 22px;
+  z-index: 10;
 }
 
-/* Botões */
-.contato-opcoes {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
+/* ===== BOTÕES ===== */
+.contact-btn {
+  width: 70px;
+  height: 70px;
+  border-radius: 16px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #0f3b6f;
+  color: white;
+  text-decoration: none;
+
+  font-size: 30px;
+
+  box-shadow: 0 10px 28px rgba(15,35,80,0.25);
+  transition: transform .28s ease, box-shadow .28s ease;
 }
 
-.contato-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: rgba(255,255,255,0.8);
-    padding: 14px 24px;
-    border-radius: 14px;
-    text-decoration: none;
-    color: #003f7d;
-    font-size: 20px;
-    font-weight: 600;
-    backdrop-filter: blur(4px);
-    transition: 0.2s;
+/* CORES ESPECÍFICAS */
+.contact-btn.email {
+  background: linear-gradient(135deg,#4a7efc,#2b5bd8);
+}
+.contact-btn.whatsapp {
+  background: linear-gradient(135deg,#25d366,#128c4a);
 }
 
-.contato-item:hover {
-    transform: scale(1.05);
-    background: rgba(255,255,255,0.95);
+/* HOVER */
+.contact-btn:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.22);
 }
 
-.contato-item img {
-    width: 32px;
-    height: 32px;
-                     }
+/* ÍCONES */
+.contact-btn i {
+  pointer-events: none;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 768px) {
+  .contact-title {
+    font-size: 32px;
+    top: 24%;
+  }
+  .contact-btn {
+    width: 62px;
+    height: 62px;
+    font-size: 26px;
+  }
+  .contact-icons {
+    top: 60%;
+  }
+}
+
+@media (max-width: 420px) {
+  .contact-title {
+    font-size: 26px;
+    top: 26%;
+  }
+  .contact-btn {
+    width: 54px;
+    height: 54px;
+    font-size: 22px;
+  }
+  .contact-icons {
+    top: 63%;
+  }
+  }

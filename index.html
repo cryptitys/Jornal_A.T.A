@@ -222,20 +222,109 @@
 	</section> 
 
 <!--seçao noticias-->
-<section class="news-card">
-    <h2>Notícias e Atualizações</h2>
-    <p>
-        Fique sempre por dentro das novidades da nossa escola! 
-        Veja comunicados, projetos, eventos, conquistas e tudo o que está acontecendo na 
-        <strong>E.E. Adolpho Thomaz de Aquino</strong>.
-    </p>
-
-    <p class="sub">
-        Clique no botão abaixo para acessar nossas redes sociais e acompanhar tudo em tempo real.
-    </p>
-
-    <a href="#" class="btn-news" target="_blank">Acessar Atualizações</a>
+<section class="atualizacoes-section">
+  <h2>Atualizações</h2>
+  <p class="subtitle">Veja as principais notícias e atualizações</p>
+  <div class="social-icons">
+    <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="instagram">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.76 5.76 0 0122 7.75v8.5A5.76 5.76 0 0116.25 22h-8.5A5.76 5.76 0 012 16.25v-8.5A5.76 5.76 0 017.75 2zm0 2A3.77 3.77 0 004 7.75v8.5A3.77 3.77 0 007.75 20h8.5a3.77 3.77 0 003.75-3.75v-8.5A3.77 3.77 0 0016.25 4h-8.5zm8.68 2.75a1.125 1.125 0 111.124-1.125 1.125 1.125 0 01-1.125 1.125zM12 7a5 5 0 115 5 5 5 0 01-5-5zm0 2a3 3 0 103 3 3 3 0 00-3-3z"/></svg>
+    </a>
+    <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="facebook">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.5 9.9v-7h-2.5v-2.9h2.5v-2.2c0-2.5 1.5-3.9 3.7-3.9a15 15 0 012.2.2v2.4h-1.3c-1.2 0-1.5.8-1.5 1.5v1.9h2.6l-.4 2.9h-2.2v7A10 10 0 0022 12z"/></svg>
+    </a>
+  </div>
+  <div class="news-card">
+    <h3>Início do Novo Semestre</h3>
+    <span>22 de Novembro de 2025</span>
+    <p>Bem-vindo ao novo semestre! Estamos prontos para um ano cheio de aprendizado e crescimento.</p>
+  </div>
 </section>
+
+<style>
+  .atualizacoes-section {
+    background: #e3f2fd;
+    max-width: 700px;
+    margin: 50px auto;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(33, 150, 243, 0.15);
+    text-align: center;
+    color: #1f2533;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  .atualizacoes-section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 8px;
+    color: #1976d2;
+  }
+  .subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    color: #4a6fa5;
+  }
+  .social-icons {
+    margin-bottom: 35px;
+  }
+  .social-icons a {
+    display: inline-block;
+    margin: 0 20px;
+    background-color: #2196f3;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 14px rgba(33,150,243,0.4);
+    text-align: center;
+    line-height: 60px;
+  }
+  .social-icons a svg {
+    vertical-align: middle;
+    fill: white;
+  }
+  .social-icons a.instagram:hover {
+    background-color: #e4405f;
+    transform: scale(1.1);
+  }
+  .social-icons a.facebook:hover {
+    background-color: #1877f2;
+    transform: scale(1.1);
+  }
+  .news-card {
+    background: white;
+    padding: 20px 25px;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(33, 150, 243, 0.12);
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+    color: #333;
+  }
+  .news-card h3 {
+    margin-top: 0;
+    color: #2196f3;
+  }
+  .news-card span {
+    font-size: 0.9rem;
+    color: #607d8b;
+  }
+  .news-card p {
+    font-size: 1rem;
+    margin-top: 8px;
+    line-height: 1.4;
+  }
+  @media (max-width: 480px) {
+    .social-icons a {
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+      margin: 0 12px;
+    }
+    .atualizacoes-section {
+      padding: 20px 25px;
+      margin: 30px 15px;
+    }
+  }
+</style>
 
 
 

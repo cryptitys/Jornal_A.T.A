@@ -214,340 +214,239 @@
 </section>
 
 	
-	<div class="container">
-    <h2>Projetos Sociais</h2>
-    <div id="projects-list">
-      <!-- Cards inseridos dinamicamente -->
-    </div>
-  </div>
 
-  <!-- Modal -->
-  <div id="modal-bg" class="modal-bg" tabindex="-1" aria-modal="true" role="dialog">
-    <div id="project-modal" class="modal">
-      <div class="modal-header">
-        <span class="modal-title" id="modal-title"></span>
-        <button class="modal-close" aria-label="Fechar" id="modal-close">&times;</button>
-        <div class="modal-meta">
-          <span class="badge" id="modal-category"></span>
-          <span id="modal-date"></span>
-        </div>
-      </div>
-      <div class="modal-body">
-        <img id="modal-img" class="modal-image" src="" alt="Imagem projeto" />
-        <div class="modal-desc" id="modal-desc"></div>
-        <div class="modal-obj">Objetivos</div>
-        <ul class="modal-list" id="modal-objectives"></ul>
-        <div class="modal-students">Alunos Participantes</div>
-        <div class="students-list" id="modal-students"></div>
-        <div class="gallery-title">Mais Fotos</div>
-        <div class="gallery" id="modal-gallery"></div>
+<!-- MODAL GERAL -->
+<div id="modal-bg" class="modal-bg">
+  <div class="modal">
+
+    <!-- TOPO AZUL COM TÍTULO -->
+    <div class="modal-header">
+      <h2 id="modal-title"></h2>
+      <button id="modal-close" class="modal-close">&times;</button>
+
+      <div class="modal-meta">
+        <span id="modal-category" class="modal-category"></span>
+        <span id="modal-date"></span>
       </div>
     </div>
+
+    <!-- CORPO DO MODAL -->
+    <div class="modal-body">
+
+      <!-- IMAGEM PRINCIPAL -->
+      <img id="modal-img" class="modal-main-img" src="" alt="Imagem">
+
+      <!-- CAIXA BRANCA COM CONTEÚDO -->
+      <div class="modal-content-box">
+
+        <p id="modal-desc" class="modal-desc"></p>
+
+        <h3 class="section-title">Objetivos</h3>
+        <ul id="modal-objectives" class="modal-list"></ul>
+
+        <h3 class="section-title">Alunos Participantes</h3>
+        <div id="modal-students" class="students-list"></div>
+
+        <h3 class="section-title">Mais Fotos</h3>
+        <div id="modal-gallery" class="gallery-list"></div>
+
+      </div>
+    </div>
+
   </div>
+</div>
+
 <style>
-	
-    .project-card {
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 2px 8px #2848791a;
-      padding: 20px 20px 12px;
-      margin-bottom: 32px;
-      display: flex;
-      flex-direction: column;
-      align-items: start;
-      cursor: pointer;
-      transition: box-shadow 0.2s;
-      border: 1px solid #e6ecf5;
-    }
-    .project-card:hover {
-      box-shadow: 0 4px 16px #28487952;
-    }
-    .project-img {
-      width: 100%;
-      border-radius: 12px;
-      margin-bottom: 14px;
-      height: 180px;
-      object-fit: cover;
-    }
-    .project-title {
-      font-size: 1.3em;
-      font-weight: bold;
-      margin-bottom: 2px;
-    }
-    .badge {
-      display: inline-block;
-      font-size: 0.85em;
-      background: #5470c6;
-      color: #fff;
-      border-radius: 12px;
-      padding: 2px 11px;
-      margin-right: 8px;
-    }
-    .project-short {
-      color: #45556b;
-      font-size: 1em;
-      margin: 3px 0 11px 0;
-    }
-    .avatars {
-      margin-top: 8px;
-      margin-bottom: 0;
-    }
-    .avatar {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid #fff;
-      box-shadow: 0 2px 6px #1a19191a;
-      margin-right: -9px;
-      vertical-align: middle;
-    }
-    /* MODAL */
-    .modal-bg {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: #03081e70;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 99;
-      animation: fadeIn 0.2s;
-    }
-    .modal-bg.active {
-      display: flex;
-    }
-    .modal {
-      background: #fff;
-      border-radius: 14px;
-      box-shadow: 0 10px 40px #1f2c4b50;
-      padding: 0;
-      max-width: 380px;
-      width: 100%;
-      animation: growIn 0.32s;
-      position: relative;
-    }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1;} }
-    @keyframes growIn { from { transform: scale(0.97); opacity: 0; } to {transform: scale(1); opacity: 1;} }
-    .modal-header {
-      background: #5470c6;
-      padding: 20px 22px 10px 22px;
-      color: #fff;
-      border-top-left-radius: 14px;
-      border-top-right-radius: 14px;
-      position: relative;
-    }
-    .modal-title {
-      font-size: 1.26em;
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-    .modal-close {
-      position: absolute;
-      right: 24px;
-      top: 18px;
-      background: #fc6853;
-      border: none;
-      border-radius: 50%;
-      width: 28px; height: 28px;
-      font-size: 1.24em;
-      color: #fff;
-      text-align: center;
-      cursor: pointer;
-      z-index: 2;
-      box-shadow: 0 2px 8px #0000001a;
-    }
-    .modal-meta {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.93em;
-      opacity: 0.92;
-      margin-bottom: 4px;
-    }
-    .modal-body {
-      padding: 18px 20px 20px 20px;
-      max-height: 72vh;
-      overflow-y: auto;
-      border-bottom-left-radius: 14px;
-      border-bottom-right-radius: 14px;
-    }
-    .modal-image {
-      width: 100%;
-      border-radius: 10px;
-      margin-bottom: 14px;
-      height: 160px;
-      object-fit: cover;
-    }
-    .modal-desc {
-      font-size: 1em;
-      color: #284879;
-      margin-bottom: 9px;
-    }
-    .modal-obj {
-      font-weight: bold;
-      margin-top: 12px;
-      margin-bottom: 2px;
-      color: #45556b;
-    }
-    .modal-list {
-      margin: 0 0 8px 0;
-      padding-left: 1.1em;
-      color: #555;
-      font-size: .98em;
-    }
-    .modal-students {
-      font-weight: bold;
-      margin-top: 13px;
-      margin-bottom: 7px;
-      color: #284879;
-      font-size: .96em;
-    }
-    .students-list {
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-      margin-bottom: 10px;
-    }
-    .student-row {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      background: #f2f4fd;
-      border-radius: 22px;
-      padding: 6px 12px;
-      font-size: .94em;
-    }
-    .student-avatar {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-right: 4px;
-    }
-    .gallery-title {
-      font-size: .94em;
-      font-weight: 500;
-      margin-top: 9px;
-      margin-bottom: 6px;
-      color: #ef660a;
-    }
-    .gallery {
-      display: flex;
-      gap: 9px;
-      overflow-x: auto;
-      padding-bottom: 2px;
-    }
-    .gallery-img {
-      width: 100px;
-      height: 68px;
-      border-radius: 8px;
-      object-fit: cover;
-      background: #dedede;
-      flex: none;
-      border: 1.5px solid #eee;
-    }
-    @media (max-width: 700px) {
-      .container { padding: 8px;}
-      .modal {max-width: 98vw;}
-      .gallery-img { width: 80px; height: 54px;}
-      .modal-image {height: 120px;}
-      .project-img {height: 120px;}
-    }
-  
+	/* Fundo escuro */
+.modal-bg {
+  position: fixed;
+  inset: 0;
+  background: #00000080;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+/* Ativar modal */
+.modal-bg.active {
+  display: flex;
+}
+
+/* Estrutura principal do modal */
+.modal {
+  width: 95%;
+  max-width: 430px;
+  background: transparent;
+  border-radius: 18px;
+  overflow: hidden;
+  animation: fadeIn .3s ease;
+}
+
+/* Topo azul */
+.modal-header {
+  background: #5470c6;
+  color: white;
+  padding: 22px;
+  padding-right: 55px;
+  position: relative;
+  font-size: 1.3em;
+  border-radius: 18px 18px 0 0;
+}
+
+/* Botão redondo de fechar */
+.modal-close {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  width: 32px;
+  height: 32px;
+  background: #fc6853;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.3em;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 2px 6px #0002;
+}
+
+/* Meta (categoria e data) */
+.modal-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: .85em;
+  opacity: .9;
+}
+
+.modal-category {
+  background: #ff7a45;
+  padding: 3px 10px;
+  border-radius: 12px;
+  color: white;
+}
+
+/* Corpo */
+.modal-body {
+  background: white;
+  border-radius: 0 0 18px 18px;
+  overflow-y: auto;
+  max-height: 78vh;
+}
+
+/* Imagem grande */
+.modal-main-img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+}
+
+/* Caixa branca que envolve textos e listas */
+.modal-content-box {
+  padding: 20px;
+}
+
+.modal-desc {
+  font-size: 1em;
+  color: #344a6a;
+  margin-bottom: 15px;
+}
+
+/* Títulos das seções */
+.section-title {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #2a3b55;
+}
+
+/* Objetivos */
+.modal-list {
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+/* Lista de alunos */
+.students-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.students-list .student-row {
+  background: #eef2ff;
+  padding: 8px 12px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.student-row img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Mais Fotos — estilo das imagens grandes */
+.gallery-list img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  object-fit: cover;
+}
+
+/* Animação */
+@keyframes fadeIn {
+  from {opacity: 0; transform: scale(0.97);}
+  to {opacity: 1; transform: scale(1);}
+	}
 </style>
-  <script>
-    // Imagens dos projetos (substitua pelos arquivos)
-    const images = [
-      'Img/fotos/GRÊMIO_20251122_151005_0000.png',
-      'Img/fotos/GRÊMIO_20251122_151005_0000.png',
-      'Img/fotos/GRÊMIO_20251122_151005_0000.png',
-      'Img/fotos/GRÊMIO_20251122_151005_0000.png'
-    ];
-    const avatars = [
-      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop',
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop',
-      'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop',
-      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop',
-      'https://images.unsplash.com/photo-1500854051519-d64b4833b8d0?w=150&h=150&fit=crop'
-    ];
+<script>
+	// Abrir modal com dados
+function openModal(i) {
+  const p = projetos[i];
 
-    const projetos = [
+  modalTitle.textContent = p.title;
+  modalCategory.textContent = p.category;
+  modalDate.textContent = "Publicado em " + p.date;
+  
+  modalImg.src = p.image;
+
+  modalDesc.textContent = p.description;
+
+  // Objetivos
+  modalObjectives.innerHTML = p.objectives
+    .map(obj => `<li>${obj}</li>`)
+    .join("");
+
+  // Alunos
+  modalStudents.innerHTML = p.students
+    .map(s => `
+      <div class="student-row">
+        <img src="${s.avatar}">
+        <span>${s.name}</span>
+      </div>
+    `)
+    .join("");
+
+  // Galeria (imagens grandes)
+  modalGallery.innerHTML = p.gallery
+    .map(img => `<img src="${img}">`)
+    .join("");
+
+  modalBg.classList.add("active");
+}
+
+// Fechar modal
+modalClose.onclick = () => modalBg.classList.remove("active");
+modalBg.onclick = e => { if (e.target === modalBg) modalBg.classList.remove("active"); };
+document.addEventListener("keydown", e => { if (e.key === "Escape") modalBg.classList.remove("active"); });
+</script>
     
-      {
-        title: "Gremio Adolpho Alfa",
-        category: "Grêmio",
-        date: "01/02/2025",
-        image: images[2],
-        description: "Grupo Grêmio Estudantil A.T.A, empossados até o final de 2026, sendo assim exercendo atividades e projetos em 2 anos.",
-        objectives: [
-          "Desenvolver projetos escolares.",
-          "Estimular a conclusão das metas e criatividade.",
-          "Compartilhar conhecimento com a comunidade e trazer atividades curriculares."
-        ],
-        students: [
-          { avatar: avatars[3], name: "Dafne " },
-          { avatar: avatars[1], name: "Sabrina" },
-          { avatar: avatars[2], name: "Aluno" }
-        ],
-        gallery: [images[2], images[3]]
-      }
-    ];
 
-    // Render cards
-    const projectsList = document.getElementById('projects-list');
-    projetos.forEach((proj, idx) => {
-      const card = document.createElement('div');
-      card.className = 'project-card';
-      card.innerHTML = `
-        <img class="project-img" src="${proj.image}" alt="Projeto">
-        <span class="badge">${proj.category}</span>
-        <div class="project-title">${proj.title}</div>
-        <div class="project-short">${proj.description}</div>
-        <div class="avatars">
-          ${proj.students.slice(0,3).map(a => `<img class="avatar" src="${a.avatar}" alt="${a.name}"/>`).join('')}
-        </div>
-      `;
-      card.onclick = () => openModal(idx);
-      projectsList.appendChild(card);
-    });
 
-    // Modal
-    const modalBg = document.getElementById('modal-bg');
-    const modalTitle = document.getElementById('modal-title');
-    const modalCategory = document.getElementById('modal-category');
-    const modalDate = document.getElementById('modal-date');
-    const modalImg = document.getElementById('modal-img');
-    const modalDesc = document.getElementById('modal-desc');
-    const modalObjectives = document.getElementById('modal-objectives');
-    const modalStudents = document.getElementById('modal-students');
-    const modalGallery = document.getElementById('modal-gallery');
-
-    function openModal(idx) {
-      const proj = projetos[idx];
-      modalTitle.textContent = proj.title;
-      modalCategory.textContent = proj.category;
-      modalDate.textContent = "Publicado em " + proj.date;
-      modalImg.src = proj.image;
-      modalDesc.textContent = proj.description;
-      modalObjectives.innerHTML = proj.objectives.map(o => `<li>${o}</li>`).join('');
-      modalStudents.innerHTML = proj.students.map(s => `
-        <div class="student-row">
-          <img class="student-avatar" src="${s.avatar}" />
-          <span>${s.name}</span>
-        </div>
-      `).join('');
-      modalGallery.innerHTML = proj.gallery.map(img => `
-        <img class="gallery-img" src="${img}" />
-      `).join('');
-      modalBg.classList.add('active');
-    }
-    document.getElementById('modal-close').onclick = () => modalBg.classList.remove('active');
-    modalBg.onclick = (e) => {
-      if (e.target === modalBg) modalBg.classList.remove('active');
-    };
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') modalBg.classList.remove('active');
-    });
-	  </script>
 <!--Footer-->	
 	
 <footer class="school-footer">

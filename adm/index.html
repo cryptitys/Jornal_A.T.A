@@ -188,6 +188,36 @@ button:hover {
         padding: 12px 0;
     }
         }
+    /* ===== QUADRO DE INSTRUÇÕES ===== */
+.instrucoes {
+    background: #ffffff;
+    border-left: 5px solid #4a4ae8;
+}
+
+.instrucoes h3 {
+    margin-top: 0;
+    font-weight: 600;
+}
+
+.instrucoes ul {
+    margin-top: 10px;
+    padding-left: 20px;
+    line-height: 1.6;
+}
+
+.instrucoes li {
+    margin-bottom: 6px;
+}
+
+@media (max-width: 480px) {
+    .instrucoes {
+        padding: 12px;
+        font-size: 14px;
+    }
+    .instrucoes ul {
+        padding-left: 16px;
+    }
+        }
 </style>
 
 <!--=============== BOXICONS ===============-->
@@ -228,6 +258,21 @@ button:hover {
         <button onclick="fecharModal()">OK</button>
     </div>
 </div>
+
+    <div class="card instrucoes">
+    <h3>📘 Instruções do painel ADM</h3>
+    <p>Este painel permite que você publique avisos para todos os usuários que acessam o mural.</p>
+    
+    <ul>
+        <li>Selecione a <b>cor do aviso</b> (Azul, Vermelho ou Amarelo).</li>
+        <li>Digite um <b>título curto e objetivo</b>.</li>
+        <li>Escreva a <b>mensagem completa</b> do aviso.</li>
+        <li>Clique em <b>“Publicar aviso”</b> e ele aparecerá automaticamente no mural.</li>
+        <li>Para remover um aviso, clique no botão <b>“Excluir”</b> ao lado dele.</li>
+    </ul>
+
+    <p style="margin-top:10px;"><b>Dica:</b> use o aviso vermelho apenas para mensagens urgentes.</p>
+    </div>
 
 <!--=============== FOOTER ===============-->
 

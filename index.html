@@ -248,9 +248,70 @@ function fecharModalGaleria(event) {
 </script>
 
 
+<!-- ============================= -->
+<!--       SEÇÃO DE CONTATO       -->
+<!-- ============================= -->
+<style>
 
-	<section class="secao-contato-custom">
-    <h2 class="contato-titulo letra-mao">CONTATO</h2>
+/* Seção com imagem de fundo */
+.secao-contato-custom {
+    width: 100%;
+    background-image: url('img/fotos/20251122_092825_0000.png');
+    background-size: cover;
+    background-position: center;
+    padding: 80px 20px;
+    text-align: center;
+    border-radius: 0;
+}
+
+/* Título em letra cursiva */
+.contato-titulo {
+    font-size: 48px;
+    color: #0e5ea8;
+    margin-bottom: 40px;
+    font-family: 'Segoe Script', cursive;
+    font-weight: bold;
+}
+
+/* Container dos botões */
+.contato-opcoes {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* Botões individuais */
+.contato-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255,255,255,0.85);
+    padding: 14px 24px;
+    border-radius: 14px;
+    text-decoration: none;
+    color: #003f7d;
+    font-size: 20px;
+    font-weight: 600;
+    backdrop-filter: blur(4px);
+    transition: 0.2s;
+}
+
+.contato-item:hover {
+    transform: scale(1.05);
+    background: rgba(255,255,255,1);
+}
+
+/* ícones */
+.contato-item img {
+    width: 32px;
+    height: 32px;
+}
+
+</style>
+
+<section class="secao-contato-custom">
+    <h2 class="contato-titulo">CONTATO</h2>
 
     <div class="contato-opcoes">
         
@@ -265,8 +326,7 @@ function fecharModalGaleria(event) {
         </a>
 
     </div>
-	</section>
-
+</section>
 <!--Footer-->	
 	
 <footer class="school-footer">

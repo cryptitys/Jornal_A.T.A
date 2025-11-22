@@ -6,8 +6,9 @@
   <meta name="description" content="Jornal escolar da instituição A.T.A com notícias, eventos e informações importantes">
   <meta name="keywords" content="jornal escolar, ATA, escola, educação, notícias escolares">
   <title>Jornal Escolar A.T.A | Escola de Ensino Fundamental e Médio</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="src/css/style.css">
+ <link rel="stylesheet" href="src/css/mural.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <!-- IMPORTANTE: Ícones do Font Awesome -->
@@ -69,48 +70,7 @@
 </section>
 
 <style>
-    #mural-escolar {
-        padding: 60px 5%;
-        background: linear-gradient(135deg, #f5f5f5, #e8e8e8);
-        border-radius: 12px;
-        margin-top: 40px;
-    }
 
-    .mural-title {
-        font-family: Poppins, sans-serif;
-        text-align: center;
-        font-size: 28px;
-        margin-bottom: 30px;
-        color: #333;
-    }
-
-    .aviso-card {
-        padding: 18px;
-        border-radius: 12px;
-        margin-bottom: 18px;
-        color: white;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        animation: fadeIn 0.3s ease;
-    }
-
-    .azul     { background: ##ffffff; }
-    .vermelho { background: #ffffff; }
-    .amarelo  { background: #ffffff; color: #ffffff; }
-
-    .aviso-card h3 {
-        margin-bottom: 6px;
-        font-size: 20px;
-    }
-
-    .aviso-card p {
-        font-size: 16px;
-        opacity: 0.9;
-    }
-
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to   { opacity: 1; transform: translateY(0); }
-    }
 </style>
 
 <script type="module">
@@ -201,162 +161,14 @@
 
 
 
-<!-- BOTÃO -->
-<button class="collab-btn" onclick="openCollaborators()">Ver colaboradores do projeto</button>
 
-<!-- MODAL -->
-<div id="collab-modal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeCollaborators()">&times;</span>
+        
 
-        <h2>Colaboradores do Projeto</h2>
+            
 
-        <div class="collab-list">
 
-            <!-- Item 1 -->
-            <div class="collab-card">
-                <img src="https://i.pravatar.cc/150?img=12" alt="Avatar">
-                <div class="info">
-                    <h3>João Silva</h3>
-                    <p>Desenvolvedor Front-end</p>
-                </div>
-            </div>
 
-            <!-- Item 2 -->
-            <div class="collab-card">
-                <img src="https://i.pravatar.cc/150?img=4" alt="Avatar">
-                <div class="info">
-                    <h3>Maria Santos</h3>
-                    <p>Designer UI/UX</p>
-                </div>
-            </div>
 
-            <!-- Item 3 -->
-            <div class="collab-card">
-                <img src="https://i.pravatar.cc/150?img=23" alt="Avatar">
-                <div class="info">
-                    <h3>Carlos Alberto</h3>
-                    <p>Administrador do Projeto</p>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-</div>
-
-<style>
-/* Botão */
-.collab-btn {
-    padding: 12px 26px;
-    background: #4a3c7a;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: .3s;
-}
-
-.collab-btn:hover {
-    background: #32295a;
-}
-
-/* Modal */
-.modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.6);
-    backdrop-filter: blur(4px);
-    justify-content: center;
-    align-items: center;
-    animation: fadeIn .25s ease;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-.modal-content {
-    background: white;
-    width: 90%;
-    max-width: 480px;
-    padding: 25px;
-    border-radius: 18px;
-    position: relative;
-    animation: pop .25s ease;
-}
-
-@keyframes pop {
-    from { transform: scale(.85); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
-
-/* X fechar */
-.close {
-    position: absolute;
-    right: 14px;
-    top: 10px;
-    font-size: 32px;
-    cursor: pointer;
-    color: #555;
-}
-
-/* Lista */
-.collab-list {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.collab-card {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    background: #f7f7f7;
-    padding: 12px;
-    border-radius: 12px;
-}
-
-.collab-card img {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-}
-
-.collab-card .info h3 {
-    margin: 0;
-    font-size: 18px;
-    font-weight: 600;
-}
-
-.collab-card .info p {
-    margin: 0;
-    color: #555;
-    font-size: 14px;
-	}
-</sytle>
-
-<script>
-function openCollaborators() {
-    document.getElementById("collab-modal").style.display = "flex";
-}
-
-function closeCollaborators() {
-    document.getElementById("collab-modal").style.display = "none";
-}
-
-// Fechar clicando fora
-document.addEventListener("click", function(e) {
-    let modal = document.getElementById("collab-modal");
-    if (e.target === modal) {
-        closeCollaborators();
-    }
-});	
-</script>
 
 
 

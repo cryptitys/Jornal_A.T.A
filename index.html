@@ -213,6 +213,360 @@
   </div>
 </section>
 
+	
+	<div class="container">
+    <h2>Projetos Sociais</h2>
+    <div id="projects-list">
+      <!-- Cards inseridos dinamicamente -->
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal-bg" class="modal-bg" tabindex="-1" aria-modal="true" role="dialog">
+    <div id="project-modal" class="modal">
+      <div class="modal-header">
+        <span class="modal-title" id="modal-title"></span>
+        <button class="modal-close" aria-label="Fechar" id="modal-close">&times;</button>
+        <div class="modal-meta">
+          <span class="badge" id="modal-category"></span>
+          <span id="modal-date"></span>
+        </div>
+      </div>
+      <div class="modal-body">
+        <img id="modal-img" class="modal-image" src="" alt="Imagem projeto" />
+        <div class="modal-desc" id="modal-desc"></div>
+        <div class="modal-obj">Objetivos</div>
+        <ul class="modal-list" id="modal-objectives"></ul>
+        <div class="modal-students">Alunos Participantes</div>
+        <div class="students-list" id="modal-students"></div>
+        <div class="gallery-title">Mais Fotos</div>
+        <div class="gallery" id="modal-gallery"></div>
+      </div>
+    </div>
+  </div>
+<style>
+	
+    .project-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px #2848791a;
+      padding: 20px 20px 12px;
+      margin-bottom: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      cursor: pointer;
+      transition: box-shadow 0.2s;
+      border: 1px solid #e6ecf5;
+    }
+    .project-card:hover {
+      box-shadow: 0 4px 16px #28487952;
+    }
+    .project-img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 14px;
+      height: 180px;
+      object-fit: cover;
+    }
+    .project-title {
+      font-size: 1.3em;
+      font-weight: bold;
+      margin-bottom: 2px;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 0.85em;
+      background: #5470c6;
+      color: #fff;
+      border-radius: 12px;
+      padding: 2px 11px;
+      margin-right: 8px;
+    }
+    .project-short {
+      color: #45556b;
+      font-size: 1em;
+      margin: 3px 0 11px 0;
+    }
+    .avatars {
+      margin-top: 8px;
+      margin-bottom: 0;
+    }
+    .avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #fff;
+      box-shadow: 0 2px 6px #1a19191a;
+      margin-right: -9px;
+      vertical-align: middle;
+    }
+    /* MODAL */
+    .modal-bg {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: #03081e70;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 99;
+      animation: fadeIn 0.2s;
+    }
+    .modal-bg.active {
+      display: flex;
+    }
+    .modal {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 10px 40px #1f2c4b50;
+      padding: 0;
+      max-width: 380px;
+      width: 100%;
+      animation: growIn 0.32s;
+      position: relative;
+    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1;} }
+    @keyframes growIn { from { transform: scale(0.97); opacity: 0; } to {transform: scale(1); opacity: 1;} }
+    .modal-header {
+      background: #5470c6;
+      padding: 20px 22px 10px 22px;
+      color: #fff;
+      border-top-left-radius: 14px;
+      border-top-right-radius: 14px;
+      position: relative;
+    }
+    .modal-title {
+      font-size: 1.26em;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .modal-close {
+      position: absolute;
+      right: 24px;
+      top: 18px;
+      background: #fc6853;
+      border: none;
+      border-radius: 50%;
+      width: 28px; height: 28px;
+      font-size: 1.24em;
+      color: #fff;
+      text-align: center;
+      cursor: pointer;
+      z-index: 2;
+      box-shadow: 0 2px 8px #0000001a;
+    }
+    .modal-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.93em;
+      opacity: 0.92;
+      margin-bottom: 4px;
+    }
+    .modal-body {
+      padding: 18px 20px 20px 20px;
+      max-height: 72vh;
+      overflow-y: auto;
+      border-bottom-left-radius: 14px;
+      border-bottom-right-radius: 14px;
+    }
+    .modal-image {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 14px;
+      height: 160px;
+      object-fit: cover;
+    }
+    .modal-desc {
+      font-size: 1em;
+      color: #284879;
+      margin-bottom: 9px;
+    }
+    .modal-obj {
+      font-weight: bold;
+      margin-top: 12px;
+      margin-bottom: 2px;
+      color: #45556b;
+    }
+    .modal-list {
+      margin: 0 0 8px 0;
+      padding-left: 1.1em;
+      color: #555;
+      font-size: .98em;
+    }
+    .modal-students {
+      font-weight: bold;
+      margin-top: 13px;
+      margin-bottom: 7px;
+      color: #284879;
+      font-size: .96em;
+    }
+    .students-list {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin-bottom: 10px;
+    }
+    .student-row {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: #f2f4fd;
+      border-radius: 22px;
+      padding: 6px 12px;
+      font-size: .94em;
+    }
+    .student-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 4px;
+    }
+    .gallery-title {
+      font-size: .94em;
+      font-weight: 500;
+      margin-top: 9px;
+      margin-bottom: 6px;
+      color: #ef660a;
+    }
+    .gallery {
+      display: flex;
+      gap: 9px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+    .gallery-img {
+      width: 100px;
+      height: 68px;
+      border-radius: 8px;
+      object-fit: cover;
+      background: #dedede;
+      flex: none;
+      border: 1.5px solid #eee;
+    }
+    @media (max-width: 700px) {
+      .container { padding: 8px;}
+      .modal {max-width: 98vw;}
+      .gallery-img { width: 80px; height: 54px;}
+      .modal-image {height: 120px;}
+      .project-img {height: 120px;}
+    }
+  
+</style>
+  <script>
+    // Imagens dos projetos (substitua pelos arquivos)
+    const images = [
+      '1000161313.jpg',
+      '1000161314.jpg',
+      '1000161312.jpg',
+      '1000161315.jpg'
+    ];
+    const avatars = [
+      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop',
+      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop',
+      'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop',
+      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop',
+      'https://images.unsplash.com/photo-1500854051519-d64b4833b8d0?w=150&h=150&fit=crop'
+    ];
+
+    const projetos = [
+      {
+        title: "Ação Social na Comunidade",
+        category: "Sociais",
+        date: "20/03/2023",
+        image: images[0],
+        description: "Projeto que leva alunos para atividades voluntárias em instituições carentes do entorno da escola.",
+        objectives: [
+          "Promover solidariedade",
+          "Integrar escola e comunidade",
+          "Desenvolver empatia social"
+        ],
+        students: [
+          { avatar: avatars[0], name: "Gabriel Santos" },
+          { avatar: avatars[1], name: "Laura Mendonça" },
+          { avatar: avatars[2], name: "Rodrigo Barbosa" },
+          { avatar: avatars[3], name: "Tatiane Silva" },
+          { avatar: avatars[4], name: "Eduardo Costa" }
+        ],
+        gallery: [images[0], images[1], images[2]]
+      },
+      {
+        title: "Feira de Ciências 2023",
+        category: "Científico",
+        date: "17/06/2023",
+        image: images[2],
+        description: "Feira anual de ciências onde alunos expõem pesquisas e experimentos inovadores.",
+        objectives: [
+          "Desenvolver pensamento científico",
+          "Estimular inovação e criatividade",
+          "Compartilhar conhecimento com a comunidade"
+        ],
+        students: [
+          { avatar: avatars[3], name: "Ana Oliveira" },
+          { avatar: avatars[1], name: "Carlos Pereira" },
+          { avatar: avatars[2], name: "Mariana Costa" }
+        ],
+        gallery: [images[2], images[3]]
+      }
+    ];
+
+    // Render cards
+    const projectsList = document.getElementById('projects-list');
+    projetos.forEach((proj, idx) => {
+      const card = document.createElement('div');
+      card.className = 'project-card';
+      card.innerHTML = `
+        <img class="project-img" src="${proj.image}" alt="Projeto">
+        <span class="badge">${proj.category}</span>
+        <div class="project-title">${proj.title}</div>
+        <div class="project-short">${proj.description}</div>
+        <div class="avatars">
+          ${proj.students.slice(0,3).map(a => `<img class="avatar" src="${a.avatar}" alt="${a.name}"/>`).join('')}
+        </div>
+      `;
+      card.onclick = () => openModal(idx);
+      projectsList.appendChild(card);
+    });
+
+    // Modal
+    const modalBg = document.getElementById('modal-bg');
+    const modalTitle = document.getElementById('modal-title');
+    const modalCategory = document.getElementById('modal-category');
+    const modalDate = document.getElementById('modal-date');
+    const modalImg = document.getElementById('modal-img');
+    const modalDesc = document.getElementById('modal-desc');
+    const modalObjectives = document.getElementById('modal-objectives');
+    const modalStudents = document.getElementById('modal-students');
+    const modalGallery = document.getElementById('modal-gallery');
+
+    function openModal(idx) {
+      const proj = projetos[idx];
+      modalTitle.textContent = proj.title;
+      modalCategory.textContent = proj.category;
+      modalDate.textContent = "Publicado em " + proj.date;
+      modalImg.src = proj.image;
+      modalDesc.textContent = proj.description;
+      modalObjectives.innerHTML = proj.objectives.map(o => `<li>${o}</li>`).join('');
+      modalStudents.innerHTML = proj.students.map(s => `
+        <div class="student-row">
+          <img class="student-avatar" src="${s.avatar}" />
+          <span>${s.name}</span>
+        </div>
+      `).join('');
+      modalGallery.innerHTML = proj.gallery.map(img => `
+        <img class="gallery-img" src="${img}" />
+      `).join('');
+      modalBg.classList.add('active');
+    }
+    document.getElementById('modal-close').onclick = () => modalBg.classList.remove('active');
+    modalBg.onclick = (e) => {
+      if (e.target === modalBg) modalBg.classList.remove('active');
+    };
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') modalBg.classList.remove('active');
+    });
+	  </script>
 <!--Footer-->	
 	
 <footer class="school-footer">

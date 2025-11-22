@@ -1308,5 +1308,165 @@ h2 {
   .social-btn i { font-size: 22px; }
 }
 
+/* ======= Seção elegante ======= */
 
+.secao-fotos-elegante {
+    padding: 25px;
+}
+
+.secao-titulo {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+/* ======= CARD ======= */
+
+.foto-card {
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: 0.2s;
+}
+
+.foto-card:hover {
+    transform: translateY(-4px);
+}
+
+.foto-card-img {
+    position: relative;
+}
+
+.foto-card-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.foto-tag {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background: #ff6f4a;
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 10px;
+    font-size: 13px;
+}
+
+/* ======= Conteúdo do card ======= */
+
+.foto-card-content {
+    padding: 20px;
+}
+
+.foto-card-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.foto-card-text {
+    color: #455;
+    margin-bottom: 15px;
+}
+
+.foto-card-button {
+    color: #1f6feb;
+    font-weight: 600;
+}
+
+/* ======= MODAL ======= */
+
+#modalGaleria {
+    display: none;
+    position: fixed;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.65);
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 20px;
+    overflow-y: auto;
+    z-index: 9999;
+}
+
+.modal-conteudo {
+    background: white;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 700px;
+    overflow: hidden;
+    margin-bottom: 40px;
+}
+
+/* header azul */
+
+.modal-header {
+    background: #497fbd;
+    color: white;
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    font-size: 24px;
+    font-weight: 800;
+    margin: 0;
+}
+
+.modal-close {
+    background: #ff6f4a;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    color: white;
+    cursor: pointer;
+}
+
+/* conteúdo interno */
+
+.modal-body {
+    padding: 25px;
+}
+
+.modal-body img.modal-capa {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+/* alunos */
+
+.aluno {
+    background: #f1f3f9;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: 16px;
+    margin-bottom: 12px;
+}
+
+.aluno img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+/* mais fotos */
+
+.mais-fotos img {
+    width: 100%;
+    border-radius: 12px;
+    margin-top: 15px;
+}
     

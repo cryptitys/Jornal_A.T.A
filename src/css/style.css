@@ -1565,3 +1565,7 @@ h2 {
     top: 63%;
   }
   }
+.dev {
+    text-decoration: none; /* remove o sublinhado */
+    color: inherit; /* opcional — mantém a cor do texto */
+}
